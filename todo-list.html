@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Liste</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #taskInput {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #taskInput:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        .clear-btn {
+            width: 100%;
+            background: #ff6b6b;
+            margin-top: 15px;
+        }
+
+        .clear-btn:hover {
+            background: #ff5252;
+        }
+
+        #taskList {
+            list-style: none;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            border-left: 4px solid #667eea;
+        }
+
+        .task-item.completed {
+            background: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+
+        .task-item.completed .task-text {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .task-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .task-text {
+            flex: 1;
+            color: #333;
+            word-break: break-word;
+        }
+
+        .delete-btn {
+            background: #ff6b6b;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        .delete-btn:hover {
+            background: #ff5252;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📝 Min To-Do Liste</h1>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-label">I alt</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="completedCount">0</div>
+                <div class="stat-label">Færdige</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="pendingCount">0</div>
+                <div class="stat-label">Udestående</div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <input 
+                type="text" 
+                id="taskInput" 
+                placeholder="Tilføj en ny opgave..." 
+                autocomplete="off"
+            >
+            <button onclick="addTask()">Tilføj</button>
+        </div>
+
+        <ul id="taskList"></ul>
+
+        <div id="emptyMessage" class="empty-message">
+            ✨ Ingen opgaver endnu. Tilføj en for at komme i gang!
+        </div>
+
+        <button class="clear-btn" onclick="clearAll()">🗑️ Slet alle opgaver</button>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'todoList';
+
+        // Load tasks on page load
+        window.addEventListener('DOMContentLoaded', loadTasks);
+
+        // Add task when Enter is pressed
+        document.getElementById('taskInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTask();
+        });
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const taskText = input.value.trim();
+
+            if (taskText === '') {
+                alert('Skriv venligst en opgave!');
+                return;
+            }
+
+            const tasks = getTasks();
+            const newTask = {
+                id: Date.now(),
+                text: taskText,
+                completed: false
+            };
+
+            tasks.push(newTask);
+            saveTasks(tasks);
+            input.value = '';
+            renderTasks();
+        }
+
+        function deleteTask(id) {
+            let tasks = getTasks();
+            tasks = tasks.filter(task => task.id !== id);
+            saveTasks(tasks);
+            renderTasks();
+        }
+
+        function toggleTask(id) {
+            const tasks = getTasks();
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.completed = !task.completed;
+                saveTasks(tasks);
+                renderTasks();
+            }
+        }
+
+        function clearAll() {
+            if (confirm('Er du sikker på, at du vil slette alle opgaver?')) {
+                saveTasks([]);
+                renderTasks();
+            }
+        }
+
+        function getTasks() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveTasks(tasks) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+        }
+
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            const emptyMessage = document.getElementById('emptyMessage');
+            const tasks = getTasks();
+
+            taskList.innerHTML = '';
+
+            if (tasks.length === 0) {
+                emptyMessage.style.display = 'block';
+                updateStats(0, 0);
+                return;
+            }
+
+            emptyMessage.style.display = 'none';
+
+            let completedCount = 0;
+
+            tasks.forEach(task => {
+                if (task.completed) completedCount++;
+
+                const li = document.createElement('li');
+                li.className = `task-item ${task.completed ? 'completed' : ''}`;
+                li.innerHTML = `
+                    <input 
+                        type="checkbox" 
+                        ${task.completed ? 'checked' : ''} 
+                        onchange="toggleTask(${task.id})"
+                    >
+                    <span class="task-text">${escapeHtml(task.text)}</span>
+                    <button class="delete-btn" onclick="deleteTask(${task.id})">Slet</button>
+                `;
+                taskList.appendChild(li);
+            });
+
+            updateStats(tasks.length, completedCount);
+        }
+
+        function updateStats(total, completed) {
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('pendingCount').textContent = total - completed;
+        }
+
+        function loadTasks() {
+            renderTasks();
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+    </script>
+
+</body>
+</html>
