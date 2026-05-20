@@ -3,338 +3,290 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flyt pension — beregner (designtest v2)</title>
+<title>Flyt pension — beregner</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.40.0/tabler-icons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 <style>
   :root {
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F7F9FB;
-    --bg-tertiary: #EEF3F6;
-    --text-primary: #0E1F28;
-    --text-secondary: #5A6C7A;
-    --text-tertiary: #8A9AA8;
-    --border-tertiary: rgba(7,160,195,0.14);
-    --border-secondary: rgba(7,160,195,0.32);
-    --info-bg: #E0F4F8;
-    --info-bg-strong: #B8E5EE;
-    --info-text: #054857;
-    --info-strong: #07A0C3;
-    --info-hover: #0689A8;
-    --accent: #FFD932;
-    --accent-soft: #FFE56B;
-    --accent-bg: #FFF6CC;
-    --accent-text: #6B5400;
-    --success-bg: #E1F5EE;
-    --success-text: #04342C;
-    --success-strong: #0F6E56;
-    --warning-bg: #FFF6CC;
-    --warning-text: #6B5400;
-    --warning-strong: #C9A300;
-    --danger-text: #C44545;
-    --danger-bg: #FCEBEB;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-    --radius-xl: 24px;
-    --shadow-sm: 0 1px 2px rgba(7,31,40,0.04), 0 2px 6px rgba(7,31,40,0.03);
-    --shadow-md: 0 4px 14px rgba(7,31,40,0.06), 0 14px 40px rgba(7,31,40,0.05);
-    --shadow-glow: 0 6px 22px rgba(7,160,195,0.22);
-    --shadow-yellow: 0 6px 22px rgba(255,217,50,0.32);
-    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --bg-primary: #FFFFFF; --bg-secondary: #F7F9FB; --bg-tertiary: #EEF3F6;
+    --text-primary: #0E1F28; --text-secondary: #5A6C7A; --text-tertiary: #8A9AA8;
+    --border-tertiary: rgba(7,160,195,0.14); --border-secondary: rgba(7,160,195,0.32);
+    --info-bg: #E0F4F8; --info-bg-strong: #B8E5EE; --info-text: #054857;
+    --info-strong: #07A0C3; --info-hover: #0689A8; --accent: #FFD932;
+    --accent-soft: #FFE56B; --accent-bg: #FFF6CC; --accent-text: #6B5400;
+    --success-bg: #E1F5EE; --success-text: #04342C; --success-strong: #0F6E56;
+    --warning-strong: #C9A300; --danger-text: #C44545; --danger-bg: #FCEBEB;
+    --radius-md: 12px; --radius-lg: 18px; --radius-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(7,31,40,0.04); --shadow-md: 0 4px 14px rgba(7,31,40,0.06);
+    --shadow-glow: 0 6px 22px rgba(7,160,195,0.22); --shadow-yellow: 0 6px 22px rgba(255,217,50,0.32);
+    --font-sans: 'Poppins', system-ui, sans-serif; --font-mono: ui-monospace, monospace;
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--text-primary);
+    margin: 0; font-family: var(--font-sans); font-size: 14px; line-height: 1.55; color: var(--text-primary);
     background: radial-gradient(ellipse 60% 50% at 10% 0%, rgba(7,160,195,0.10), transparent 60%),
-                radial-gradient(ellipse 50% 40% at 95% 5%, rgba(255,217,50,0.16), transparent 60%),
-                var(--bg-tertiary);
-    background-attachment: fixed;
-    -webkit-font-smoothing: antialiased;
-    font-weight: 400;
+                radial-gradient(ellipse 50% 40% at 95% 5%, rgba(255,217,50,0.16), transparent 60%), var(--bg-tertiary);
+    background-attachment: fixed; -webkit-font-smoothing: antialiased;
   }
   .page { max-width: 1140px; margin: 0 auto; padding: 32px 22px 56px; }
   .demo-banner {
-    background: var(--accent-bg); color: var(--accent-text);
-    padding: 10px 16px; border-radius: 100px;
-    font-size: 12px; margin-bottom: 20px;
-    display: inline-flex; align-items: center; gap: 8px;
-    border: 1px solid var(--accent);
-    font-weight: 500;
+    background: var(--accent-bg); color: var(--accent-text); padding: 10px 16px; border-radius: 100px;
+    font-size: 12px; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); font-weight: 500;
   }
   .app { background: var(--bg-primary); border-radius: var(--radius-xl); border: 1px solid var(--border-tertiary); overflow: hidden; box-shadow: var(--shadow-md); }
-
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid var(--border-tertiary); gap: 12px; background: linear-gradient(180deg, rgba(255,217,50,0.04), transparent); }
-  .crumbs { display: flex; align-items: center; gap: 12px; min-width: 0; font-size: 13px; }
-  .crumbs .logo { width: 36px; height: 36px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--info-strong), var(--info-hover)); display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; box-shadow: var(--shadow-glow); position: relative; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid var(--border-tertiary); background: linear-gradient(180deg, rgba(255,217,50,0.04), transparent); }
+  .crumbs { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+  .crumbs .logo { width: 36px; height: 36px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--info-strong), var(--info-hover)); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: var(--shadow-glow); position: relative; }
   .crumbs .logo::after { content: ''; position: absolute; top: -4px; right: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-primary); }
   .crumbs .sep { color: var(--text-tertiary); }
   .crumbs .current { font-weight: 600; }
   .crumbs .muted { color: var(--text-secondary); font-weight: 500; }
-
   button { font-family: inherit; cursor: pointer; }
-  .btn { background: var(--bg-primary); border: 1px solid var(--border-secondary); color: var(--text-primary); padding: 9px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); display: inline-flex; align-items: center; gap: 6px; }
+  .btn { background: var(--bg-primary); border: 1px solid var(--border-secondary); color: var(--text-primary); padding: 9px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
   .btn:hover { background: var(--bg-secondary); border-color: var(--info-strong); transform: translateY(-1px); }
-  .btn:active { transform: translateY(0); }
   .btn.primary { background: linear-gradient(135deg, var(--info-strong), var(--info-hover)); color: #fff; border-color: transparent; font-weight: 600; box-shadow: var(--shadow-glow); }
   .btn.primary:hover { box-shadow: 0 10px 28px rgba(7,160,195,0.32); transform: translateY(-1px); }
-  .btn.primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
-  .btn.accent { background: var(--accent); color: var(--accent-text); border-color: transparent; font-weight: 600; box-shadow: var(--shadow-yellow); }
-  .btn.accent:hover { background: var(--accent-soft); box-shadow: 0 10px 28px rgba(255,217,50,0.42); }
   .btn.sm { padding: 6px 12px; font-size: 12px; }
-  .btn.tiny { padding: 4px 10px; font-size: 11px; }
-
   input, select, textarea { font-family: inherit; font-size: 13px; padding: 8px 12px; border: 1px solid var(--border-tertiary); border-radius: var(--radius-md); background: var(--bg-primary); color: var(--text-primary); width: 100%; height: 38px; transition: all 0.2s; }
   textarea { height: auto; resize: vertical; line-height: 1.5; }
-  input:hover, select:hover, textarea:hover { border-color: var(--border-secondary); }
   input:focus, select:focus, textarea:focus { outline: none; border-color: var(--info-strong); box-shadow: 0 0 0 4px rgba(7,160,195,0.14); }
-
-  .tools { display: flex; gap: 4px; padding: 10px 14px 0; border-bottom: 1px solid var(--border-tertiary); background: var(--bg-secondary); overflow-x: auto; }
-  .tool { font-size: 13px; padding: 11px 16px; border: none; background: transparent; color: var(--text-secondary); border-radius: var(--radius-md) var(--radius-md) 0 0; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; transition: all 0.18s; font-weight: 500; position: relative; margin-bottom: -1px; }
-  .tool:hover { color: var(--info-strong); background: rgba(7,160,195,0.06); }
+  .tools { display: flex; gap: 4px; padding: 10px 14px 0; border-bottom: 1px solid var(--border-tertiary); background: var(--bg-secondary); }
+  .tool { font-size: 13px; padding: 11px 16px; border: none; background: transparent; color: var(--text-secondary); border-radius: var(--radius-md) var(--radius-md) 0 0; display: inline-flex; align-items: center; gap: 7px; font-weight: 500; position: relative; margin-bottom: -1px; }
   .tool.active { color: var(--info-strong); background: var(--bg-primary); border: 1px solid var(--border-tertiary); border-bottom: 1px solid var(--bg-primary); font-weight: 600; }
   .tool.active::before { content: ''; position: absolute; top: 0; left: 14px; right: 14px; height: 3px; background: var(--accent); border-radius: 0 0 3px 3px; }
-
   .content { padding: 24px 26px 28px; }
   .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
   .page-head h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
   .saved { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); background: var(--accent-bg); padding: 5px 12px; border-radius: 100px; font-weight: 500; }
   .saved .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success-strong); box-shadow: 0 0 0 3px rgba(15,110,86,0.18); }
-
-  .steps { display: flex; gap: 4px; margin-bottom: 22px; background: var(--bg-secondary); padding: 5px; border-radius: 100px; width: fit-content; overflow-x: auto; max-width: 100%; border: 1px solid var(--border-tertiary); }
-  .step { font-size: 12px; padding: 8px 14px; border: none; background: transparent; color: var(--text-secondary); border-radius: 100px; white-space: nowrap; font-weight: 500; transition: all 0.18s; font-family: inherit; }
-  .step:hover { color: var(--text-primary); }
+  .steps { display: flex; gap: 4px; margin-bottom: 22px; background: var(--bg-secondary); padding: 5px; border-radius: 100px; width: fit-content; border: 1px solid var(--border-tertiary); }
+  .step { font-size: 12px; padding: 8px 14px; border: none; background: transparent; color: var(--text-secondary); border-radius: 100px; font-weight: 500; transition: all 0.18s; }
   .step.active { background: var(--bg-primary); color: var(--info-strong); font-weight: 600; box-shadow: var(--shadow-sm); }
-
   .panel { display: none; animation: fadeIn 0.3s ease-out; }
   .panel.active { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .grid-2 > .col { display: flex; flex-direction: column; gap: 16px; }
-
-  .section { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 18px 20px; background: var(--bg-primary); transition: border-color 0.2s, box-shadow 0.2s; }
-  .section:hover { border-color: var(--border-secondary); box-shadow: var(--shadow-sm); }
+  .section { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 18px 20px; background: var(--bg-primary); }
   .section .title { margin: 0 0 14px; font-size: 11px; font-weight: 600; color: var(--info-strong); text-transform: uppercase; letter-spacing: 0.6px; display: inline-flex; align-items: center; gap: 8px; }
   .section .title::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
   .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-  .field:last-child { margin-bottom: 0; }
   .field label { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
   .field .accent { border-color: var(--info-strong); box-shadow: 0 0 0 4px rgba(7,160,195,0.10); }
   .section.flex-grow { display: flex; flex-direction: column; flex: 1; }
   .section.flex-grow .field-grow { flex: 1; display: flex; flex-direction: column; }
   .section.flex-grow .field-grow textarea { flex: 1; min-height: 90px; }
-
-  .notes-block { margin-top: 18px; padding: 16px 18px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-lg); font-size: 12px; color: var(--accent-text); line-height: 1.7; border: 1px solid rgba(255,217,50,0.45); }
-  .notes-block p { margin: 0; }
-  .notes-block strong { color: #4A3A00; font-weight: 600; }
   .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
-
   .chart-wrap { position: relative; height: 300px; margin-bottom: 14px; }
   .chart-caption { margin: 0; font-size: 11px; color: var(--text-tertiary); text-align: center; font-style: italic; }
-
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .table-wrap { overflow: hidden; border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); background: var(--bg-primary); }
   th, td { padding: 12px 14px; }
   thead tr { background: var(--bg-secondary); }
   th { text-align: left; font-weight: 600; color: var(--text-secondary); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
   th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  tbody tr { border-top: 1px solid var(--border-tertiary); transition: background 0.15s; }
-  tbody tr:hover { background: var(--bg-secondary); }
+  tbody tr { border-top: 1px solid var(--border-tertiary); }
   .col-accent { color: var(--info-strong); }
   .row-accent { background: linear-gradient(135deg, var(--info-bg), #F0FAFC) !important; }
   .row-accent td { font-weight: 600; color: var(--info-text); }
   .sub-row td { padding: 6px 14px 6px 32px; font-size: 11px; color: var(--text-tertiary); }
   .gain-pos { color: var(--success-strong); font-weight: 600; }
   .gain-neg { color: var(--danger-text); font-weight: 600; }
-
-  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 11px; color: var(--text-secondary); justify-content: center; margin-top: 10px; }
-  .legend .item { display: inline-flex; align-items: center; gap: 6px; }
-  .legend .swatch { width: 12px; height: 12px; border-radius: 3px; }
-
-  .modal-backdrop { position: fixed; inset: 0; background: rgba(14,31,40,0.55); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; animation: fadeIn 0.2s ease-out; }
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(14,31,40,0.55); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; }
   .modal-backdrop.open { display: flex; }
-  .modal { width: 100%; max-width: 480px; background: var(--bg-primary); border-radius: var(--radius-xl); border: 1px solid var(--border-tertiary); overflow: hidden; max-height: calc(100vh - 40px); display: flex; flex-direction: column; box-shadow: var(--shadow-md); animation: modalIn 0.25s cubic-bezier(0.16,1,0.3,1); }
+  .modal { width: 100%; max-width: 480px; background: var(--bg-primary); border-radius: var(--radius-xl); border: 1px solid var(--border-tertiary); overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-md); animation: modalIn 0.25s cubic-bezier(0.16,1,0.3,1); }
   @keyframes modalIn { from { opacity: 0; transform: scale(0.96) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
   .modal-head { padding: 20px 22px 14px; border-bottom: 1px solid var(--border-tertiary); }
-  .modal-head .row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
-  .modal-head .icon-box { width: 36px; height: 36px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--info-bg), var(--info-bg-strong)); display: flex; align-items: center; justify-content: center; color: var(--info-strong); flex-shrink: 0; }
-  .modal-head .icon-box i { font-size: 18px; }
-  .modal-head h3 { margin: 0; font-size: 17px; font-weight: 600; flex: 1; }
-  .modal-head p { margin: 0 0 0 48px; font-size: 12px; color: var(--text-secondary); }
+  .modal-head h3 { margin: 0; font-size: 17px; font-weight: 600; }
   .modal-body { padding: 18px 22px; overflow-y: auto; }
   .modal-foot { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 22px; border-top: 1px solid var(--border-tertiary); background: var(--bg-secondary); }
-
+  .warn-box { display: flex; align-items: flex-start; gap: 12px; margin-top: 14px; padding: 14px 16px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-md); border: 1px solid var(--accent); font-size: 13px; }
+  .warn-box .title { color: #4A3A00; font-weight: 600; margin-bottom: 3px; }
+  .warn-box .body { color: var(--accent-text); }
+  .success-head { padding: 28px 24px 20px; text-align: center; border-bottom: 1px solid var(--border-tertiary); background: linear-gradient(180deg, rgba(15,110,86,0.04), transparent); }
+  .success-circle { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--success-strong), #0A5642); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px; color: #fff; box-shadow: 0 8px 24px rgba(15,110,86,0.32); }
+  .success-head h2 { margin: 0 0 6px; font-size: 22px; font-weight: 700; }
+  .tiles { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin: 16px 0; }
+  .tile { padding: 14px 16px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-tertiary); }
+  .tile .lbl { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
+  .tile .val { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+  .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 28px; padding: 12px 20px; background: var(--text-primary); color: #fff; border-radius: 100px; font-size: 13px; z-index: 200; opacity: 0; transition: all 0.25s; pointer-events: none; font-weight: 500; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+  .depot-card { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 16px 18px; margin-bottom: 12px; background: var(--bg-primary); }
+  .depot-card.filled { background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); border-color: var(--border-secondary); }
+  .depot-card.empty { border: 2px dashed var(--border-secondary); background: rgba(7,160,195,0.02); }
+  .depot-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .depot-num { font-size: 11px; font-weight: 600; color: var(--info-strong); text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; }
+  .depot-num::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .depot-remove { background: transparent; border: none; padding: 6px; color: var(--text-tertiary); border-radius: 100px; display: inline-flex; align-items: center; }
+  .depot-remove:hover { background: var(--danger-bg); color: var(--danger-text); }
+  .depot-main-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+  .depot-main-row .selskab { font-size: 16px; font-weight: 600; }
+  .depot-main-row .nr { font-size: 12px; color: var(--text-secondary); font-family: var(--font-mono); background: var(--bg-secondary); padding: 2px 8px; border-radius: 100px; }
+  .depot-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; font-size: 12px; }
+  .depot-details > div { display: flex; justify-content: space-between; padding: 4px 0; }
+  .depot-details .label { color: var(--text-secondary); }
+  .depot-details .value { font-weight: 600; }
+  .depot-done { padding: 14px; text-align: center; font-size: 13px; color: var(--success-text); background: var(--success-bg); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; border: 1px solid rgba(15,110,86,0.18); font-weight: 500; }
+  .depot-summary { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-md); font-size: 13px; color: var(--accent-text); margin-top: 18px; border: 1px solid rgba(255,217,50,0.45); font-weight: 500; }
+  .depot-summary .count { font-weight: 600; }
+  .depot-summary .total { margin-left: auto; font-weight: 700; font-size: 15px; color: #4A3A00; }
   @media (max-width: 700px) {
     .grid-2 { grid-template-columns: 1fr; }
-    .topbar { flex-wrap: wrap; }
+    .tiles { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 <div class="page">
-
   <div class="demo-banner">
-    <i class="ti ti-sparkles"></i>
-    <span><strong>Designtest v2</strong> — VI-farver, Poppins og lidt mere personlighed.</span>
+    <i class="ti ti-sparkles"></i><span><strong>Beregner</strong> — Optimeret visning</span>
   </div>
 
   <div class="app">
-
     <div class="topbar">
       <div class="crumbs">
         <div class="logo"><i class="ti ti-calculator" style="font-size:15px"></i></div>
-        <span class="muted">Beregnere</span>
-        <i class="ti ti-chevron-right sep"></i>
-        <span class="current">Flyt pension</span>
+        <span class="muted">Beregnere</span><i class="ti ti-chevron-right sep"></i><span class="current">Flyt pension</span>
       </div>
-      <button class="btn primary" id="publishBtn">
-        <i class="ti ti-cloud-upload"></i>
-        Udgiv
-      </button>
+      <button class="btn primary" id="publishBtn"><i class="ti ti-cloud-upload"></i>Udgiv</button>
     </div>
 
     <div class="tools">
-      <button class="tool" data-tool="afkast"><i class="ti ti-trending-up"></i> Afkast i dag</button>
-      <button class="tool active" data-tool="flyt"><i class="ti ti-transfer"></i> Flyt pension</button>
-      <button class="tool" data-tool="forsikring"><i class="ti ti-shield"></i> Forsikringer</button>
-      <button class="tool" data-tool="helhed"><i class="ti ti-layout-grid"></i> Helhedsplan</button>
+      <button class="tool active"><i class="ti ti-transfer"></i> Flyt pension</button>
     </div>
 
     <div class="content">
+      <section class="tool-section active">
+        <div class="page-head">
+          <h1>Tilbud om at flytte din pension</h1>
+          <span class="saved"><span class="dot"></span>Gemt</span>
+        </div>
 
-      <section class="tool-section active" data-tool="flyt">
+        <div class="steps" role="tablist">
+          <button class="step active" data-step="depot">0 · Depotvalg</button>
+          <button class="step" data-step="input">1 · Inputs</button>
+          <button class="step" data-step="result">2 · Resultatgraf</button>
+          <button class="step" data-step="key">3 · Nøgletal</button>
+          <button class="step" data-step="sens">4 · Følsomhed</button>
+          <button class="step" data-step="cost">5 · Fordeling</button>
+          <button class="step" data-step="afkost">6 · Omkostninger</button>
+        </div>
 
-      <div class="page-head">
-        <h1>Tilbud om at flytte din pension</h1>
-        <span class="saved"><span class="dot"></span>Kladde gemt · for 2 min siden</span>
-      </div>
+        <div class="panel active" id="p-depot">
+          <p style="margin:0 0 16px; font-size:12px; color:var(--text-secondary);">Vælg et depot ad gangen fra listen.</p>
+          <div id="depot-list"></div>
+          <div id="depot-summary" class="depot-summary" hidden>
+            <i class="ti ti-database"></i><span><span id="depot-count" class="count">0</span> depoter valgt</span>
+            <span class="total">Samlet: <span id="depot-total">0 kr.</span></span>
+          </div>
+          <div class="actions">
+            <button class="btn" id="reset-depots">Nulstil valg</button>
+            <button class="btn primary" id="go-input">Fortsæt til inputs →</button>
+          </div>
+        </div>
 
-      <div class="steps" role="tablist">
-        <button class="step active" data-step="input">1 · Inputs</button>
-        <button class="step" data-step="result">2 · Resultat</button>
-        <button class="step" data-step="key">3 · Nøgletal</button>
-      </div>
-
-      <div class="panel active" id="p-input">
-        <div class="grid-2">
-
-          <div class="col">
-            <div class="section">
-              <p class="title">Løsning</p>
-              <div class="field"><label>Pensionstype</label><select><option>Privatpension (formuepleje)</option><option>Ratepension</option><option>Livrente</option></select></div>
-              <div class="field"><label>Valgt løsning</label><select class="accent"><option>Global Vækst via Danica</option><option>Global Balance via Danica</option></select></div>
+        <div class="panel" id="p-input">
+          <div class="grid-2">
+            <div class="col">
+              <div class="section">
+                <p class="title">Løsning</p>
+                <div class="field"><label>Pensionstype</label><select><option>Ratepension</option><option>Livrente</option></select></div>
+                <div class="field"><label>Valgt løsning</label><select class="accent"><option>Global Vækst via Danica</option></select></div>
+              </div>
+              <div class="section">
+                <p class="title">Grunddata</p>
+                <div class="field"><label>Din alder</label><input type="number" value="40"></div>
+                <div class="field"><label>Din pensionsalder</label><input type="number" value="70"></div>
+                <div class="field"><label>Flytbar samlet værdi (kr.)</label><input type="text" value="2.000.000"></div>
+              </div>
             </div>
-
-            <div class="section">
-              <p class="title">Grunddata</p>
-              <div class="field"><label>Din alder</label><input type="number" value="40"></div>
-              <div class="field"><label>Din pensionsalder</label><input type="number" value="70"></div>
-              <div class="field"><label>Flytbar samlet værdi (kr.)</label><input type="text" value="2.000.000"></div>
-              <div class="field"><label>Årlig indbetaling</label><input type="text" value="50.000"></div>
+            <div class="col">
+              <div class="section flex-grow">
+                <p class="title">Nuværende selskab</p>
+                <div class="field"><label>Pensionsselskab</label><select><option>Velliv</option><option>PFA</option></select></div>
+                <div class="field field-grow"><label>Note</label><textarea placeholder="Kommentar til kunden…"></textarea></div>
+              </div>
             </div>
           </div>
-
-          <div class="col">
-            <div class="section flex-grow">
-              <p class="title">Dine pensionsselskaber i dag</p>
-              <div class="field"><label>1. pensionsselskab</label><select><option>Velliv</option><option>PFA</option><option>Danica</option></select></div>
-              <div class="field"><label>2. pensionsselskab</label><select><option>Bank</option><option>PFA</option></select></div>
-              <div class="field"><label>Risikoprofil i dag</label><select><option>Middel</option><option>Lav</option><option>Høj</option></select></div>
-              <div class="field"><label>Historisk afkast 10 år</label><input type="text" value="4,6%"></div>
-              <div class="field field-grow"><label>Note</label><textarea placeholder="Tilføj kommentar til kunden…"></textarea></div>
-            </div>
+          <div class="actions">
+            <button class="btn primary" id="goResult">Beregn resultat →</button>
           </div>
-
         </div>
 
-        <div class="notes-block">
-          <p><strong>Årlige lofter</strong> — Ratepension max. 68.700 DKK · Livrente max. 63.200 DKK · Aldersopsparing max. 9.900 DKK</p>
+        <div class="panel" id="p-result">
+          <div class="chart-wrap"><canvas id="chartResult"></canvas></div>
         </div>
 
-        <div class="actions">
-          <button class="btn">Nulstil</button>
-          <button class="btn primary" id="goResult">Beregn resultat →</button>
+        <div class="panel" id="p-key">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>&nbsp;</th><th class="num">I dag</th><th class="num col-accent">Global Vækst</th></tr></thead>
+              <tbody>
+                <tr><td>Mulig opsparing</td><td class="num">4.396.626 kr.</td><td class="num row-accent">38.234.309 kr.</td></tr>
+                <tr><td>Historisk afkast 10 år</td><td class="num">4,6%</td><td class="num">16,0%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
+        <div class="panel" id="p-sens">
+          <div class="chart-wrap"><canvas id="chartSens"></canvas></div>
+        </div>
+
+        <div class="panel" id="p-cost">
+          <div class="chart-wrap"><canvas id="chartCost"></canvas></div>
+        </div>
+
+        <div class="panel" id="p-afkost">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>&nbsp;</th><th class="num">I dag</th><th class="num col-accent">Tietgen Pension</th><th class="num">Gevinst</th></tr></thead>
+              <tbody>
+                <tr><td>Årlige omkostninger (ÅOP)</td><td class="num">1,29%</td><td class="num">0,84%</td><td class="num gain-pos">0,45%</td></tr>
+                <tr class="row-accent"><td>Mulig opsparing ved pension</td><td class="num">4.396.626 kr.</td><td class="num">38.234.309 kr.</td><td class="num gain-pos">+33.837.683 kr.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-publish" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Udgiv beregner</h3>
+    </div>
+    <div class="modal-body">
+      <div class="warn-box">
+        <div><div class="title">Bekræft udgivelse</div><div class="body">Udgiv ændringer direkte til produktion.</div></div>
       </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" data-close>Annullér</button>
+      <button class="btn primary" id="doPublish">Udgiv nu</button>
+    </div>
+  </div>
+</div>
 
-      <div class="panel" id="p-result">
-        <p style="margin:0 0 12px; font-size:14px; font-weight:500;">Din mulige opsparing ved pensionsalderen</p>
-        <div class="chart-wrap"><canvas id="chartResult"></canvas></div>
-        <p class="chart-caption">Baseret på indtastede tal og historiske afkast. Resultatet er ikke en garanti.</p>
-        <div class="actions">
-          <button class="btn" data-go-step="input">← Tilbage</button>
-          <button class="btn primary" data-go-step="key">Se nøgletal →</button>
-        </div>
+<div class="modal-backdrop" id="modal-success" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="success-head">
+      <div class="success-circle"><i class="ti ti-check" style="font-size:22px"></i></div>
+      <h2>Udgivelse fuldført</h2>
+    </div>
+    <div class="modal-body">
+      <div class="tiles">
+        <div class="tile"><div class="lbl">Status</div><div class="val">Live</div></div>
+        <div class="tile"><div class="lbl">Sprog</div><div class="val">DA</div></div>
       </div>
-
-      <div class="panel" id="p-key">
-        <p style="margin:0 0 12px; font-size:14px; font-weight:500;">Dine nøgletal</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>&nbsp;</th><th class="num">I dag</th><th class="num col-accent">Global Vækst</th><th class="num">Global Balance</th></tr></thead>
-            <tbody>
-              <tr><td style="color:var(--text-secondary)">Mulig opsparing</td><td class="num">4.396.626 kr.</td><td class="num row-accent" style="background:var(--info-bg); color:var(--info-text); font-weight:500;">38.234.309 kr.</td><td class="num">25.556.215 kr.</td></tr>
-              <tr><td style="color:var(--text-secondary)">Historisk afkast 10 år</td><td class="num">4,6%</td><td class="num">16,0%</td><td class="num">13,8%</td></tr>
-              <tr><td style="color:var(--text-secondary)">Årlige omkostninger (ÅOP)</td><td class="num">1,29%</td><td class="num">0,84%</td><td class="num">0,76%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div style="margin-top:14px; padding:12px 14px; background:var(--bg-secondary); border-radius:var(--radius-md); font-size:12px;">
-          <p style="margin:0 0 6px; font-weight:500;">Porteføljesammensætning</p>
-          <p style="margin:0 0 4px; color:var(--text-secondary)"><strong style="color:var(--text-primary)">Global Vækst:</strong> 20% globale aktier · 50% teknologi · 30% europæiske bank</p>
-          <p style="margin:0; color:var(--text-secondary)"><strong style="color:var(--text-primary)">Global Balance:</strong> 50% globale aktier · 25% teknologi · 25% europæiske bank</p>
-        </div>
-        <div class="actions">
-          <button class="btn" data-go-step="input">← Tilbage</button>
-        </div>
-      </div>
-
-      </section>
-
-      <section class="tool-section" data-tool="forsikring" hidden>
-        <div class="page-head">
-          <h1>Forsikringer</h1>
-          <span class="saved"><span class="dot"></span>Kladde gemt</span>
-        </div>
-        <div style="text-align: center; padding: 60px 20px;">
-          <i class="ti ti-tools" style="font-size: 48px; color: var(--info-strong); margin-bottom: 20px;"></i>
-          <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 700;">Forsikringsberegner</h2>
-          <p style="color: var(--text-secondary); margin: 0;">Denne beregner er endnu ikke bygget.</p>
-        </div>
-      </section>
-
-      <section class="tool-section" data-tool="helhed" hidden>
-        <div class="page-head">
-          <h1>Helhedsplan</h1>
-          <span class="saved"><span class="dot"></span>Kladde gemt</span>
-        </div>
-        <div style="text-align: center; padding: 60px 20px;">
-          <i class="ti ti-tools" style="font-size: 48px; color: var(--info-strong); margin-bottom: 20px;"></i>
-          <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 700;">Helhedsplan</h2>
-          <p style="color: var(--text-secondary); margin: 0;">Denne beregner er endnu ikke bygget.</p>
-        </div>
-      </section>
-
-      <section class="tool-section" data-tool="afkast" hidden>
-        <div class="page-head">
-          <h1>Afkast i dag</h1>
-          <span class="saved"><span class="dot"></span>Kladde gemt</span>
-        </div>
-        <div style="text-align: center; padding: 60px 20px;">
-          <i class="ti ti-tools" style="font-size: 48px; color: var(--info-strong); margin-bottom: 20px;"></i>
-          <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 700;">Afkast i dag</h2>
-          <p style="color: var(--text-secondary); margin: 0;">Denne beregner er endnu ikke bygget.</p>
-        </div>
-      </section>
-
+    </div>
+    <div class="modal-foot">
+      <button class="btn primary sm" data-close>Luk</button>
     </div>
   </div>
 </div>
@@ -344,86 +296,115 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 (function(){
-  // Tools
-  document.querySelectorAll('.tool').forEach(t => t.addEventListener('click', () => {
-    document.querySelectorAll('.tool').forEach(x => x.classList.remove('active'));
-    t.classList.add('active');
-    const tool = t.dataset.tool;
-    document.querySelectorAll('.tool-section').forEach(s => {
-      s.hidden = s.dataset.tool !== tool;
-    });
-  }));
-
-  // Steps — scoped to active section
   const drawn = {};
+  
   function activateStep(stepBtn) {
     const section = stepBtn.closest('.tool-section');
     section.querySelectorAll('.step').forEach(x => x.classList.toggle('active', x === stepBtn));
     const name = stepBtn.dataset.step;
     section.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    
     const target = section.querySelector('#p-' + name);
     if (target) target.classList.add('active');
-    if (section.dataset.tool === 'flyt') {
-      if (name === 'result' && !drawn.result) drawResult();
+    
+    if (name === 'result' && !drawn.result) drawResult();
+    if (name === 'sens' && !drawn.sens) drawSens();
+    if (name === 'cost' && !drawn.cost) drawCost();
+  }
+
+  document.querySelectorAll('.step').forEach(s => s.addEventListener('click', () => activateStep(s)));
+  document.getElementById('goResult').addEventListener('click', () => activateStep(document.querySelector('.step[data-step="result"]')));
+  document.getElementById('go-input').addEventListener('click', () => activateStep(document.querySelector('.step[data-step="input"]')));
+
+  // Depot Logic
+  const allDepots = [
+    { id: 'nordea-1', selskab: 'Nordea', nr: '9535045698', form: 'Gennemsnitsrente', aarlig: '0 kr.', opsparing: '1.778.000 kr.', value: 1778000 },
+    { id: 'velliv-1', selskab: 'Velliv', nr: '4421887331', form: 'Markedsrente', aarlig: '12.000 kr.', opsparing: '950.000 kr.', value: 950000 }
+  ];
+  let selectedDepots = [];
+
+  function renderDepots() {
+    const list = document.getElementById('depot-list');
+    list.innerHTML = '';
+
+    selectedDepots.forEach((d, i) => {
+      const card = document.createElement('div');
+      card.className = 'depot-card filled';
+      card.innerHTML = `<div class="depot-head"><span class="depot-num">Depot ${i+1}</span><button class="depot-remove" data-idx="${i}"><i class="ti ti-x"></i></button></div>
+        <div class="depot-main-row"><span class="selskab">${d.selskab}</span><span class="nr">· ${d.nr}</span></div>
+        <div class="depot-details"><div><span class="label">Opsparing</span><span class="value">${d.opsparing}</span></div></div>`;
+      list.appendChild(card);
+    });
+
+    const available = allDepots.filter(d => !selectedDepots.find(s => s.id === d.id));
+    if (available.length > 0) {
+      const empty = document.createElement('div');
+      empty.className = 'depot-card empty';
+      empty.innerHTML = `<div class="depot-head"><span class="depot-num">Depot ${selectedDepots.length + 1}</span></div>
+        <select class="depot-select"><option value="">Vælg depot…</option>${available.map(d => `<option value="${d.id}">${d.selskab} - ${d.opsparing}</option>`).join('')}</select>`;
+      empty.querySelector('.depot-select').addEventListener('change', e => {
+        if (e.target.value) {
+          selectedDepots.push(allDepots.find(d => d.id === e.target.value));
+          renderDepots();
+        }
+      });
+      list.appendChild(empty);
+    }
+
+    const summary = document.getElementById('depot-summary');
+    if (selectedDepots.length === 0) summary.setAttribute('hidden', '');
+    else {
+      summary.removeAttribute('hidden');
+      document.getElementById('depot-count').textContent = selectedDepots.length;
+      document.getElementById('depot-total').textContent = selectedDepots.reduce((s, d) => s + d.value, 0).toLocaleString('da-DK') + ' kr.';
     }
   }
-  
-  document.querySelectorAll('.step').forEach(s => s.addEventListener('click', () => activateStep(s)));
-  document.querySelectorAll('[data-go-step]').forEach(b => b.addEventListener('click', () => {
-    const section = b.closest('.tool-section');
-    const target = section.querySelector('.step[data-step="' + b.dataset.goStep + '"]');
-    if (target) activateStep(target);
+
+  document.getElementById('depot-list').addEventListener('click', e => {
+    const btn = e.target.closest('.depot-remove');
+    if (btn) { selectedDepots.splice(parseInt(btn.dataset.idx), 1); renderDepots(); }
+  });
+  document.getElementById('reset-depots').addEventListener('click', () => { selectedDepots = []; renderDepots(); });
+  renderDepots();
+
+  // Modals
+  document.getElementById('publishBtn').addEventListener('click', () => document.getElementById('modal-publish').classList.add('open'));
+  document.getElementById('doPublish').addEventListener('click', () => {
+    document.getElementById('modal-publish').classList.remove('open');
+    document.getElementById('modal-success').classList.add('open');
+  });
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('open'));
   }));
-  
-  document.getElementById('goResult').addEventListener('click', () => {
-    activateStep(document.querySelector('.tool-section[data-tool="flyt"] .step[data-step="result"]'));
-  });
 
-  // Publish button
-  document.getElementById('publishBtn').addEventListener('click', () => {
-    alert('Udgivelse af v1.4 - Bekræft at du vil udgive denne version');
-  });
-
-  // Toast
-  let toastT;
-  function toast(msg) {
-    const el = document.getElementById('toast');
-    el.textContent = msg;
-    el.classList.add('show');
-    clearTimeout(toastT);
-    toastT = setTimeout(() => el.classList.remove('show'), 2000);
-  }
-
-  // Chart
+  // Charts
   function drawResult() {
     drawn.result = true;
     new Chart(document.getElementById('chartResult'), {
       type: 'bar',
-      data: { 
-        labels: ['Selskab i dag', 'Global Vækst', 'Global Balance'], 
-        datasets: [{ 
-          data: [4396626, 38234309, 25556215], 
-          backgroundColor: ['#B8C5CC', '#07A0C3', '#FFD932'], 
-          borderRadius: 8, 
-          barPercentage: 0.6 
-        }] 
-      },
-      options: { 
-        responsive: true, 
-        maintainAspectRatio: false,
-        plugins: { 
-          legend: { display: false }, 
-          tooltip: { callbacks: { label: c => Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } 
-        },
-        scales: { 
-          y: { ticks: { font: { size: 11 }, callback: v => (v/1000000) + ' mio.' }, grid: { color: 'rgba(0,0,0,0.06)' } }, 
-          x: { ticks: { font: { size: 11 } }, grid: { display: false } } 
-        }
-      }
+      data: { labels: ['Selskab i dag', 'Global Vækst'], datasets: [{ data: [4396626, 38234309], backgroundColor: ['#B8C5CC', '#07A0C3'], borderRadius: 8 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+    });
+  }
+
+  function drawSens() {
+    drawn.sens = true;
+    new Chart(document.getElementById('chartSens'), {
+      type: 'line',
+      data: { labels: [0, 10, 20, 30], datasets: [{ label: 'Prognose', data: [2000000, 4000000, 12000000, 38000000], borderColor: '#07A0C3', tension: 0.3 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+    });
+  }
+
+  function drawCost() {
+    drawn.cost = true;
+    new Chart(document.getElementById('chartCost'), {
+      type: 'line',
+      data: { labels: [0, 10, 20], datasets: [{ label: 'Afkast', data: [0, 500000, 2000000], backgroundColor: '#07A0C3', fill: true, tension: 0.3 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
     });
   }
 })();
 </script>
-
 </body>
 </html>
