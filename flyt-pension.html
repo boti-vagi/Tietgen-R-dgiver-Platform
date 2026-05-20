@@ -3,242 +3,426 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flyt pension — beregner</title>
+<title>Flyt pension — beregner (designtest v2)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.40.0/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 <style>
   :root {
     --bg-primary: #FFFFFF;
-    --bg-secondary: #F7F6F2;
-    --bg-tertiary: #F1EFE8;
-    --text-primary: #2C2C2A;
-    --text-secondary: #5F5E5A;
-    --text-tertiary: #888780;
-    --border-tertiary: rgba(0,0,0,0.10);
-    --border-secondary: rgba(0,0,0,0.20);
-    --info-bg: #E6F1FB;
-    --info-text: #042C53;
-    --info-strong: #185FA5;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --bg-secondary: #F7F9FB;
+    --bg-tertiary: #EEF3F6;
+    --text-primary: #0E1F28;
+    --text-secondary: #5A6C7A;
+    --text-tertiary: #8A9AA8;
+    --border-tertiary: rgba(7,160,195,0.14);
+    --border-secondary: rgba(7,160,195,0.32);
+    --info-bg: #E0F4F8;
+    --info-bg-strong: #B8E5EE;
+    --info-text: #054857;
+    --info-strong: #07A0C3;
+    --info-hover: #0689A8;
+    --accent: #FFD932;
+    --accent-soft: #FFE56B;
+    --accent-bg: #FFF6CC;
+    --accent-text: #6B5400;
+    --success-bg: #E1F5EE;
+    --success-text: #04342C;
+    --success-strong: #0F6E56;
+    --warning-bg: #FFF6CC;
+    --warning-text: #6B5400;
+    --warning-strong: #C9A300;
+    --danger-text: #C44545;
+    --danger-bg: #FCEBEB;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(7,31,40,0.04), 0 2px 6px rgba(7,31,40,0.03);
+    --shadow-md: 0 4px 14px rgba(7,31,40,0.06), 0 14px 40px rgba(7,31,40,0.05);
+    --shadow-glow: 0 6px 22px rgba(7,160,195,0.22);
+    --shadow-yellow: 0 6px 22px rgba(255,217,50,0.32);
+    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     font-family: var(--font-sans);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--text-primary);
-    background: var(--bg-tertiary);
+    background: radial-gradient(ellipse 60% 50% at 10% 0%, rgba(7,160,195,0.10), transparent 60%),
+                radial-gradient(ellipse 50% 40% at 95% 5%, rgba(255,217,50,0.16), transparent 60%),
+                var(--bg-tertiary);
+    background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
+    font-weight: 400;
   }
-  .container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
-  .card {
-    background: white;
-    border-radius: var(--radius-lg);
-    padding: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-  }
-  h1 { margin: 0 0 10px; font-size: 28px; }
-  .subtitle { color: var(--text-secondary); margin-bottom: 30px; }
+  .page { max-width: 1140px; margin: 0 auto; padding: 32px 22px 56px; }
   .demo-banner {
-    background: var(--info-bg);
-    color: var(--info-text);
-    padding: 12px 16px;
-    border-radius: var(--radius-md);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
+    background: var(--accent-bg); color: var(--accent-text);
+    padding: 10px 16px; border-radius: 100px;
+    font-size: 12px; margin-bottom: 20px;
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--accent);
+    font-weight: 500;
   }
-  .demo-banner strong { color: var(--info-strong); }
-  .input-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
-  input, select { padding: 10px 12px; border: 1px solid #ddd; border-radius: var(--radius-md); font-size: 14px; font-family: inherit; }
-  input:focus, select:focus { outline: none; border-color: var(--info-strong); box-shadow: 0 0 0 3px rgba(24,95,165,0.1); }
-  button { padding: 12px 20px; background: var(--info-strong); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-size: 14px; font-weight: 500; transition: background 0.2s; }
-  button:hover { background: #144d85; }
-  button:disabled { opacity: 0.5; cursor: not-allowed; }
-  .result { margin-top: 30px; padding: 20px; background: var(--info-bg); border-radius: var(--radius-md); border-left: 4px solid var(--info-strong); }
-  .result h3 { margin: 0 0 10px; color: var(--info-strong); }
-  .result-value { font-size: 24px; font-weight: bold; color: var(--info-text); }
-  .result-detail { font-size: 13px; color: var(--info-text); margin-top: 8px; }
-  .actions { display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end; }
-  .actions button { margin: 0; }
+  .app { background: var(--bg-primary); border-radius: var(--radius-xl); border: 1px solid var(--border-tertiary); overflow: hidden; box-shadow: var(--shadow-md); }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid var(--border-tertiary); gap: 12px; background: linear-gradient(180deg, rgba(255,217,50,0.04), transparent); }
+  .crumbs { display: flex; align-items: center; gap: 12px; min-width: 0; font-size: 13px; }
+  .crumbs .logo { width: 36px; height: 36px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--info-strong), var(--info-hover)); display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; box-shadow: var(--shadow-glow); position: relative; }
+  .crumbs .logo::after { content: ''; position: absolute; top: -4px; right: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-primary); }
+  .crumbs .sep { color: var(--text-tertiary); }
+  .crumbs .current { font-weight: 600; }
+  .crumbs .muted { color: var(--text-secondary); font-weight: 500; }
+
+  button { font-family: inherit; cursor: pointer; }
+  .btn { background: var(--bg-primary); border: 1px solid var(--border-secondary); color: var(--text-primary); padding: 9px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); display: inline-flex; align-items: center; gap: 6px; }
+  .btn:hover { background: var(--bg-secondary); border-color: var(--info-strong); transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn.primary { background: linear-gradient(135deg, var(--info-strong), var(--info-hover)); color: #fff; border-color: transparent; font-weight: 600; box-shadow: var(--shadow-glow); }
+  .btn.primary:hover { box-shadow: 0 10px 28px rgba(7,160,195,0.32); transform: translateY(-1px); }
+  .btn.primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn.accent { background: var(--accent); color: var(--accent-text); border-color: transparent; font-weight: 600; box-shadow: var(--shadow-yellow); }
+  .btn.accent:hover { background: var(--accent-soft); box-shadow: 0 10px 28px rgba(255,217,50,0.42); }
+  .btn.sm { padding: 6px 12px; font-size: 12px; }
+  .btn.tiny { padding: 4px 10px; font-size: 11px; }
+
+  input, select, textarea { font-family: inherit; font-size: 13px; padding: 8px 12px; border: 1px solid var(--border-tertiary); border-radius: var(--radius-md); background: var(--bg-primary); color: var(--text-primary); width: 100%; height: 38px; transition: all 0.2s; }
+  textarea { height: auto; resize: vertical; line-height: 1.5; }
+  input:hover, select:hover, textarea:hover { border-color: var(--border-secondary); }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--info-strong); box-shadow: 0 0 0 4px rgba(7,160,195,0.14); }
+
+  .tools { display: flex; gap: 4px; padding: 10px 14px 0; border-bottom: 1px solid var(--border-tertiary); background: var(--bg-secondary); overflow-x: auto; }
+  .tool { font-size: 13px; padding: 11px 16px; border: none; background: transparent; color: var(--text-secondary); border-radius: var(--radius-md) var(--radius-md) 0 0; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; transition: all 0.18s; font-weight: 500; position: relative; margin-bottom: -1px; }
+  .tool:hover { color: var(--info-strong); background: rgba(7,160,195,0.06); }
+  .tool.active { color: var(--info-strong); background: var(--bg-primary); border: 1px solid var(--border-tertiary); border-bottom: 1px solid var(--bg-primary); font-weight: 600; }
+  .tool.active::before { content: ''; position: absolute; top: 0; left: 14px; right: 14px; height: 3px; background: var(--accent); border-radius: 0 0 3px 3px; }
+
+  .content { padding: 24px 26px 28px; }
+  .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+  .page-head h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+  .saved { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); background: var(--accent-bg); padding: 5px 12px; border-radius: 100px; font-weight: 500; }
+  .saved .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success-strong); box-shadow: 0 0 0 3px rgba(15,110,86,0.18); }
+
+  .steps { display: flex; gap: 4px; margin-bottom: 22px; background: var(--bg-secondary); padding: 5px; border-radius: 100px; width: fit-content; overflow-x: auto; max-width: 100%; border: 1px solid var(--border-tertiary); }
+  .step { font-size: 12px; padding: 8px 14px; border: none; background: transparent; color: var(--text-secondary); border-radius: 100px; white-space: nowrap; font-weight: 500; transition: all 0.18s; font-family: inherit; }
+  .step:hover { color: var(--text-primary); }
+  .step.active { background: var(--bg-primary); color: var(--info-strong); font-weight: 600; box-shadow: var(--shadow-sm); }
+
+  .panel { display: none; animation: fadeIn 0.3s ease-out; }
+  .panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-2 > .col { display: flex; flex-direction: column; gap: 16px; }
+
+  .section { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 18px 20px; background: var(--bg-primary); transition: border-color 0.2s, box-shadow 0.2s; }
+  .section:hover { border-color: var(--border-secondary); box-shadow: var(--shadow-sm); }
+  .section .title { margin: 0 0 14px; font-size: 11px; font-weight: 600; color: var(--info-strong); text-transform: uppercase; letter-spacing: 0.6px; display: inline-flex; align-items: center; gap: 8px; }
+  .section .title::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+  .field .accent { border-color: var(--info-strong); box-shadow: 0 0 0 4px rgba(7,160,195,0.10); }
+  .section.flex-grow { display: flex; flex-direction: column; flex: 1; }
+  .section.flex-grow .field-grow { flex: 1; display: flex; flex-direction: column; }
+  .section.flex-grow .field-grow textarea { flex: 1; min-height: 90px; }
+
+  .notes-block { margin-top: 18px; padding: 16px 18px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-lg); font-size: 12px; color: var(--accent-text); line-height: 1.7; border: 1px solid rgba(255,217,50,0.45); }
+  .notes-block p { margin: 0; }
+  .notes-block strong { color: #4A3A00; font-weight: 600; }
+  .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+  .chart-wrap { position: relative; height: 300px; margin-bottom: 14px; }
+  .chart-caption { margin: 0; font-size: 11px; color: var(--text-tertiary); text-align: center; font-style: italic; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap { overflow: hidden; border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); background: var(--bg-primary); }
+  th, td { padding: 12px 14px; }
+  thead tr { background: var(--bg-secondary); }
+  th { text-align: left; font-weight: 600; color: var(--text-secondary); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody tr { border-top: 1px solid var(--border-tertiary); transition: background 0.15s; }
+  tbody tr:hover { background: var(--bg-secondary); }
+  .col-accent { color: var(--info-strong); }
+  .row-accent { background: linear-gradient(135deg, var(--info-bg), #F0FAFC) !important; }
+  .row-accent td { font-weight: 600; color: var(--info-text); }
+  .sub-row td { padding: 6px 14px 6px 32px; font-size: 11px; color: var(--text-tertiary); }
+  .gain-pos { color: var(--success-strong); font-weight: 600; }
+  .gain-neg { color: var(--danger-text); font-weight: 600; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 11px; color: var(--text-secondary); justify-content: center; margin-top: 10px; }
+  .legend .item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .swatch { width: 12px; height: 12px; border-radius: 3px; }
+
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(14,31,40,0.55); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; animation: fadeIn 0.2s ease-out; }
+  .modal-backdrop.open { display: flex; }
+  .modal { width: 100%; max-width: 480px; background: var(--bg-primary); border-radius: var(--radius-xl); border: 1px solid var(--border-tertiary); overflow: hidden; max-height: calc(100vh - 40px); display: flex; flex-direction: column; box-shadow: var(--shadow-md); animation: modalIn 0.25s cubic-bezier(0.16,1,0.3,1); }
+  @keyframes modalIn { from { opacity: 0; transform: scale(0.96) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  .modal-head { padding: 20px 22px 14px; border-bottom: 1px solid var(--border-tertiary); }
+  .modal-head .row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .modal-head .icon-box { width: 36px; height: 36px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--info-bg), var(--info-bg-strong)); display: flex; align-items: center; justify-content: center; color: var(--info-strong); flex-shrink: 0; }
+  .modal-head .icon-box i { font-size: 18px; }
+  .modal-head h3 { margin: 0; font-size: 17px; font-weight: 600; flex: 1; }
+  .modal-head p { margin: 0 0 0 48px; font-size: 12px; color: var(--text-secondary); }
+  .modal-body { padding: 18px 22px; overflow-y: auto; }
+  .modal-foot { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 22px; border-top: 1px solid var(--border-tertiary); background: var(--bg-secondary); }
+
   @media (max-width: 700px) {
-    .input-section { grid-template-columns: 1fr; }
-    .card { padding: 20px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .topbar { flex-wrap: wrap; }
   }
 </style>
 </head>
 <body>
+<div class="page">
 
-<div class="container">
   <div class="demo-banner">
-    <i class="ti ti-info-circle"></i>
-    <span><strong>Designtest</strong> — dette er en prototype. Ingen rigtige beregninger.</span>
+    <i class="ti ti-sparkles"></i>
+    <span><strong>Designtest v2</strong> — VI-farver, Poppins og lidt mere personlighed.</span>
   </div>
 
-  <div class="card">
-    <h1>💼 Flyt pension — beregner</h1>
-    <p class="subtitle">Få et tilbud på at flytte din pension og se din mulige opsparing</p>
+  <div class="app">
 
-    <div class="input-section">
-      <div class="field">
-        <label>Din alder</label>
-        <input type="number" id="alder" value="40" min="18" max="100">
+    <div class="topbar">
+      <div class="crumbs">
+        <div class="logo"><i class="ti ti-calculator" style="font-size:15px"></i></div>
+        <span class="muted">Beregnere</span>
+        <i class="ti ti-chevron-right sep"></i>
+        <span class="current">Flyt pension</span>
       </div>
-      <div class="field">
-        <label>Din pensionsalder</label>
-        <input type="number" id="pensionsalder" value="70" min="40" max="100">
-      </div>
-      <div class="field">
-        <label>Flytbar opsparing (kr.)</label>
-        <input type="text" id="opsparing" value="2000000" placeholder="f.eks. 2000000">
-      </div>
-      <div class="field">
-        <label>Årlig indbetaling (kr.)</label>
-        <input type="text" id="indbetaling" value="50000" placeholder="f.eks. 50000">
-      </div>
-      <div class="field">
-        <label>Pensionstype</label>
-        <select id="type">
-          <option value="privatpension">Privatpension (formuepleje)</option>
-          <option value="ratepension">Ratepension</option>
-          <option value="livrente">Livrente</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Valgt løsning</label>
-        <select id="loesning">
-          <option value="vaekst">Global Vækst via Danica</option>
-          <option value="balance">Global Balance via Danica</option>
-          <option value="sikker">Sikker Vækst via Danica</option>
-        </select>
-      </div>
+      <button class="btn primary" id="publishBtn">
+        <i class="ti ti-cloud-upload"></i>
+        Udgiv
+      </button>
     </div>
 
-    <div class="actions">
-      <button onclick="resetForm()">Nulstil</button>
-      <button onclick="calculateResult()">Beregn resultat →</button>
+    <div class="tools">
+      <button class="tool" data-tool="afkast"><i class="ti ti-trending-up"></i> Afkast i dag</button>
+      <button class="tool active" data-tool="flyt"><i class="ti ti-transfer"></i> Flyt pension</button>
+      <button class="tool" data-tool="forsikring"><i class="ti ti-shield"></i> Forsikringer</button>
+      <button class="tool" data-tool="helhed"><i class="ti ti-layout-grid"></i> Helhedsplan</button>
     </div>
-  </div>
 
-  <div id="resultContainer"></div>
+    <div class="content">
 
-  <div class="card" style="margin-top: 30px;">
-    <h3>📊 Sådan fungerer beregningen</h3>
-    <p style="color: var(--text-secondary); line-height: 1.6;">
-      Beregningen tager udgangspunkt i din nuværende opsparing, årlige indbetalinger og valgt investeringsprofil. 
-      Resultatet er baseret på historiske afkastdata og er ikke en garanti for fremtidigt afkast. Din faktiske opsparing 
-      ved pensionsalderen afhænger af markedsudviklingen, dine bidrag og omkostninger.
-    </p>
+      <section class="tool-section active" data-tool="flyt">
+
+      <div class="page-head">
+        <h1>Tilbud om at flytte din pension</h1>
+        <span class="saved"><span class="dot"></span>Kladde gemt · for 2 min siden</span>
+      </div>
+
+      <div class="steps" role="tablist">
+        <button class="step active" data-step="input">1 · Inputs</button>
+        <button class="step" data-step="result">2 · Resultat</button>
+        <button class="step" data-step="key">3 · Nøgletal</button>
+      </div>
+
+      <div class="panel active" id="p-input">
+        <div class="grid-2">
+
+          <div class="col">
+            <div class="section">
+              <p class="title">Løsning</p>
+              <div class="field"><label>Pensionstype</label><select><option>Privatpension (formuepleje)</option><option>Ratepension</option><option>Livrente</option></select></div>
+              <div class="field"><label>Valgt løsning</label><select class="accent"><option>Global Vækst via Danica</option><option>Global Balance via Danica</option></select></div>
+            </div>
+
+            <div class="section">
+              <p class="title">Grunddata</p>
+              <div class="field"><label>Din alder</label><input type="number" value="40"></div>
+              <div class="field"><label>Din pensionsalder</label><input type="number" value="70"></div>
+              <div class="field"><label>Flytbar samlet værdi (kr.)</label><input type="text" value="2.000.000"></div>
+              <div class="field"><label>Årlig indbetaling</label><input type="text" value="50.000"></div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="section flex-grow">
+              <p class="title">Dine pensionsselskaber i dag</p>
+              <div class="field"><label>1. pensionsselskab</label><select><option>Velliv</option><option>PFA</option><option>Danica</option></select></div>
+              <div class="field"><label>2. pensionsselskab</label><select><option>Bank</option><option>PFA</option></select></div>
+              <div class="field"><label>Risikoprofil i dag</label><select><option>Middel</option><option>Lav</option><option>Høj</option></select></div>
+              <div class="field"><label>Historisk afkast 10 år</label><input type="text" value="4,6%"></div>
+              <div class="field field-grow"><label>Note</label><textarea placeholder="Tilføj kommentar til kunden…"></textarea></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="notes-block">
+          <p><strong>Årlige lofter</strong> — Ratepension max. 68.700 DKK · Livrente max. 63.200 DKK · Aldersopsparing max. 9.900 DKK</p>
+        </div>
+
+        <div class="actions">
+          <button class="btn">Nulstil</button>
+          <button class="btn primary" id="goResult">Beregn resultat →</button>
+        </div>
+      </div>
+
+      <div class="panel" id="p-result">
+        <p style="margin:0 0 12px; font-size:14px; font-weight:500;">Din mulige opsparing ved pensionsalderen</p>
+        <div class="chart-wrap"><canvas id="chartResult"></canvas></div>
+        <p class="chart-caption">Baseret på indtastede tal og historiske afkast. Resultatet er ikke en garanti.</p>
+        <div class="actions">
+          <button class="btn" data-go-step="input">← Tilbage</button>
+          <button class="btn primary" data-go-step="key">Se nøgletal →</button>
+        </div>
+      </div>
+
+      <div class="panel" id="p-key">
+        <p style="margin:0 0 12px; font-size:14px; font-weight:500;">Dine nøgletal</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>&nbsp;</th><th class="num">I dag</th><th class="num col-accent">Global Vækst</th><th class="num">Global Balance</th></tr></thead>
+            <tbody>
+              <tr><td style="color:var(--text-secondary)">Mulig opsparing</td><td class="num">4.396.626 kr.</td><td class="num row-accent" style="background:var(--info-bg); color:var(--info-text); font-weight:500;">38.234.309 kr.</td><td class="num">25.556.215 kr.</td></tr>
+              <tr><td style="color:var(--text-secondary)">Historisk afkast 10 år</td><td class="num">4,6%</td><td class="num">16,0%</td><td class="num">13,8%</td></tr>
+              <tr><td style="color:var(--text-secondary)">Årlige omkostninger (ÅOP)</td><td class="num">1,29%</td><td class="num">0,84%</td><td class="num">0,76%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:14px; padding:12px 14px; background:var(--bg-secondary); border-radius:var(--radius-md); font-size:12px;">
+          <p style="margin:0 0 6px; font-weight:500;">Porteføljesammensætning</p>
+          <p style="margin:0 0 4px; color:var(--text-secondary)"><strong style="color:var(--text-primary)">Global Vækst:</strong> 20% globale aktier · 50% teknologi · 30% europæiske bank</p>
+          <p style="margin:0; color:var(--text-secondary)"><strong style="color:var(--text-primary)">Global Balance:</strong> 50% globale aktier · 25% teknologi · 25% europæiske bank</p>
+        </div>
+        <div class="actions">
+          <button class="btn" data-go-step="input">← Tilbage</button>
+        </div>
+      </div>
+
+      </section>
+
+      <section class="tool-section" data-tool="forsikring" hidden>
+        <div class="page-head">
+          <h1>Forsikringer</h1>
+          <span class="saved"><span class="dot"></span>Kladde gemt</span>
+        </div>
+        <div style="text-align: center; padding: 60px 20px;">
+          <i class="ti ti-tools" style="font-size: 48px; color: var(--info-strong); margin-bottom: 20px;"></i>
+          <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 700;">Forsikringsberegner</h2>
+          <p style="color: var(--text-secondary); margin: 0;">Denne beregner er endnu ikke bygget.</p>
+        </div>
+      </section>
+
+      <section class="tool-section" data-tool="helhed" hidden>
+        <div class="page-head">
+          <h1>Helhedsplan</h1>
+          <span class="saved"><span class="dot"></span>Kladde gemt</span>
+        </div>
+        <div style="text-align: center; padding: 60px 20px;">
+          <i class="ti ti-tools" style="font-size: 48px; color: var(--info-strong); margin-bottom: 20px;"></i>
+          <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 700;">Helhedsplan</h2>
+          <p style="color: var(--text-secondary); margin: 0;">Denne beregner er endnu ikke bygget.</p>
+        </div>
+      </section>
+
+      <section class="tool-section" data-tool="afkast" hidden>
+        <div class="page-head">
+          <h1>Afkast i dag</h1>
+          <span class="saved"><span class="dot"></span>Kladde gemt</span>
+        </div>
+        <div style="text-align: center; padding: 60px 20px;">
+          <i class="ti ti-tools" style="font-size: 48px; color: var(--info-strong); margin-bottom: 20px;"></i>
+          <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 700;">Afkast i dag</h2>
+          <p style="color: var(--text-secondary); margin: 0;">Denne beregner er endnu ikke bygget.</p>
+        </div>
+      </section>
+
+    </div>
   </div>
 </div>
 
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-function calculateResult() {
-  const alder = parseInt(document.getElementById('alder').value);
-  const pensionsalder = parseInt(document.getElementById('pensionsalder').value);
-  const opsparing = parseFloat(document.getElementById('opsparing').value.replace(/\./g, '').replace(/,/g, '.'));
-  const indbetaling = parseFloat(document.getElementById('indbetaling').value.replace(/\./g, '').replace(/,/g, '.'));
-  const loesning = document.getElementById('loesning').value;
+(function(){
+  // Tools
+  document.querySelectorAll('.tool').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tool').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const tool = t.dataset.tool;
+    document.querySelectorAll('.tool-section').forEach(s => {
+      s.hidden = s.dataset.tool !== tool;
+    });
+  }));
 
-  if (isNaN(alder) || isNaN(pensionsalder) || isNaN(opsparing) || isNaN(indbetaling)) {
-    alert('Venligst udfyld alle felter korrekt');
-    return;
+  // Steps — scoped to active section
+  const drawn = {};
+  function activateStep(stepBtn) {
+    const section = stepBtn.closest('.tool-section');
+    section.querySelectorAll('.step').forEach(x => x.classList.toggle('active', x === stepBtn));
+    const name = stepBtn.dataset.step;
+    section.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    const target = section.querySelector('#p-' + name);
+    if (target) target.classList.add('active');
+    if (section.dataset.tool === 'flyt') {
+      if (name === 'result' && !drawn.result) drawResult();
+    }
+  }
+  
+  document.querySelectorAll('.step').forEach(s => s.addEventListener('click', () => activateStep(s)));
+  document.querySelectorAll('[data-go-step]').forEach(b => b.addEventListener('click', () => {
+    const section = b.closest('.tool-section');
+    const target = section.querySelector('.step[data-step="' + b.dataset.goStep + '"]');
+    if (target) activateStep(target);
+  }));
+  
+  document.getElementById('goResult').addEventListener('click', () => {
+    activateStep(document.querySelector('.tool-section[data-tool="flyt"] .step[data-step="result"]'));
+  });
+
+  // Publish button
+  document.getElementById('publishBtn').addEventListener('click', () => {
+    alert('Udgivelse af v1.4 - Bekræft at du vil udgive denne version');
+  });
+
+  // Toast
+  let toastT;
+  function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(() => el.classList.remove('show'), 2000);
   }
 
-  const aar = pensionsalder - alder;
-  const afkastRate = loesning === 'vaekst' ? 0.124 : loesning === 'balance' ? 0.107 : 0.06;
-
-  let resultat = opsparing;
-  for (let i = 0; i < aar; i++) {
-    resultat = (resultat + indbetaling) * (1 + afkastRate);
+  // Chart
+  function drawResult() {
+    drawn.result = true;
+    new Chart(document.getElementById('chartResult'), {
+      type: 'bar',
+      data: { 
+        labels: ['Selskab i dag', 'Global Vækst', 'Global Balance'], 
+        datasets: [{ 
+          data: [4396626, 38234309, 25556215], 
+          backgroundColor: ['#B8C5CC', '#07A0C3', '#FFD932'], 
+          borderRadius: 8, 
+          barPercentage: 0.6 
+        }] 
+      },
+      options: { 
+        responsive: true, 
+        maintainAspectRatio: false,
+        plugins: { 
+          legend: { display: false }, 
+          tooltip: { callbacks: { label: c => Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } 
+        },
+        scales: { 
+          y: { ticks: { font: { size: 11 }, callback: v => (v/1000000) + ' mio.' }, grid: { color: 'rgba(0,0,0,0.06)' } }, 
+          x: { ticks: { font: { size: 11 } }, grid: { display: false } } 
+        }
+      }
+    });
   }
-
-  const gebyrer = resultat * 0.0084 * aar;
-  const skatAftale = resultat * 0.025 * 0.6;
-  const netto = resultat - gebyrer - skatAftale;
-
-  const html = `
-    <div class="card">
-      <h2>📈 Dit resultat</h2>
-      
-      <div class="result">
-        <h3>Mulig opsparing ved pension (${pensionsalder} år)</h3>
-        <div class="result-value">${Math.round(netto).toLocaleString('da-DK')} kr.</div>
-        <div class="result-detail">Efter omkostninger og skat</div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 20px;">
-        <div class="result" style="background: #E1F5EE; border-left-color: #0F6E56; margin: 0;">
-          <h3 style="color: #0F6E56; margin: 0 0 8px;">Årligt afkast</h3>
-          <div style="font-size: 20px; font-weight: bold; color: #04342C;">${(afkastRate * 100).toFixed(1)}%</div>
-          <div style="font-size: 12px; color: #04342C; margin-top: 4px;">Baseret på historiske data</div>
-        </div>
-        <div class="result" style="background: #FAEEDA; border-left-color: #BA7517; margin: 0;">
-          <h3 style="color: #BA7517; margin: 0 0 8px;">Årlige omkostninger</h3>
-          <div style="font-size: 20px; font-weight: bold; color: #633806;">${Math.round(gebyrer/aar).toLocaleString('da-DK')} kr.</div>
-          <div style="font-size: 12px; color: #633806; margin-top: 4px;">Gennemsnit pr. år</div>
-        </div>
-        <div class="result" style="background: #E8F5E9; border-left-color: #0F6E56; margin: 0;">
-          <h3 style="color: #0F6E56; margin: 0 0 8px;">År til pension</h3>
-          <div style="font-size: 20px; font-weight: bold; color: #04342C;">${aar} år</div>
-          <div style="font-size: 12px; color: #04342C; margin-top: 4px;">Fra alder ${alder} til ${pensionsalder}</div>
-        </div>
-      </div>
-
-      <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
-        <tr style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
-          <td style="padding: 12px; color: var(--text-secondary);">Startkapital</td>
-          <td style="padding: 12px; text-align: right; font-weight: 500;">${Math.round(opsparing).toLocaleString('da-DK')} kr.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #ddd;">
-          <td style="padding: 12px; color: var(--text-secondary);">Årlige indbetalinger (${aar} år)</td>
-          <td style="padding: 12px; text-align: right; font-weight: 500;">${Math.round(indbetaling * aar).toLocaleString('da-DK')} kr.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #ddd;">
-          <td style="padding: 12px; color: var(--text-secondary);">Afkast</td>
-          <td style="padding: 12px; text-align: right; font-weight: 500;">${Math.round(resultat - opsparing - indbetaling * aar).toLocaleString('da-DK')} kr.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #ddd;">
-          <td style="padding: 12px; color: var(--text-secondary);">Minus: Omkostninger</td>
-          <td style="padding: 12px; text-align: right; font-weight: 500; color: #A32D2D;">−${Math.round(gebyrer).toLocaleString('da-DK')} kr.</td>
-        </tr>
-        <tr style="background: var(--info-bg); font-weight: bold;">
-          <td style="padding: 12px;">Din mulige opsparing (netto)</td>
-          <td style="padding: 12px; text-align: right; color: var(--info-strong);">${Math.round(netto).toLocaleString('da-DK')} kr.</td>
-        </tr>
-      </table>
-
-      <p style="margin-top: 16px; font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
-        <strong>Vigtig bemærkning:</strong> Dette er en illustrativ beregning baseret på historiske afkastdata. Resultatet er ikke en garanti. 
-        Faktisk afkast kan være både højere og lavere. Inkluderer ikke PAL-skat (Pensionsafkastskat). Kontakt din rådgiver for en detaljeret analyse.
-      </p>
-    </div>
-  `;
-
-  document.getElementById('resultContainer').innerHTML = html;
-  window.scrollTo({ top: document.getElementById('resultContainer').offsetTop - 100, behavior: 'smooth' });
-}
-
-function resetForm() {
-  document.getElementById('alder').value = 40;
-  document.getElementById('pensionsalder').value = 70;
-  document.getElementById('opsparing').value = 2000000;
-  document.getElementById('indbetaling').value = 50000;
-  document.getElementById('type').value = 'privatpension';
-  document.getElementById('loesning').value = 'vaekst';
-  document.getElementById('resultContainer').innerHTML = '';
-}
-
-document.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') calculateResult();
-});
+})();
 </script>
 
 </body>
