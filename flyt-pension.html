@@ -9,419 +9,316 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 <style>
-  :root {
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F7F9FB;
-    --bg-tertiary: #EEF3F6;
-    --text-primary: #0E1F28;
-    --text-secondary: #5A6C7A;
-    --text-tertiary: #8A9AA8;
-    --border-tertiary: rgba(7,160,195,0.14);
-    --border-secondary: rgba(7,160,195,0.32);
-    --info-bg: #E0F4F8;
-    --info-bg-strong: #B8E5EE;
-    --info-text: #054857;
-    --info-strong: #07A0C3;
-    --info-hover: #0689A8;
-    --accent: #FFD932;
-    --accent-soft: #FFE56B;
-    --accent-bg: #FFF6CC;
-    --accent-text: #6B5400;
-    --success-bg: #E1F5EE;
-    --success-text: #04342C;
-    --success-strong: #0F6E56;
-    --warning-bg: #FFF6CC;
-    --warning-text: #6B5400;
-    --warning-strong: #C9A300;
-    --danger-text: #C44545;
-    --danger-bg: #FCEBEB;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-    --radius-xl: 24px;
-    --shadow-sm: 0 1px 2px rgba(7,31,40,0.04), 0 2px 6px rgba(7,31,40,0.03);
-    --shadow-md: 0 4px 14px rgba(7,31,40,0.06), 0 14px 40px rgba(7,31,40,0.05);
-    --shadow-glow: 0 6px 22px rgba(7,160,195,0.22);
-    --shadow-yellow: 0 6px 22px rgba(255,217,50,0.32);
-    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: var(--font-sans);
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--text-primary);
-    background: radial-gradient(ellipse 60% 50% at 10% 0%, rgba(7,160,195,0.10), transparent 60%),
-                radial-gradient(ellipse 50% 40% at 95% 5%, rgba(255,217,50,0.16), transparent 60%),
-                var(--bg-tertiary);
-    background-attachment: fixed;
-    -webkit-font-smoothing: antialiased;
-    font-weight: 400;
-  }
-  .page { max-width: 1320px; margin: 0 auto; padding: 40px 28px 64px; }
-  .demo-banner {
-    background: var(--accent-bg); color: var(--accent-text);
-    padding: 12px 20px; border-radius: 100px;
-    font-size: 14px; margin-bottom: 24px;
-    display: inline-flex; align-items: center; gap: 10px;
-    border: 1px solid var(--accent);
-    font-weight: 500;
-  }
-  .app { background: var(--bg-primary); border-radius: var(--radius-xl); border: 1px solid var(--border-tertiary); overflow: hidden; box-shadow: var(--shadow-md); }
+:root{--bg-primary:#FFFFFF;--bg-secondary:#F7F9FB;--bg-tertiary:#EEF3F6;--text-primary:#0E1F28;--text-secondary:#5A6C7A;--text-tertiary:#8A9AA8;--border-tertiary:rgba(7,160,195,0.14);--border-secondary:rgba(7,160,195,0.32);--info-bg:#E0F4F8;--info-bg-strong:#B8E5EE;--info-text:#054857;--info-strong:#07A0C3;--info-hover:#0689A8;--accent:#FFD932;--accent-soft:#FFE56B;--accent-bg:#FFF6CC;--accent-text:#6B5400;--success-bg:#E1F5EE;--success-strong:#0F6E56;--warning-strong:#C9A300;--danger-text:#C44545;--danger-bg:#FCEBEB;--radius-md:12px;--radius-lg:18px;--radius-xl:24px;--shadow-sm:0 1px 2px rgba(7,31,40,0.04),0 2px 6px rgba(7,31,40,0.03);--shadow-md:0 4px 14px rgba(7,31,40,0.06),0 14px 40px rgba(7,31,40,0.05);--shadow-glow:0 6px 22px rgba(7,160,195,0.22);--shadow-yellow:0 6px 22px rgba(255,217,50,0.32);--font-sans:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-sans);font-size:17px;line-height:1.55;color:var(--text-primary);background:radial-gradient(ellipse 60% 50% at 10% 0%,rgba(7,160,195,0.10),transparent 60%),radial-gradient(ellipse 50% 40% at 95% 5%,rgba(255,217,50,0.16),transparent 60%),var(--bg-tertiary);background-attachment:fixed;-webkit-font-smoothing:antialiased;font-weight:400}
+.page{max-width:1320px;margin:0 auto;padding:40px 28px 64px}
+.demo-banner{background:var(--accent-bg);color:var(--accent-text);padding:12px 20px;border-radius:100px;font-size:14px;margin-bottom:24px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--accent);font-weight:500}
+.app{background:var(--bg-primary);border-radius:var(--radius-xl);border:1px solid var(--border-tertiary);overflow:hidden;box-shadow:var(--shadow-md)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid var(--border-tertiary);gap:14px;background:linear-gradient(180deg,rgba(255,217,50,0.04),transparent)}
+.topbar-actions{display:inline-flex;align-items:center;gap:10px;flex-shrink:0}
+.crumbs{display:flex;align-items:center;gap:14px;min-width:0;font-size:15px}
+.crumbs .sep{color:var(--text-tertiary)}
+.crumbs .current{font-weight:600}
+.crumbs .muted{color:var(--text-secondary);font-weight:500}
+.brand-logo{display:inline-flex;align-items:center;flex-shrink:0}
+.brand-logo img{height:42px;width:auto;max-width:220px;display:block;object-fit:contain}
+.brand-fallback{display:none;align-items:center;gap:12px}
+.brand-fallback svg{flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(7,160,195,0.18))}
+.brand-text{display:flex;flex-direction:column;line-height:1.05}
+.brand-text strong{font-size:18px;font-weight:700;letter-spacing:-0.025em;color:var(--text-primary)}
+.brand-text em{font-size:10px;font-weight:600;letter-spacing:2px;color:var(--info-strong);font-style:normal;text-transform:uppercase;margin-top:2px}
+.brand-sep{width:1px;height:28px;background:var(--border-tertiary);margin:0 4px;flex-shrink:0}
+button{font-family:inherit;cursor:pointer}
+.btn{background:var(--bg-primary);border:1px solid var(--border-secondary);color:var(--text-primary);padding:12px 22px;border-radius:100px;font-size:15px;font-weight:500;transition:all 0.2s cubic-bezier(0.16,1,0.3,1);display:inline-flex;align-items:center;gap:8px}
+.btn:hover{background:var(--bg-secondary);border-color:var(--info-strong);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:linear-gradient(135deg,var(--info-strong),var(--info-hover));color:#fff;border-color:transparent;font-weight:600;box-shadow:var(--shadow-glow)}
+.btn.primary:hover{box-shadow:0 10px 28px rgba(7,160,195,0.32);transform:translateY(-1px)}
+.btn.primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.accent{background:var(--accent);color:var(--accent-text);border-color:transparent;font-weight:600;box-shadow:var(--shadow-yellow)}
+.btn.accent:hover{background:var(--accent-soft);box-shadow:0 10px 28px rgba(255,217,50,0.42)}
+.btn.sm{padding:8px 14px;font-size:13px}
+.btn.tiny{padding:5px 12px;font-size:12px}
+input,select,textarea{font-family:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--border-tertiary);border-radius:var(--radius-md);background:var(--bg-primary);color:var(--text-primary);width:100%;height:46px;transition:all 0.2s}
+textarea{height:auto;resize:vertical;line-height:1.5}
+input:hover,select:hover,textarea:hover{border-color:var(--border-secondary)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--info-strong);box-shadow:0 0 0 4px rgba(7,160,195,0.14)}
+.tools{display:flex;gap:4px;padding:12px 18px 0;border-bottom:1px solid var(--border-tertiary);background:var(--bg-secondary);overflow-x:auto}
+.tool{font-size:15px;padding:14px 20px;border:none;background:transparent;color:var(--text-secondary);border-radius:var(--radius-md) var(--radius-md) 0 0;white-space:nowrap;display:inline-flex;align-items:center;gap:9px;transition:all 0.18s;font-weight:500;position:relative;margin-bottom:-1px}
+.tool:hover{color:var(--info-strong);background:rgba(7,160,195,0.06)}
+.tool.active{color:var(--info-strong);background:var(--bg-primary);border:1px solid var(--border-tertiary);border-bottom:1px solid var(--bg-primary);font-weight:600}
+.tool.active::before{content:'';position:absolute;top:0;left:14px;right:14px;height:3px;background:var(--accent);border-radius:0 0 3px 3px}
+.content{padding:32px 34px 36px}
+.page-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.page-head h1{margin:0;font-size:34px;font-weight:700;letter-spacing:-0.02em}
+.saved{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text-secondary);background:var(--accent-bg);padding:7px 14px;border-radius:100px;font-weight:500}
+.saved .dot{width:8px;height:8px;border-radius:50%;background:var(--success-strong);box-shadow:0 0 0 3px rgba(15,110,86,0.18)}
+.steps{display:flex;gap:4px;margin-bottom:28px;background:var(--bg-secondary);padding:6px;border-radius:100px;width:fit-content;overflow-x:auto;max-width:100%;border:1px solid var(--border-tertiary)}
+.step{font-size:14px;padding:11px 18px;border:none;background:transparent;color:var(--text-secondary);border-radius:100px;white-space:nowrap;font-weight:500;transition:all 0.18s;font-family:inherit}
+.step:hover{color:var(--text-primary)}
+.step.active{background:var(--bg-primary);color:var(--info-strong);font-weight:600;box-shadow:var(--shadow-sm)}
+.panel{display:none;animation:fadeIn 0.3s ease-out}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-2>.col{display:flex;flex-direction:column;gap:20px}
+.section{border:1px solid var(--border-tertiary);border-radius:var(--radius-lg);padding:24px 28px;background:var(--bg-primary);transition:border-color 0.2s,box-shadow 0.2s}
+.section:hover{border-color:var(--border-secondary);box-shadow:var(--shadow-sm)}
+.section .title{margin:0 0 18px;font-size:13px;font-weight:600;color:var(--info-strong);text-transform:uppercase;letter-spacing:0.6px;display:inline-flex;align-items:center;gap:8px}
+.section .title::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field label{font-size:14px;color:var(--text-secondary);font-weight:500}
+.field .accent{border-color:var(--info-strong);box-shadow:0 0 0 4px rgba(7,160,195,0.10)}
+.section
+  .section.flex-grow 
+  .section.flex-grow 
 
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--border-tertiary); gap: 14px; background: linear-gradient(180deg, rgba(255,217,50,0.04), transparent); }
-  .topbar-actions { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
-  .crumbs { display: flex; align-items: center; gap: 14px; min-width: 0; font-size: 15px; }
-  .crumbs .sep { color: var(--text-tertiary); }
-  .crumbs .current { font-weight: 600; }
-  .crumbs .muted { color: var(--text-secondary); font-weight: 500; }
-  .brand-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
-  .brand-logo img { height: 42px; width: auto; max-width: 220px; display: block; object-fit: contain; }
-  .brand-fallback { display: none; align-items: center; gap: 12px; }
-  .brand-fallback svg { flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(7,160,195,0.18)); }
-  .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
-  .brand-text strong { font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: var(--text-primary); }
-  .brand-text em { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--info-strong); font-style: normal; text-transform: uppercase; margin-top: 2px; }
-  .brand-sep { width: 1px; height: 28px; background: var(--border-tertiary); margin: 0 4px; flex-shrink: 0; }
-
-  button { font-family: inherit; cursor: pointer; }
-  .btn { background: var(--bg-primary); border: 1px solid var(--border-secondary); color: var(--text-primary); padding: 12px 22px; border-radius: 100px; font-size: 15px; font-weight: 500; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); display: inline-flex; align-items: center; gap: 8px; }
-  .btn:hover { background: var(--bg-secondary); border-color: var(--info-strong); transform: translateY(-1px); }
-  .btn:active { transform: translateY(0); }
-  .btn.primary { background: linear-gradient(135deg, var(--info-strong), var(--info-hover)); color: #fff; border-color: transparent; font-weight: 600; box-shadow: var(--shadow-glow); }
-  .btn.primary:hover { box-shadow: 0 10px 28px rgba(7,160,195,0.32); transform: translateY(-1px); }
-  .btn.primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
-  .btn.accent { background: var(--accent); color: var(--accent-text); border-color: transparent; font-weight: 600; box-shadow: var(--shadow-yellow); }
-  .btn.accent:hover { background: var(--accent-soft); box-shadow: 0 10px 28px rgba(255,217,50,0.42); }
-  .btn.sm { padding: 8px 14px; font-size: 13px; }
-  .btn.tiny { padding: 5px 12px; font-size: 12px; }
-
-  input, select, textarea { font-family: inherit; font-size: 15px; padding: 10px 14px; border: 1px solid var(--border-tertiary); border-radius: var(--radius-md); background: var(--bg-primary); color: var(--text-primary); width: 100%; height: 46px; transition: all 0.2s; }
-  textarea { height: auto; resize: vertical; line-height: 1.5; }
-  input:hover, select:hover, textarea:hover { border-color: var(--border-secondary); }
-  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--info-strong); box-shadow: 0 0 0 4px rgba(7,160,195,0.14); }
-
-  .tools { display: flex; gap: 4px; padding: 12px 18px 0; border-bottom: 1px solid var(--border-tertiary); background: var(--bg-secondary); overflow-x: auto; }
-  .tool { font-size: 15px; padding: 14px 20px; border: none; background: transparent; color: var(--text-secondary); border-radius: var(--radius-md) var(--radius-md) 0 0; white-space: nowrap; display: inline-flex; align-items: center; gap: 9px; transition: all 0.18s; font-weight: 500; position: relative; margin-bottom: -1px; }
-  .tool:hover { color: var(--info-strong); background: rgba(7,160,195,0.06); }
-  .tool.active { color: var(--info-strong); background: var(--bg-primary); border: 1px solid var(--border-tertiary); border-bottom: 1px solid var(--bg-primary); font-weight: 600; }
-  .tool.active::before { content: ''; position: absolute; top: 0; left: 14px; right: 14px; height: 3px; background: var(--accent); border-radius: 0 0 3px 3px; }
-
-  .content { padding: 32px 34px 36px; }
-  .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 28px; flex-wrap: wrap; }
-  .page-head h1 { margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
-  .saved { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); background: var(--accent-bg); padding: 7px 14px; border-radius: 100px; font-weight: 500; }
-  .saved .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success-strong); box-shadow: 0 0 0 3px rgba(15,110,86,0.18); }
-
-  .steps { display: flex; gap: 4px; margin-bottom: 28px; background: var(--bg-secondary); padding: 6px; border-radius: 100px; width: fit-content; overflow-x: auto; max-width: 100%; border: 1px solid var(--border-tertiary); }
-  .step { font-size: 14px; padding: 11px 18px; border: none; background: transparent; color: var(--text-secondary); border-radius: 100px; white-space: nowrap; font-weight: 500; transition: all 0.18s; font-family: inherit; }
-  .step:hover { color: var(--text-primary); }
-  .step.active { background: var(--bg-primary); color: var(--info-strong); font-weight: 600; box-shadow: var(--shadow-sm); }
-
-  .panel { display: none; animation: fadeIn 0.3s ease-out; }
-  .panel.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .grid-2 > .col { display: flex; flex-direction: column; gap: 20px; }
-
-  .section { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 24px 28px; background: var(--bg-primary); transition: border-color 0.2s, box-shadow 0.2s; }
-  .section:hover { border-color: var(--border-secondary); box-shadow: var(--shadow-sm); }
-  .section .title { margin: 0 0 18px; font-size: 13px; font-weight: 600; color: var(--info-strong); text-transform: uppercase; letter-spacing: 0.6px; display: inline-flex; align-items: center; gap: 8px; }
-  .section .title::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-  .field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
-  .field:last-child { margin-bottom: 0; }
-  .field label { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
-  .field .accent { border-color: var(--info-strong); box-shadow: 0 0 0 4px rgba(7,160,195,0.10); }
-  .section.flex-grow { display: flex; flex-direction: column; flex: 1; }
-  .section.flex-grow .field-grow { flex: 1; display: flex; flex-direction: column; }
-  .section.flex-grow .field-grow textarea { flex: 1; min-height: 110px; }
-
-  .notes-block { margin-top: 22px; padding: 20px 22px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-lg); font-size: 14px; color: var(--accent-text); line-height: 1.7; border: 1px solid rgba(255,217,50,0.45); }
-  .notes-block p { margin: 0; }
-  .notes-block strong { color: #4A3A00; font-weight: 600; }
-  .actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 26px; }
-
-  .chart-wrap { position: relative; height: 400px; margin-bottom: 18px; }
-  .chart-caption { margin: 0; font-size: 13px; color: var(--text-tertiary); text-align: center; font-style: italic; }
-
-  table { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .table-wrap { overflow: hidden; border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); background: var(--bg-primary); }
-  th, td { padding: 16px 20px; }
-  thead tr { background: var(--bg-secondary); }
-  th { text-align: left; font-weight: 600; color: var(--text-secondary); font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px; }
-  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  tbody tr { border-top: 1px solid var(--border-tertiary); transition: background 0.15s; }
-  tbody tr:hover { background: var(--bg-secondary); }
-  .col-accent { color: var(--info-strong); }
-  .row-accent { background: linear-gradient(135deg, var(--info-bg), #F0FAFC) !important; }
-  .row-accent td { font-weight: 600; color: var(--info-text); }
-  .sub-row td { padding: 8px 20px 8px 40px; font-size: 13px; color: var(--text-tertiary); }
-  .gain-pos { color: var(--success-strong); font-weight: 600; }
-  .gain-neg { color: var(--danger-text); font-weight: 600; }
-
-  .legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--text-secondary); justify-content: center; margin-top: 14px; }
-  .legend .item { display: inline-flex; align-items: center; gap: 8px; }
-  .legend .swatch { width: 14px; height: 14px; border-radius: 3px; }
-
-  .modal-backdrop { position: fixed; inset: 0; background: rgba(14,31,40,0.55); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; animation: fadeIn 0.2s ease-out; }
-  .modal-backdrop.open { display: flex; }
-  .modal { width: 100%; max-width: 580px; background: var(--bg-primary); border-radius: var(--radius-xl); border: 1px solid var(--border-tertiary); overflow: hidden; max-height: calc(100vh - 40px); display: flex; flex-direction: column; box-shadow: var(--shadow-md); animation: modalIn 0.25s cubic-bezier(0.16,1,0.3,1); }
-  @keyframes modalIn { from { opacity: 0; transform: scale(0.96) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-  .modal-head { padding: 24px 28px 18px; border-bottom: 1px solid var(--border-tertiary); }
-  .modal-head .row { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
-  .modal-head .icon-box { width: 44px; height: 44px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--info-bg), var(--info-bg-strong)); display: flex; align-items: center; justify-content: center; color: var(--info-strong); flex-shrink: 0; }
-  .modal-head .icon-box i { font-size: 22px; }
-  .modal-head h3 { margin: 0; font-size: 20px; font-weight: 600; flex: 1; }
-  .modal-head p { margin: 0 0 0 58px; font-size: 14px; color: var(--text-secondary); }
-  .modal-body { padding: 22px 28px; overflow-y: auto; font-size: 15px; }
-  .modal-foot { display: flex; justify-content: flex-end; gap: 12px; padding: 18px 28px; border-top: 1px solid var(--border-tertiary); background: var(--bg-secondary); }
-
-  .change-list { border: 1px solid var(--border-tertiary); border-radius: var(--radius-md); overflow: hidden; max-height: 340px; overflow-y: auto; background: var(--bg-primary); }
-  .change-list .group { padding: 10px 16px; background: var(--bg-secondary); font-size: 13px; color: var(--info-strong); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; border-top: 1px solid var(--border-tertiary); }
-  .change-list .group:first-child { border-top: none; }
-  .change-list .item { display: flex; align-items: center; gap: 14px; padding: 13px 16px; font-size: 15px; border-top: 1px solid var(--border-tertiary); }
-  .change-list .item .badge { color: var(--text-tertiary); font-size: 13px; margin-left: auto; background: var(--bg-secondary); padding: 4px 12px; border-radius: 100px; }
-  .icon-add { color: var(--success-strong); }
-  .icon-edit { color: var(--warning-strong); }
-  .icon-rm { color: var(--danger-text); }
-
-  .env-row { display: flex; gap: 10px; margin-top: 18px; }
-  .env-pill { flex: 1; font-size: 15px; padding: 13px 14px; border: 1px solid var(--border-tertiary); background: transparent; border-radius: var(--radius-md); display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--text-secondary); cursor: pointer; transition: all 0.18s; font-family: inherit; font-weight: 500; }
-  .env-pill:hover { border-color: var(--border-secondary); color: var(--text-primary); }
-  .env-pill.active { border-color: var(--info-strong); background: var(--info-bg); color: var(--info-text); font-weight: 600; box-shadow: 0 0 0 3px rgba(7,160,195,0.10); }
-
-  .warn-box { display: flex; align-items: flex-start; gap: 14px; margin-top: 18px; padding: 18px 20px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-md); border: 1px solid var(--accent); font-size: 15px; }
-  .warn-box .title { color: #4A3A00; font-weight: 600; margin-bottom: 4px; }
-  .warn-box .body { color: var(--accent-text); }
-
-  .check-row { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--text-secondary); margin-top: 14px; }
-
-  .success-head { padding: 34px 28px 24px; text-align: center; border-bottom: 1px solid var(--border-tertiary); background: linear-gradient(180deg, rgba(15,110,86,0.04), transparent); }
-  .success-circle { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--success-strong), #0A5642); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #fff; box-shadow: 0 8px 24px rgba(15,110,86,0.32); position: relative; }
-  .success-circle::after { content: ''; position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg-primary); }
-  .success-head h2 { margin: 0 0 8px; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
-  .success-head p { margin: 0; font-size: 15px; color: var(--text-secondary); }
-
-  .label-cap { display: block; font-size: 13px; color: var(--info-strong); margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .url-row { display: flex; gap: 10px; }
-  .url-pill { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: var(--bg-secondary); border-radius: var(--radius-md); font-size: 14px; font-family: var(--font-mono); overflow: hidden; border: 1px solid var(--border-tertiary); }
-  .url-pill span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-  pre.snippet { margin: 0; padding: 16px 18px; background: #0E1F28; color: #B8E5EE; border-radius: var(--radius-md); font-size: 13px; font-family: var(--font-mono); overflow-x: auto; white-space: pre; border: 1px solid rgba(7,160,195,0.32); }
-
-  .tiles { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin: 20px 0; }
-  .tile { padding: 18px 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-tertiary); }
-  .tile .lbl { font-size: 13px; color: var(--text-secondary); margin-bottom: 5px; font-weight: 500; }
-  .tile .val { font-size: 20px; font-weight: 600; color: var(--text-primary); }
-
-  .nyt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-  .nyt-grid .item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: linear-gradient(135deg, var(--info-bg), #F0FAFC); border-radius: var(--radius-md); font-size: 15px; font-weight: 500; border: 1px solid rgba(7,160,195,0.18); }
-  .nyt-grid .item i { color: var(--info-strong); font-size: 18px; }
-
-  .rollback { display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: linear-gradient(135deg, var(--info-bg), #F0FAFC); border-radius: var(--radius-md); font-size: 14px; color: var(--info-text); border: 1px solid rgba(7,160,195,0.18); }
-  .rollback i { color: var(--info-strong); font-size: 20px; }
-
-  .share-channel { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--border-secondary); border-radius: var(--radius-md); background: var(--bg-primary); cursor: pointer; transition: border-color 0.18s; font-size: 15px; }
-  .share-channel:hover { border-color: var(--info-strong); }
-  .preview-card { border: 1px solid var(--border-tertiary); border-left: 4px solid var(--info-strong); border-radius: var(--radius-md); padding: 16px 18px; background: linear-gradient(135deg, var(--info-bg), var(--bg-primary)); }
-  .preview-card .source { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-  .preview-card .source .ico { width: 22px; height: 22px; border-radius: 4px; background: var(--info-strong); display: flex; align-items: center; justify-content: center; color: #fff; }
-  .preview-card .source span { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
-  .preview-card .head { margin: 0 0 4px; font-size: 16px; font-weight: 600; color: var(--info-strong); }
-  .preview-card .desc { margin: 0 0 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
-  .pills { display: flex; gap: 6px; flex-wrap: wrap; }
-  .pill { font-size: 11px; padding: 4px 12px; border-radius: 100px; font-weight: 600; }
-  .pill.blue { background: var(--info-strong); color: #fff; }
-  .pill.gray { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-tertiary); }
-
-  .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 32px; padding: 14px 24px; background: var(--text-primary); color: #fff; border-radius: 100px; font-size: 15px; z-index: 200; opacity: 0; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); pointer-events: none; box-shadow: var(--shadow-md); font-weight: 500; }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(-4px); }
-
-  .depot-card { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 22px 26px; margin-bottom: 16px; background: var(--bg-primary); transition: all 0.2s; }
-  .depot-card.filled { background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); border-color: var(--border-secondary); box-shadow: var(--shadow-sm); }
-  .depot-card.empty { border: 2px dashed var(--border-secondary); background: rgba(7,160,195,0.02); }
-  .depot-card.empty:hover { border-color: var(--info-strong); background: rgba(7,160,195,0.04); }
-  .depot-card.pop { animation: popIn 0.3s cubic-bezier(0.16,1,0.3,1); }
-  @keyframes popIn { from { opacity: 0; transform: translateY(-8px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-  .depot-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .depot-num { font-size: 13px; font-weight: 600; color: var(--info-strong); text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 10px; }
-  .depot-num::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-  .depot-remove { background: transparent; border: none; padding: 8px; color: var(--text-tertiary); cursor: pointer; border-radius: 100px; display: inline-flex; align-items: center; transition: all 0.15s; }
-  .depot-remove:hover { background: var(--danger-bg); color: var(--danger-text); }
-  .depot-main-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
-  .depot-main-row .selskab { font-size: 20px; font-weight: 600; }
-  .depot-main-row .nr { font-size: 14px; color: var(--text-secondary); font-family: var(--font-mono); background: var(--bg-secondary); padding: 3px 10px; border-radius: 100px; }
-  .depot-details { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; font-size: 15px; }
-  .depot-details > div { display: flex; justify-content: space-between; gap: 10px; padding: 5px 0; }
-  .depot-details .label { color: var(--text-secondary); }
-  .depot-details .value { font-weight: 600; }
-  .depot-done { padding: 18px; text-align: center; font-size: 15px; color: var(--success-text); background: var(--success-bg); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; border: 1px solid rgba(15,110,86,0.18); font-weight: 500; }
-  .depot-summary { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-md); font-size: 15px; color: var(--accent-text); margin-top: 22px; border: 1px solid rgba(255,217,50,0.45); font-weight: 500; }
-  .depot-summary .count { font-weight: 600; }
-  .depot-summary .total { margin-left: auto; font-weight: 700; font-variant-numeric: tabular-nums; font-size: 18px; color: #4A3A00; }
-  @media (max-width: 700px) {
-    .depot-details { grid-template-columns: 1fr; }
-  }
-
-  .tool-section[hidden] { display: none; }
-  .empty-state { padding: 96px 28px; text-align: center; color: var(--text-secondary); }
-  .empty-state > i { font-size: 56px; color: var(--info-strong); display: inline-flex; align-items: center; justify-content: center; width: 96px; height: 96px; background: linear-gradient(135deg, var(--info-bg), var(--accent-bg)); border-radius: 50%; margin-bottom: 22px; box-shadow: var(--shadow-sm); }
-  .empty-state h2 { margin: 0 0 10px; font-size: 26px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
-  .empty-state p { margin: 0; font-size: 16px; }
-
-  .coverage-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 26px; }
-  .coverage-item { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 20px 24px; background: var(--bg-primary); transition: all 0.2s; }
-  .coverage-item.checked { background: linear-gradient(135deg, var(--info-bg), #F0FAFC); border-color: var(--info-strong); box-shadow: 0 0 0 3px rgba(7,160,195,0.08); }
-  .coverage-main { display: flex; align-items: center; gap: 14px; cursor: pointer; user-select: none; }
-  .coverage-main input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--info-strong); flex-shrink: 0; cursor: pointer; }
-  .coverage-name { font-size: 17px; font-weight: 600; }
-  .coverage-detail { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(7,160,195,0.18); display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; }
-  .coverage-detail.single { grid-template-columns: 1fr; max-width: 360px; }
-  .coverage-detail .field { margin-bottom: 0; }
-  @media (max-width: 700px) {
-    .coverage-detail { grid-template-columns: 1fr; }
-  }
-
-  .tool-profil { margin-left: auto; padding: 10px 14px; }
-  .tool-profil i { font-size: 24px; }
-  .tool-profil.active::before { display: none; }
-  .tool-profil.active { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent); }
-
-  .price-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 30px; }
-  .price-summary .price-item { padding: 26px 28px; border-radius: var(--radius-lg); background: var(--bg-secondary); border: 1px solid var(--border-tertiary); position: relative; overflow: hidden; }
-  .price-summary .price-item.primary { background: linear-gradient(135deg, var(--info-strong), var(--info-hover)); border-color: transparent; box-shadow: var(--shadow-glow); }
-  .price-summary .price-item.primary::after { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: var(--accent); opacity: 0.18; }
-  .price-summary .lbl { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 500; }
-  .price-summary .price-item.primary .lbl { color: rgba(255,255,255,0.9); }
-  .price-summary .val { font-size: 38px; font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; line-height: 1.1; letter-spacing: -0.02em; position: relative; }
-  .price-summary .price-item.primary .val { color: #fff; }
-
-  .subtabs { display: flex; gap: 32px; margin-bottom: 28px; border-bottom: 1px solid var(--border-tertiary); }
-  .subtab { font-size: 16px; padding: 15px 0; border: none; background: transparent; color: var(--text-secondary); border-bottom: 3px solid transparent; margin-bottom: -1px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: inherit; font-weight: 500; transition: color 0.18s, border-color 0.18s; }
-  .subtab:hover { color: var(--info-strong); }
-  .subtab.active { color: var(--info-strong); border-bottom-color: var(--accent); font-weight: 600; }
-  .subtab i { font-size: 18px; }
-  .subpanel { display: none; animation: fadeIn 0.3s ease-out; }
-  .subpanel.active { display: block; }
-
-  .folder { border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); margin-bottom: 14px; overflow: hidden; background: var(--bg-primary); transition: box-shadow 0.2s; }
-  .folder:hover { box-shadow: var(--shadow-sm); }
-  .folder-head { width: 100%; display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: var(--text-primary); transition: background 0.15s; }
-  .folder-head:hover { background: var(--bg-secondary); }
-  .folder-chev { font-size: 22px; color: var(--info-strong); transition: transform 0.2s cubic-bezier(0.16,1,0.3,1); }
-  .folder.open .folder-chev { transform: rotate(0); }
-  .folder:not(.open) .folder-chev { transform: rotate(-90deg); }
-  .folder-name { font-size: 16px; font-weight: 600; flex: 1; }
-  .folder-count { font-size: 13px; padding: 4px 12px; background: var(--accent); color: var(--accent-text); border-radius: 100px; font-weight: 600; min-width: 30px; text-align: center; }
-  .folder-body { padding: 0; }
-  .folder:not(.open) .folder-body { display: none; }
-  .folder.open .folder-head { background: linear-gradient(135deg, rgba(7,160,195,0.04), transparent); border-bottom: 1px solid var(--border-tertiary); }
-
-  .doc-item { display: flex; align-items: center; gap: 16px; padding: 15px 22px; border-top: 1px solid var(--border-tertiary); transition: background 0.15s; }
-  .doc-item:first-child { border-top: none; }
-  .doc-item:hover { background: var(--bg-secondary); }
-  .doc-icon { font-size: 26px; color: var(--info-strong); flex-shrink: 0; }
-  .doc-info { flex: 1; min-width: 0; }
-  .doc-name { font-size: 15px; color: var(--text-primary); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .doc-meta { font-size: 13px; color: var(--text-tertiary); margin-top: 4px; }
-  .doc-actions { display: flex; gap: 4px; flex-shrink: 0; }
-  .btn-icon { width: 38px; height: 38px; padding: 0; border: none; background: transparent; color: var(--text-secondary); border-radius: 100px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s; }
-  .btn-icon:hover { background: var(--info-bg); color: var(--info-strong); }
-  .btn-icon.danger:hover { color: var(--danger-text); background: var(--danger-bg); }
-  .btn-icon i { font-size: 19px; }
-
-  .upload-area { border: 2px dashed var(--border-secondary); border-radius: var(--radius-lg); padding: 56px 28px; text-align: center; cursor: pointer; transition: all 0.2s; margin-top: 18px; background: rgba(7,160,195,0.02); }
-  .upload-area:hover { border-color: var(--info-strong); background: var(--info-bg); transform: translateY(-2px); }
-  .upload-area.has-file { border-style: solid; border-color: var(--success-strong); background: var(--success-bg); }
-  .upload-area > i { font-size: 44px; color: var(--info-strong); display: block; margin-bottom: 14px; }
-  .upload-area.has-file > i { color: var(--success-strong); }
-  .upload-title { margin: 0 0 8px; font-size: 16px; font-weight: 600; color: var(--text-primary); }
-  .upload-sub { margin: 0 0 20px; font-size: 14px; color: var(--text-secondary); }
-  .resume-actions { display: flex; gap: 14px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
-
-  .fetch-row { display: flex; align-items: center; gap: 20px; padding: 18px 22px; background: linear-gradient(135deg, var(--accent-bg), #FFFDF0); border-radius: var(--radius-lg); margin-bottom: 26px; border: 1px solid rgba(255,217,50,0.55); flex-wrap: wrap; }
-  .fetch-head { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: #4A3A00; text-transform: uppercase; letter-spacing: 0.6px; flex-shrink: 0; }
-  .fetch-head i { font-size: 18px; color: var(--accent-text); padding: 5px; background: var(--accent); border-radius: 100px; box-shadow: var(--shadow-yellow); }
-  .fetch-btns { display: flex; gap: 10px; flex-wrap: wrap; flex: 1; }
-  .fetch-btn { padding: 10px 18px; font-size: 14px; font-weight: 600; background: var(--bg-primary); border: 1px solid rgba(255,217,50,0.6); color: var(--accent-text); border-radius: 100px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.18s cubic-bezier(0.16,1,0.3,1); font-family: inherit; }
-  .fetch-btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-yellow); }
-  .fetch-btn:active { transform: translateY(0); }
-  .fetch-btn i { font-size: 16px; }
-
-  @media (max-width: 900px) {
-    .price-summary { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 700px) {
-    body { font-size: 13px; }
-    .page { padding: 14px 10px 32px; }
-    .demo-banner { font-size: 11px; padding: 8px 12px; }
-    .app { border-radius: var(--radius-lg); }
-    .topbar { padding: 12px 14px; flex-wrap: wrap; gap: 10px; }
-    .crumbs { font-size: 12px; gap: 8px; flex-wrap: wrap; }
-    .brand-logo img { height: 36px; max-width: 180px; }
-    .brand-text strong { font-size: 16px; }
-    .brand-text em { font-size: 9px; letter-spacing: 1.5px; }
-    .brand-sep { height: 24px; margin: 0 2px; }
-    #publishBtn { padding: 8px 14px; font-size: 12px; }
-    .tools { padding: 8px 10px 0; gap: 2px; -webkit-overflow-scrolling: touch; }
-    .tool { padding: 9px 12px; font-size: 12px; gap: 5px; }
-    .tool i { font-size: 14px; }
-    .content { padding: 18px 14px 22px; }
-    .page-head { margin-bottom: 16px; gap: 8px; }
-    .page-head h1 { font-size: 22px; }
-    .saved { font-size: 11px; padding: 4px 10px; }
-    .steps { margin-bottom: 16px; padding: 4px; gap: 2px; }
-    .step { font-size: 11px; padding: 7px 11px; }
-    .grid-2 { grid-template-columns: 1fr; gap: 12px; }
-    .grid-2 > .col { gap: 12px; }
-    .section { padding: 14px 16px; border-radius: var(--radius-md); }
-    .section .title { font-size: 10px; margin-bottom: 12px; }
-    .field { margin-bottom: 10px; }
-    .field label { font-size: 11px; }
-    input, select, textarea { font-size: 14px; height: 40px; padding: 8px 12px; }
-    .tiles { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .nyt-grid { grid-template-columns: 1fr; }
-    .actions { flex-direction: column-reverse; gap: 8px; }
-    .actions .btn { width: 100%; justify-content: center; }
-    .btn { padding: 10px 16px; font-size: 13px; }
-    .chart-wrap { height: 240px; margin-bottom: 12px; }
-    table { font-size: 12px; }
-    th, td { padding: 9px 8px; }
-    .table-wrap { overflow-x: auto; }
-    .subtabs { gap: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .subtab { font-size: 13px; padding: 10px 0; white-space: nowrap; }
-    .depot-card { padding: 14px 14px; }
-    .depot-main-row .selskab { font-size: 14px; }
-    .modal { border-radius: var(--radius-lg); }
-    .modal-head { padding: 16px 16px 12px; }
-    .modal-head h3 { font-size: 16px; }
-    .modal-body { padding: 14px 16px; }
-    .modal-foot { padding: 12px 16px; }
-    .modal-foot { flex-direction: column-reverse; gap: 8px; }
-    .modal-foot .btn { width: 100%; justify-content: center; }
-    .fetch-row { padding: 12px 14px; gap: 10px; }
-    .fetch-btns { gap: 6px; }
-    .fetch-btn { padding: 7px 11px; font-size: 11px; }
-    .price-summary { gap: 10px; margin-bottom: 18px; }
-    .price-summary .price-item { padding: 16px 18px; }
-    .price-summary .val { font-size: 24px; }
-    .empty-state { padding: 48px 16px; }
-    .empty-state > i { font-size: 36px; width: 60px; height: 60px; }
-    .empty-state h2 { font-size: 18px; }
-    .upload-area { padding: 32px 16px; }
-    .folder-head { padding: 12px 14px; }
-    .doc-item { padding: 10px 14px; gap: 10px; }
-    .notes-block { padding: 12px 14px; font-size: 11px; }
-    .legend { gap: 10px; font-size: 10px; }
-  }
-  @media (max-width: 420px) {
-    .page-head h1 { font-size: 19px; }
-    .tool { padding: 8px 10px; font-size: 11px; }
-    .step { font-size: 10px; padding: 6px 9px; }
-  }
+  .notes-block{margin-top:22px;padding:20px 22px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-lg);font-size:14px;color:var(--accent-text);line-height:1.7;border:1px solid rgba(255,217,50,0.45)}
+.notes-block p{margin:0}
+.notes-block strong{color:#4A3A00;font-weight:600}
+.actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px}
+.chart-wrap{position:relative;height:400px;margin-bottom:18px}
+.chart-caption{margin:0;font-size:13px;color:var(--text-tertiary);text-align:center;font-style:italic}
+table{width:100%;border-collapse:collapse;font-size:15px}
+.table-wrap{overflow:hidden;border:1px solid var(--border-tertiary);border-radius:var(--radius-lg);background:var(--bg-primary)}
+th,td{padding:16px 20px}
+thead tr{background:var(--bg-secondary)}
+th{text-align:left;font-weight:600;color:var(--text-secondary);font-size:13px;text-transform:uppercase;letter-spacing:0.4px}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr{border-top:1px solid var(--border-tertiary);transition:background 0.15s}
+tbody tr:hover{background:var(--bg-secondary)}
+.col-accent{color:var(--info-strong)}
+.row-accent{background:linear-gradient(135deg,var(--info-bg),#F0FAFC) !important}
+.row-accent td{font-weight:600;color:var(--info-text)}
+.sub-row td{padding:8px 20px 8px 40px;font-size:13px;color:var(--text-tertiary)}
+.gain-pos{color:var(--success-strong);font-weight:600}
+.gain-neg{color:var(--danger-text);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;color:var(--text-secondary);justify-content:center;margin-top:14px}
+.legend .item{display:inline-flex;align-items:center;gap:8px}
+.legend .swatch{width:14px;height:14px;border-radius:3px}
+.modal-backdrop{position:fixed;inset:0;background:rgba(14,31,40,0.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;z-index:100;animation:fadeIn 0.2s ease-out}
+.modal-backdrop.open{display:flex}
+.modal{width:100%;max-width:580px;background:var(--bg-primary);border-radius:var(--radius-xl);border:1px solid var(--border-tertiary);overflow:hidden;max-height:calc(100vh - 40px);display:flex;flex-direction:column;box-shadow:var(--shadow-md);animation:modalIn 0.25s cubic-bezier(0.16,1,0.3,1)}
+@keyframes modalIn{from{opacity:0;transform:scale(0.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-head{padding:24px 28px 18px;border-bottom:1px solid var(--border-tertiary)}
+.modal-head .row{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.modal-head .icon-box{width:44px;height:44px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--info-bg),var(--info-bg-strong));display:flex;align-items:center;justify-content:center;color:var(--info-strong);flex-shrink:0}
+.modal-head .icon-box i{font-size:22px}
+.modal-head h3{margin:0;font-size:20px;font-weight:600;flex:1}
+.modal-head p{margin:0 0 0 58px;font-size:14px;color:var(--text-secondary)}
+.modal-body{padding:22px 28px;overflow-y:auto;font-size:15px}
+.modal-foot{display:flex;justify-content:flex-end;gap:12px;padding:18px 28px;border-top:1px solid var(--border-tertiary);background:var(--bg-secondary)}
+.change-list{border:1px solid var(--border-tertiary);border-radius:var(--radius-md);overflow:hidden;max-height:340px;overflow-y:auto;background:var(--bg-primary)}
+.change-list .group{padding:10px 16px;background:var(--bg-secondary);font-size:13px;color:var(--info-strong);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-top:1px solid var(--border-tertiary)}
+.change-list .group:first-child{border-top:none}
+.change-list .item{display:flex;align-items:center;gap:14px;padding:13px 16px;font-size:15px;border-top:1px solid var(--border-tertiary)}
+.change-list .item .badge{color:var(--text-tertiary);font-size:13px;margin-left:auto;background:var(--bg-secondary);padding:4px 12px;border-radius:100px}
+.icon-add{color:var(--success-strong)}
+.icon-edit{color:var(--warning-strong)}
+.icon-rm{color:var(--danger-text)}
+.env-row{display:flex;gap:10px;margin-top:18px}
+.env-pill{flex:1;font-size:15px;padding:13px 14px;border:1px solid var(--border-tertiary);background:transparent;border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;gap:8px;color:var(--text-secondary);cursor:pointer;transition:all 0.18s;font-family:inherit;font-weight:500}
+.env-pill:hover{border-color:var(--border-secondary);color:var(--text-primary)}
+.env-pill.active{border-color:var(--info-strong);background:var(--info-bg);color:var(--info-text);font-weight:600;box-shadow:0 0 0 3px rgba(7,160,195,0.10)}
+.warn-box{display:flex;align-items:flex-start;gap:14px;margin-top:18px;padding:18px 20px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-md);border:1px solid var(--accent);font-size:15px}
+.warn-box .title{color:#4A3A00;font-weight:600;margin-bottom:4px}
+.warn-box .body{color:var(--accent-text)}
+.check-row{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--text-secondary);margin-top:14px}
+.success-head{padding:34px 28px 24px;text-align:center;border-bottom:1px solid var(--border-tertiary);background:linear-gradient(180deg,rgba(15,110,86,0.04),transparent)}
+.success-circle{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--success-strong),#0A5642);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;color:#fff;box-shadow:0 8px 24px rgba(15,110,86,0.32);position:relative}
+.success-circle::after{content:'';position:absolute;top:-6px;right:-6px;width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid var(--bg-primary)}
+.success-head h2{margin:0 0 8px;font-size:26px;font-weight:700;letter-spacing:-0.02em}
+.success-head p{margin:0;font-size:15px;color:var(--text-secondary)}
+.label-cap{display:block;font-size:13px;color:var(--info-strong);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.url-row{display:flex;gap:10px}
+.url-pill{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--bg-secondary);border-radius:var(--radius-md);font-size:14px;font-family:var(--font-mono);overflow:hidden;border:1px solid var(--border-tertiary)}
+.url-pill span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-radius:var(--radius-md);font-size:13px;font-family:var(--font-mono);overflow-x:auto;white-space:pre;border:1px solid rgba(7,160,195,0.32)}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}
+.tile{padding:18px 20px;background:var(--bg-secondary);border-radius:var(--radius-md);border:1px solid var(--border-tertiary)}
+.tile .lbl{font-size:13px;color:var(--text-secondary);margin-bottom:5px;font-weight:500}
+.tile .val{font-size:20px;font-weight:600;color:var(--text-primary)}
+.nyt-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.nyt-grid .item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,var(--info-bg),#F0FAFC);border-radius:var(--radius-md);font-size:15px;font-weight:500;border:1px solid rgba(7,160,195,0.18)}
+.nyt-grid .item i{color:var(--info-strong);font-size:18px}
+.rollback{display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,var(--info-bg),#F0FAFC);border-radius:var(--radius-md);font-size:14px;color:var(--info-text);border:1px solid rgba(7,160,195,0.18)}
+.rollback i{color:var(--info-strong);font-size:20px}
+.share-channel{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border-secondary);border-radius:var(--radius-md);background:var(--bg-primary);cursor:pointer;transition:border-color 0.18s;font-size:15px}
+.share-channel:hover{border-color:var(--info-strong)}
+.preview-card{border:1px solid var(--border-tertiary);border-left:4px solid var(--info-strong);border-radius:var(--radius-md);padding:16px 18px;background:linear-gradient(135deg,var(--info-bg),var(--bg-primary))}
+.preview-card .source{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.preview-card .source .ico{width:22px;height:22px;border-radius:4px;background:var(--info-strong);display:flex;align-items:center;justify-content:center;color:#fff}
+.preview-card .source span{font-size:13px;color:var(--text-secondary);font-weight:500}
+.preview-card .head{margin:0 0 4px;font-size:16px;font-weight:600;color:var(--info-strong)}
+.preview-card .desc{margin:0 0 12px;font-size:14px;color:var(--text-secondary);line-height:1.5}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{font-size:11px;padding:4px 12px;border-radius:100px;font-weight:600}
+.pill.blue{background:var(--info-strong);color:#fff}
+.pill.gray{background:var(--bg-secondary);color:var(--text-secondary);border:1px solid var(--border-tertiary)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:32px;padding:14px 24px;background:var(--text-primary);color:#fff;border-radius:100px;font-size:15px;z-index:200;opacity:0;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);pointer-events:none;box-shadow:var(--shadow-md);font-weight:500}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+.depot-card.empty{border:2px dashed var(--border-secondary);background:rgba(7,160,195,0.02)}
+.depot-card.empty:hover{border-color:var(--info-strong);background:rgba(7,160,195,0.04)}
+.depot-card
+  @keyframes popIn{from{opacity:0;transform:translateY(-8px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.depot-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.depot-num{font-size:13px;font-weight:600;color:var(--info-strong);text-transform:uppercase;letter-spacing:0.5px;display:inline-flex;align-items:center;gap:10px}
+.depot-num::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.depot-remove{background:transparent;border:none;padding:8px;color:var(--text-tertiary);cursor:pointer;border-radius:100px;display:inline-flex;align-items:center;transition:all 0.15s}
+.depot-remove:hover{background:var(--danger-bg);color:var(--danger-text)}
+.depot-main-row{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.depot-main-row .selskab{font-size:20px;font-weight:600}
+.depot-main-row .nr{font-size:14px;color:var(--text-secondary);font-family:var(--font-mono);background:var(--bg-secondary);padding:3px 10px;border-radius:100px}
+.depot-details{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;font-size:15px}
+.depot-details>div{display:flex;justify-content:space-between;gap:10px;padding:5px 0}
+.depot-details .label{color:var(--text-secondary)}
+.depot-details .value{font-weight:600}
+.depot-summary{display:flex;align-items:center;gap:14px;padding:18px 22px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-md);font-size:15px;color:var(--accent-text);margin-top:22px;border:1px solid rgba(255,217,50,0.45);font-weight:500}
+.depot-summary .count{font-weight:600}
+.depot-summary .total{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;font-size:18px;color:#4A3A00}
+@media (max-width:700px){.depot-details{grid-template-columns:1fr}}
+.tool-section[hidden]{display:none}
+.kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:14px}
+.kpi-card{padding:28px 30px;border-radius:var(--radius-lg);background:var(--bg-secondary);border:1px solid var(--border-tertiary);position:relative;overflow:hidden}
+.kpi-card.primary{background:linear-gradient(135deg,var(--info-strong),var(--info-hover));border-color:transparent;box-shadow:var(--shadow-glow);color:#fff}
+.kpi-card.primary::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:var(--accent);opacity:0.18}
+.kpi-card .lbl{font-size:14px;color:var(--text-secondary);font-weight:500;margin-bottom:8px;display:inline-flex;align-items:center;gap:8px}
+.kpi-card.primary .lbl{color:rgba(255,255,255,0.92)}
+.kpi-card .lbl i{font-size:18px}
+.kpi-card .val{font-size:42px;font-weight:700;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi-card .sub{font-size:13px;color:var(--text-tertiary);margin-top:6px}
+.kpi-card.primary .sub{color:rgba(255,255,255,0.8)}
+.kpi-card .pos .val{color:var(--success-strong)}
+.kpi-updated{font-size:13px;color:var(--text-tertiary);display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
+.kpi-updated i{font-size:14px;color:var(--info-strong)}
+.vis-toggle-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;padding:14px 20px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-md);border:1px solid rgba(255,217,50,0.55)}
+.vis-toggle-bar .vis-info{display:flex;align-items:center;gap:12px}
+.vis-toggle-bar .vis-info i{font-size:18px;color:var(--accent-text);padding:6px;background:var(--accent);border-radius:100px;box-shadow:var(--shadow-yellow)}
+.vis-toggle-bar .vis-text strong{font-size:14px;font-weight:600;color:#4A3A00;display:block}
+.vis-toggle-bar .vis-text em{font-size:13px;font-style:normal;color:var(--accent-text);display:block;margin-top:2px}
+.vis-switch{position:relative;display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;flex-shrink:0}
+.vis-switch input{position:absolute;opacity:0;pointer-events:none}
+.vis-switch .vis-state{font-size:13px;font-weight:600;color:var(--success-strong);min-width:56px;text-align:right}
+.vis-switch input:not(:checked)~.vis-state{color:var(--text-tertiary)}
+.vis-switch .vis-track{position:relative;width:52px;height:30px;background:var(--text-tertiary);border-radius:100px;transition:background 0.2s;flex-shrink:0}
+.vis-switch input:checked~.vis-track{background:var(--success-strong)}
+.vis-switch .vis-thumb{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:transform 0.22s cubic-bezier(0.16,1,0.3,1);box-shadow:0 2px 6px rgba(0,0,0,0.2)}
+.vis-switch input:checked~.vis-track .vis-thumb{transform:translateX(22px)}
+.tool.tool-hidden{opacity:0.45;position:relative}
+.tool.tool-hidden::after{content:'\ea76';font-family:'tabler-icons';position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--text-tertiary)}
+.person-toggle{display:inline-flex;padding:5px;background:var(--bg-secondary);border-radius:100px;border:1px solid var(--border-tertiary);position:relative;gap:0;box-shadow:var(--shadow-sm)}
+.person-toggle button{font-family:inherit;padding:12px 26px;border:none;background:transparent;font-size:15px;font-weight:600;color:var(--text-secondary);border-radius:100px;cursor:pointer;position:relative;z-index:1;transition:color 0.2s;min-width:130px}
+.person-toggle button.active{color:#fff}
+.person-toggle .slider{position:absolute;top:5px;left:5px;height:calc(100% - 10px);width:calc(50% - 5px);background:linear-gradient(135deg,var(--info-strong),var(--info-hover));border-radius:100px;box-shadow:var(--shadow-glow);transition:transform 0.28s cubic-bezier(0.16,1,0.3,1)}
+.person-toggle[data-persons="2"] .slider{transform:translateX(100%)}
+.person-only-2{display:none}
+.helhed-state-2 .person-only-2{display:block}
+.helhed-state-2 .grid-1-when-1{grid-template-columns:1fr 1fr}
+.grid-1-when-1{display:grid;grid-template-columns:1fr;gap:20px}
+.helhed-state-2 .grid-1-when-1{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.section.col-yellow{background:linear-gradient(135deg,#FFF6CC,#FFFDF0);border-color:rgba(255,217,50,0.55)}
+.section.col-green{background:linear-gradient(135deg,#E1F5EE,#F4FDF9);border-color:rgba(15,110,86,0.20)}
+.section.col-blue{background:linear-gradient(135deg,#E0F4F8,#F0FAFC);border-color:rgba(7,160,195,0.20)}
+.section.col-teal{background:linear-gradient(135deg,#D9F2F2,#EBFBFB);border-color:rgba(7,160,195,0.25)}
+.section.col-brown{background:linear-gradient(135deg,#F5E6CC,#FBF4E6);border-color:rgba(150,100,40,0.25)}
+.section.col-red{background:linear-gradient(135deg,#FDEEEE,#FCF4F4);border-color:rgba(196,69,69,0.20)}
+.section.col-yellow .title,.section.col-green .title,.section.col-blue .title,.section.col-teal .title,.section.col-brown .title,.section.col-red .title{color:var(--text-primary);font-size:14px}
+.year-table-wrap{overflow-x:auto;border:1px solid var(--border-tertiary);border-radius:var(--radius-lg);background:var(--bg-primary);margin-top:18px}
+.year-table{width:max-content;min-width:100%;border-collapse:collapse;font-size:13px}
+.year-table th,.year-table td{padding:10px 14px;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+.year-table th:first-child,.year-table td:first-child{text-align:left;position:sticky;left:0;background:var(--bg-primary);font-weight:600;z-index:1;min-width:180px;box-shadow:1px 0 0 var(--border-tertiary)}
+.year-table thead th{background:var(--bg-secondary);font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase;letter-spacing:0.4px}
+.year-table thead th:first-child{background:var(--bg-secondary)}
+.year-table tbody tr{border-top:1px solid var(--border-tertiary)}
+.year-table tbody tr:hover{background:var(--bg-secondary)}
+.year-table tbody tr:hover td:first-child{background:var(--bg-secondary)}
+.empty-state{padding:96px 28px;text-align:center;color:var(--text-secondary)}
+.empty-state>i{font-size:56px;color:var(--info-strong);display:inline-flex;align-items:center;justify-content:center;width:96px;height:96px;background:linear-gradient(135deg,var(--info-bg),var(--accent-bg));border-radius:50%;margin-bottom:22px;box-shadow:var(--shadow-sm)}
+.empty-state h2{margin:0 0 10px;font-size:26px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em}
+.empty-state p{margin:0;font-size:16px}
+.coverage-list{display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
+.coverage-item{border:1px solid var(--border-tertiary);border-radius:var(--radius-lg);padding:20px 24px;background:var(--bg-primary);transition:all 0.2s}
+.coverage-item.checked{background:linear-gradient(135deg,var(--info-bg),#F0FAFC);border-color:var(--info-strong);box-shadow:0 0 0 3px rgba(7,160,195,0.08)}
+.coverage-main{display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.coverage-main input[type="checkbox"]{width:22px;height:22px;accent-color:var(--info-strong);flex-shrink:0;cursor:pointer}
+.coverage-name{font-size:17px;font-weight:600}
+.coverage-detail{margin-top:16px;padding-top:16px;border-top:1px solid rgba(7,160,195,0.18);display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+.coverage-detail.single{grid-template-columns:1fr;max-width:360px}
+.coverage-detail .field{margin-bottom:0}
+@media (max-width:700px){.coverage-detail{grid-template-columns:1fr}}
+.tool-profil{margin-left:auto;padding:10px 14px}
+.tool-profil i{font-size:24px}
+.tool-profil.active::before{display:none}
+.tool-profil.active{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent)}
+.price-summary{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
+.price-summary .price-item{padding:26px 28px;border-radius:var(--radius-lg);background:var(--bg-secondary);border:1px solid var(--border-tertiary);position:relative;overflow:hidden}
+.price-summary .price-item.primary{background:linear-gradient(135deg,var(--info-strong),var(--info-hover));border-color:transparent;box-shadow:var(--shadow-glow)}
+.price-summary .price-item.primary::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:var(--accent);opacity:0.18}
+.price-summary .lbl{font-size:14px;color:var(--text-secondary);margin-bottom:8px;font-weight:500}
+.price-summary .price-item.primary .lbl{color:rgba(255,255,255,0.9)}
+.price-summary .val{font-size:38px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;line-height:1.1;letter-spacing:-0.02em;position:relative}
+.price-summary .price-item.primary .val{color:#fff}
+.subtabs{display:flex;gap:32px;margin-bottom:28px;border-bottom:1px solid var(--border-tertiary)}
+.subtab{font-size:16px;padding:15px 0;border:none;background:transparent;color:var(--text-secondary);border-bottom:3px solid transparent;margin-bottom:-1px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-family:inherit;font-weight:500;transition:color 0.18s,border-color 0.18s}
+.subtab:hover{color:var(--info-strong)}
+.subtab.active{color:var(--info-strong);border-bottom-color:var(--accent);font-weight:600}
+.subtab i{font-size:18px}
+.subpanel{display:none;animation:fadeIn 0.3s ease-out}
+.subpanel.active{display:block}
+.folder{border:1px solid var(--border-tertiary);border-radius:var(--radius-lg);margin-bottom:14px;overflow:hidden;background:var(--bg-primary);transition:box-shadow 0.2s}
+.folder:hover{box-shadow:var(--shadow-sm)}
+.folder-head{width:100%;display:flex;align-items:center;gap:14px;padding:18px 22px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:inherit;color:var(--text-primary);transition:background 0.15s}
+.folder-head:hover{background:var(--bg-secondary)}
+.folder-chev{font-size:22px;color:var(--info-strong);transition:transform 0.2s cubic-bezier(0.16,1,0.3,1)}
+.folder.open .folder-chev{transform:rotate(0)}
+.folder:not(.open) .folder-chev{transform:rotate(-90deg)}
+.folder-name{font-size:16px;font-weight:600;flex:1}
+.folder-count{font-size:13px;padding:4px 12px;background:var(--accent);color:var(--accent-text);border-radius:100px;font-weight:600;min-width:30px;text-align:center}
+.folder-body{padding:0}
+.folder:not(.open) .folder-body{display:none}
+.folder.open .folder-head{background:linear-gradient(135deg,rgba(7,160,195,0.04),transparent);border-bottom:1px solid var(--border-tertiary)}
+.doc-item{display:flex;align-items:center;gap:16px;padding:15px 22px;border-top:1px solid var(--border-tertiary);transition:background 0.15s}
+.doc-item:first-child{border-top:none}
+.doc-item:hover{background:var(--bg-secondary)}
+.doc-icon{font-size:26px;color:var(--info-strong);flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:15px;color:var(--text-primary);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-meta{font-size:13px;color:var(--text-tertiary);margin-top:4px}
+.doc-actions{display:flex;gap:4px;flex-shrink:0}
+.btn-icon{width:38px;height:38px;padding:0;border:none;background:transparent;color:var(--text-secondary);border-radius:100px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all 0.15s}
+.btn-icon:hover{background:var(--info-bg);color:var(--info-strong)}
+.btn-icon.danger:hover{color:var(--danger-text);background:var(--danger-bg)}
+.btn-icon i{font-size:19px}
+.upload-area{border:2px dashed var(--border-secondary);border-radius:var(--radius-lg);padding:56px 28px;text-align:center;cursor:pointer;transition:all 0.2s;margin-top:18px;background:rgba(7,160,195,0.02)}
+.upload-area:hover{border-color:var(--info-strong);background:var(--info-bg);transform:translateY(-2px)}
+.upload-area.has-file{border-style:solid;border-color:var(--success-strong);background:var(--success-bg)}
+.upload-area>i{font-size:44px;color:var(--info-strong);display:block;margin-bottom:14px}
+.upload-area.has-file>i{color:var(--success-strong)}
+.upload-title{margin:0 0 8px;font-size:16px;font-weight:600;color:var(--text-primary)}
+.upload-sub{margin:0 0 20px;font-size:14px;color:var(--text-secondary)}
+.resume-actions{display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.fetch-row{display:flex;align-items:center;gap:20px;padding:18px 22px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-lg);margin-bottom:26px;border:1px solid rgba(255,217,50,0.55);flex-wrap:wrap}
+.fetch-head{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#4A3A00;text-transform:uppercase;letter-spacing:0.6px;flex-shrink:0}
+.fetch-head i{font-size:18px;color:var(--accent-text);padding:5px;background:var(--accent);border-radius:100px;box-shadow:var(--shadow-yellow)}
+.fetch-btns{display:flex;gap:10px;flex-wrap:wrap;flex:1}
+.fetch-btn{padding:10px 18px;font-size:14px;font-weight:600;background:var(--bg-primary);border:1px solid rgba(255,217,50,0.6);color:var(--accent-text);border-radius:100px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:all 0.18s cubic-bezier(0.16,1,0.3,1);font-family:inherit}
+.fetch-btn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px);box-shadow:var(--shadow-yellow)}
+.fetch-btn:active{transform:translateY(0)}
+.fetch-btn i{font-size:16px}
+@media (max-width:900px){.price-summary{grid-template-columns:1fr}}
+@media (max-width:700px){body{font-size:13px}.page{padding:14px 10px 32px}.demo-banner{font-size:11px;padding:8px 12px}.app{border-radius:var(--radius-lg)}.topbar{padding:12px 14px;flex-wrap:wrap;gap:10px}.crumbs{font-size:12px;gap:8px;flex-wrap:wrap}.brand-logo img{height:36px;max-width:180px}.brand-text strong{font-size:16px}.brand-text em{font-size:9px;letter-spacing:1.5px}.brand-sep{height:24px;margin:0 2px}#publishBtn{padding:8px 14px;font-size:12px}.tools{padding:8px 10px 0;gap:2px;-webkit-overflow-scrolling:touch}.tool{padding:9px 12px;font-size:12px;gap:5px}.tool i{font-size:14px}.content{padding:18px 14px 22px}.page-head{margin-bottom:16px;gap:8px}.page-head h1{font-size:22px}.saved{font-size:11px;padding:4px 10px}.steps{margin-bottom:16px;padding:4px;gap:2px}.step{font-size:11px;padding:7px 11px}.grid-2{grid-template-columns:1fr;gap:12px}.grid-2>.col{gap:12px}.section{padding:14px 16px;border-radius:var(--radius-md)}.section .title{font-size:10px;margin-bottom:12px}.field{margin-bottom:10px}.field label{font-size:11px}input,select,textarea{font-size:14px;height:40px;padding:8px 12px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.nyt-grid{grid-template-columns:1fr}.actions{flex-direction:column-reverse;gap:8px}.actions .btn{width:100%;justify-content:center}.btn{padding:10px 16px;font-size:13px}.chart-wrap{height:240px;margin-bottom:12px}table{font-size:12px}th,td{padding:9px 8px}.table-wrap{overflow-x:auto}.subtabs{gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch}.subtab{font-size:13px;padding:10px 0;white-space:nowrap}.depot-main-row .selskab{font-size:14px}.modal{border-radius:var(--radius-lg)}.modal-head{padding:16px 16px 12px}.modal-head h3{font-size:16px}.modal-body{padding:14px 16px}.modal-foot{padding:12px 16px}.modal-foot{flex-direction:column-reverse;gap:8px}.modal-foot .btn{width:100%;justify-content:center}.fetch-row{padding:12px 14px;gap:10px}.fetch-btns{gap:6px}.fetch-btn{padding:7px 11px;font-size:11px}.price-summary{gap:10px;margin-bottom:18px}.price-summary .price-item{padding:16px 18px}.price-summary .val{font-size:24px}.empty-state{padding:48px 16px}.empty-state>i{font-size:36px;width:60px;height:60px}.empty-state h2{font-size:18px}.upload-area{padding:32px 16px}.folder-head{padding:12px 14px}.doc-item{padding:10px 14px;gap:10px}.notes-block{padding:12px 14px;font-size:11px}.legend{gap:10px;font-size:10px}}
+@media (max-width:420px){.page-head h1{font-size:19px}.tool{padding:8px 10px;font-size:11px}.step{font-size:10px;padding:6px 9px}}
+.hide{display:none}
+.mt-14{margin-top:14px}
+.mt-18{margin-top:18px}
+.mt-20{margin-top:20px}
+.it-note{margin:14px 0;font-size:13px;color:var(--text-secondary);font-style:italic}
+.it-note-tight{margin:0 0 12px;font-size:13px;color:var(--text-secondary);font-style:italic}
+.h-sub{margin:0 0 12px;font-size:17px;font-weight:500}
+.h-sub-bordered{margin:18px 0 10px;font-size:14px;font-weight:600;color:var(--text-primary);border-top:1px solid var(--border);padding-top:14px}
+.row-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
 </style>
 </head>
 <body>
@@ -467,7 +364,7 @@
     </div>
 
     <div class="tools">
-      <button class="tool" data-tool="afkast"><i class="ti ti-trending-up"></i> Afkast i dag</button>
+      <button class="tool" data-tool="afkast"><i class="ti ti-chart-line"></i> Din pension</button>
       <button class="tool active" data-tool="flyt"><i class="ti ti-transfer"></i> Flyt pension</button>
       <button class="tool" data-tool="forsikring"><i class="ti ti-shield"></i> Forsikringer</button>
       <button class="tool" data-tool="helhed"><i class="ti ti-layout-grid"></i> Helhedsplan</button>
@@ -478,6 +375,40 @@
     </div>
 
     <div class="content">
+
+      <section class="tool-section" data-tool="afkast" hidden>
+
+      <div class="page-head">
+        <h1>Din pension</h1>
+        <span class="kpi-updated"><i class="ti ti-refresh"></i>Sidst opdateret: 22.05.2026 kl. 09.35</span>
+      </div>
+
+      <div class="kpi-row">
+        <div class="kpi-card primary">
+          <div class="lbl"><i class="ti ti-wallet"></i> Din pensionsopsparing</div>
+          <div class="val">4.396.626 kr.</div>
+          <div class="sub">Samlet på tværs af alle depoter</div>
+        </div>
+        <div class="kpi-card pos">
+          <div class="lbl"><i class="ti ti-trending-up"></i> År til dato afkast</div>
+          <div class="val">+ 8,4%</div>
+          <div class="sub">Efter omkostninger og pensionsskat (PAL)</div>
+        </div>
+      </div>
+
+      <div class="section mt-20" >
+        <p class="title">Udvikling i pensionsopsparing</p>
+        <p style="margin:-6px 0 14px; font-size:14px; color:var(--text-secondary);">Måned for måned — samlet pensionsopsparing</p>
+        <div class="chart-wrap"><canvas id="chartPensionLine"></canvas></div>
+      </div>
+
+      <div class="section mt-20" >
+        <p class="title">Månedligt afkast</p>
+        <p style="margin:-6px 0 14px; font-size:14px; color:var(--text-secondary);">Måned for måned afkast efter omkostninger og pensionsskat (PAL)</p>
+        <div class="chart-wrap"><canvas id="chartPensionBars"></canvas></div>
+      </div>
+
+      </section>
 
       <section class="tool-section active" data-tool="flyt">
 
@@ -494,6 +425,7 @@
         <button class="step" data-step="sens">5 · Følsomhed</button>
         <button class="step" data-step="cost">6 · Fordeling</button>
         <button class="step" data-step="afkost">7 · Omkostninger</button>
+        <button class="step" data-step="afkastberegner">8 · Afkast i dag</button>
       </div>
 
       <div class="panel active" id="p-depot">
@@ -555,9 +487,9 @@
 
         </div>
 
-        <div class="section" style="margin-top:20px;">
+        <div class="section mt-20" >
           <p class="title">Noter</p>
-          <div class="field" style="margin-bottom:0;"><label>Tilføj kommentar til kunden</label><textarea placeholder="Skriv en note om kundens situation, wishes eller andre relevante oplysninger…" style="min-height:120px;"></textarea></div>
+          <div class="field" style="margin-bottom:0;"><label>Tilføj kommentar til kunden</label><textarea placeholder="Skriv en note om kundens situation, ønsker eller andre relevante oplysninger…" style="min-height:120px;"></textarea></div>
         </div>
 
         <div class="notes-block">
@@ -573,13 +505,13 @@
       </div>
 
       <div class="panel" id="p-result">
-        <p style="margin:0 0 12px; font-size:17px; font-weight:500;">Din mulige opsparing ved pensionsalderen</p>
+        <p class="h-sub">Din mulige opsparing ved pensionsalderen</p>
         <div class="chart-wrap"><canvas id="chartResult"></canvas></div>
         <p class="chart-caption">Baseret på indtastede tal og historiske afkast. Resultatet er ikke en garanti.</p>
       </div>
 
       <div class="panel" id="p-key">
-        <p style="margin:0 0 12px; font-size:17px; font-weight:500;">Dine nøgletal</p>
+        <p class="h-sub">Dine nøgletal</p>
         <div class="table-wrap">
           <table>
             <thead><tr><th>&nbsp;</th><th class="num">I dag</th><th class="num col-accent">Global Vækst</th><th class="num">Global Balance</th></tr></thead>
@@ -598,7 +530,7 @@
       </div>
 
       <div class="panel" id="p-sens">
-        <p style="margin:0 0 12px; font-size:17px; font-weight:500;">Opsparingsprognose — følsomhedsanalyse</p>
+        <p class="h-sub">Opsparingsprognose — følsomhedsanalyse</p>
         <div class="chart-wrap"><canvas id="chartSens"></canvas></div>
         <div class="legend">
           <div class="item"><span class="swatch" style="background:#07A0C3"></span>Global Vækst — 10 års</div>
@@ -606,8 +538,8 @@
           <div class="item"><span class="swatch" style="background:#FFD932"></span>MSCI 47 års</div>
           <div class="item"><span class="swatch" style="background:#B8C5CC"></span>Rådet for Afkastforventninger</div>
         </div>
-        <div class="notes-block" style="margin-top:18px;">
-          <p><strong>Sådan læses grafen:</strong> Grafen viser din mulige opsparing efter omkommertninger og pensionsskat (PAL). Historisk afkast er aldrig en garanti for fremtidigt afkast. Selvom grafen viser din mulige opsparing, kan værdien af opsparingen både stige og falde, afhængigt af markedsudviklingen.</p>
+        <div class="notes-block mt-18" >
+          <p><strong>Sådan læses grafen:</strong> Grafen viser din mulige opsparing efter omkostninger og pensionsskat (PAL). Historisk afkast is aldrig en garanti for fremtidigt afkast. Selvom grafen viser din mulige opsparing, kan værdien af opsparingen både stige og falde, afhængigt af markedsudviklingen.</p>
           <p style="margin-top:8px;">Dit pensionsselskab i dag og Tietgens anbefalede løsning er baseret på gennemsnitligt historisk afkast de sidste 10 år. Rådet for Afkastforventninger bygger på beregnede forudsætninger for forventet afkast og risiko, ikke historiske tal, og opdateres halvårligt. De viste beregninger bygger på specifikke forudsætninger for afkast og risiko, som kan ændre sig over tid.</p>
         </div>
       </div>
@@ -625,7 +557,7 @@
       </div>
 
       <div class="panel" id="p-afkost">
-        <p style="margin:0 0 12px; font-size:17px; font-weight:500;">Afkast og omkostninger</p>
+        <p class="h-sub">Afkast og omkostninger</p>
         <div class="table-wrap">
           <table>
             <colgroup><col style="width:44%"><col style="width:18%"><col style="width:18%"><col style="width:20%"></colgroup>
@@ -651,6 +583,51 @@
         </div>
       </div>
 
+      <div class="panel" id="p-afkastberegner">
+        <p style="margin:0 0 16px; font-size:24px; font-weight:700; text-align:center;">Andre beregninger</p>
+        <div style="max-width:640px; margin:0 auto;">
+          <div class="field">
+            <label>Vælg beregner</label>
+            <select id="afkast-calc-type">
+              <option>Årlig afkast</option>
+              <option>Samlet afkast over periode</option>
+              <option>Inflationsjusteret afkast</option>
+            </select>
+          </div>
+
+          <p style="margin:22px 0 14px; font-size:20px; font-weight:700; text-align:center;">Årlig afkast</p>
+
+          <div class="field">
+            <label>Vælg nuværende afkast opgørelse</label>
+            <select id="afkast-unit">
+              <option>Kr.</option>
+              <option>Procent</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Antal år for investeringen</label>
+            <input type="number" id="afkast-years" value="5">
+          </div>
+          <div class="field">
+            <label>Afkast i procent for perioden</label>
+            <input type="text" id="afkast-pct" placeholder="Udfyld hvis valgt 'Procent' ovenfor">
+          </div>
+          <div class="field">
+            <label>Investeret beløb (kr.)</label>
+            <input type="number" id="afkast-invest" value="100">
+          </div>
+          <div class="field">
+            <label>Total beløb i dag efter afkast (kr.)</label>
+            <input type="number" id="afkast-total" value="150">
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:18px; padding:18px 22px; background:var(--bg-secondary); border-radius:var(--radius-md);">
+            <span style="font-size:15px; color:var(--text-secondary);">Gennemsnitlige årlige afkast (kr.)</span>
+            <span id="afkast-result" style="font-size:28px; font-weight:700; color:var(--info-strong); font-variant-numeric:tabular-nums;">8,4%</span>
+          </div>
+        </div>
+      </div>
+
       </section>
 
       <section class="tool-section" data-tool="forsikring" hidden>
@@ -658,6 +635,21 @@
       <div class="page-head">
         <h1>Forsikringer</h1>
         <span class="saved"><span class="dot"></span>Kladde gemt</span>
+      </div>
+
+      <div class="vis-toggle-bar">
+        <div class="vis-info">
+          <i class="ti ti-eye"></i>
+          <div class="vis-text">
+            <strong>Vis fanen "Forsikringer" for kunden</strong>
+            <em>Slå fra for at skjule hele fanen i kundens visning</em>
+          </div>
+        </div>
+        <label class="vis-switch">
+          <input type="checkbox" data-toggle-tool="forsikring" checked>
+          <span class="vis-state">Vist</span>
+          <span class="vis-track"><span class="vis-thumb"></span></span>
+        </label>
       </div>
 
       <div class="steps" role="tablist">
@@ -819,6 +811,415 @@
         <div class="actions">
           <button class="btn" data-go-step="coverage">← Tilbage til dækninger</button>
         </div>
+      </div>
+
+      </section>
+
+      <section class="tool-section" data-tool="helhed" hidden>
+
+      <div class="page-head">
+        <h1>Helhedsplan</h1>
+        <span class="saved"><span class="dot"></span>Kladde gemt</span>
+      </div>
+
+      <div class="vis-toggle-bar">
+        <div class="vis-info">
+          <i class="ti ti-eye"></i>
+          <div class="vis-text">
+            <strong>Vis fanen "Helhedsplan" for kunden</strong>
+            <em>Slå fra for at skjule hele fanen i kundens visning</em>
+          </div>
+        </div>
+        <label class="vis-switch">
+          <input type="checkbox" data-toggle-tool="helhed" checked>
+          <span class="vis-state">Vist</span>
+          <span class="vis-track"><span class="vis-thumb"></span></span>
+        </label>
+      </div>
+
+      <div class="steps" role="tablist">
+        <button class="step active" data-step="setup">1 · Opsætning</button>
+        <button class="step" data-step="grund">2 · Grunddata</button>
+        <button class="step" data-step="indkomst">3 · Indkomst</button>
+        <button class="step" data-step="opsparing">4 · Pensionsopsparing</button>
+        <button class="step" data-step="indbetaling">5 · Indbetalinger</button>
+        <button class="step" data-step="udbetaling">6 · Levestandard</button>
+        <button class="step" data-step="frie">7 · Frie midler</button>
+        <button class="step" data-step="bolig">8 · Bolig</button>
+        <button class="step" data-step="engang">9 · Engangsindskud</button>
+        <button class="step" data-step="ekstra">10 · Ekstra &amp; Arv</button>
+        <button class="step" data-step="r-udbet">11 · Resultat: Udbetalingsplan</button>
+        <button class="step" data-step="r-nod">12 · Resultat: Nødopsparing</button>
+        <button class="step" data-step="r-kilde">13 · Resultat: Indkomstkilder</button>
+        <button class="step" data-step="r-arv">14 · Resultat: Formue &amp; Arv</button>
+        <button class="step" data-step="stress">15 · Følsomhed</button>
+      </div>
+
+      <div class="panel active" id="ph-setup">
+        <p style="margin:0 0 6px; font-size:17px; font-weight:500;">Antal personer i helhedsplanen</p>
+        <p style="margin:0 0 14px; font-size:14px; color:var(--text-secondary);">Person 1 skal altid være den ældste person i husstanden.</p>
+        <div class="person-toggle" id="personToggle" data-persons="2">
+          <span class="slider"></span>
+          <button type="button" data-persons="1"><i class="ti ti-user" style="margin-right:6px;"></i>1 person</button>
+          <button type="button" class="active" data-persons="2"><i class="ti ti-users" style="margin-right:6px;"></i>2 personer</button>
+        </div>
+
+        <div class="grid-2" style="margin-top:28px;">
+          <div class="section col-yellow">
+            <p class="title">Grundparametre</p>
+            <div class="field"><label>Beregningsår (start)</label><input type="number" value="2026"></div>
+            <div class="field"><label>Inflation</label><input type="text" value="1,70%"></div>
+          </div>
+          <div class="section col-blue">
+            <p class="title">Hvordan udbetales Pension og Frie midler?</p>
+            <div class="field"><label>Hvad udbetales først</label><select><option>Frie midler</option><option>Pension</option></select></div>
+          </div>
+        </div>
+
+        <div class="section col-yellow mt-20" >
+          <p class="title">Geninvestering af overskud</p>
+          <div class="row-2col">
+            <div class="field"><label>Geninvesteres overskydende Pension og Indkomst</label><select><option>ja</option><option>nej</option></select></div>
+            <div class="field"><label>Geninvester overskud som Frie midler</label><select><option>ja</option><option>nej</option></select></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-grund">
+        <div class="grid-1-when-1">
+          <div class="section col-yellow">
+            <p class="title">Grunddata — Person 1</p>
+            <div class="field"><label>Navn</label><input type="text" value="Boti"></div>
+            <div class="field"><label>Din alder i dag</label><input type="number" value="45"></div>
+            <div class="field"><label>Folkepensionsalder</label><input type="number" value="70"></div>
+            <div class="field"><label>Folkepension årligt (BRUTTO)</label><input type="text" value="90.528"></div>
+            <div class="field"><label>ATP årligt (BRUTTO)</label><input type="text" value="24.000"></div>
+            <div class="field"><label>Note grunddata — person 1</label><textarea rows="2"></textarea></div>
+          </div>
+          <div class="section col-yellow person-only-2">
+            <p class="title">Grunddata — Person 2</p>
+            <div class="field"><label>Navn</label><input type="text"></div>
+            <div class="field"><label>Din alder i dag</label><input type="number"></div>
+            <div class="field"><label>Folkepensionsalder</label><input type="number"></div>
+            <div class="field"><label>Folkepension årligt (BRUTTO)</label><input type="text"></div>
+            <div class="field"><label>ATP årligt (BRUTTO)</label><input type="text"></div>
+            <div class="field"><label>Note grunddata — person 2</label><textarea rows="2"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-indkomst">
+        <div class="grid-1-when-1">
+          <div class="section col-green">
+            <p class="title">Indkomst og Skat — Person 1</p>
+            <div class="field"><label>Indkomst årligt (BRUTTO)</label><input type="text" value="500.000"></div>
+            <div class="field"><label>Startalder indkomst</label><input type="number" value="45"></div>
+            <div class="field"><label>Slutalder indkomst</label><input type="number" value="59"></div>
+            <p class="it-note">*Ekstra årlig indkomst kan komme fra andre pensionsopsparinger uden for Tietgen Pension, virksomhedsindtægt, boligudlejning, andre investeringer m.fl.</p>
+            <div class="field"><label>Ekstra årlig indkomst (NETTO)</label><input type="text" value="50.000"></div>
+            <div class="field"><label>Startalder ekstra indkomst</label><input type="number" value="60"></div>
+            <div class="field"><label>Slutalder ekstra indkomst</label><input type="number" value="70"></div>
+            <p class="h-sub-bordered">Firmapension</p>
+            <p class="it-note-tight">*Pension udbetalt fra en arbejdsgiverordning (uden for Tietgen Pension). Indtast saldo og forventet udbetalingsstart pr. produkttype.</p>
+            <div class="field"><label>Aldersopsparing Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder aldersopsparing</label><input type="number"></div>
+            <div class="field"><label>Kapitalpension Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder kapitalpension</label><input type="number"></div>
+            <div class="field"><label>Ratepension Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder ratepension</label><input type="number"></div>
+            <div class="field"><label>Antal udbetalingsår for ratepension</label><input type="number"></div>
+            <div class="field"><label>Livrente Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder livrente</label><input type="number"></div>
+            <p class="h-sub-bordered">Skat</p>
+            <p class="it-note-tight">*Effektiv skat af bruttoløn før AM-bidrag: Op til mellemskat (696.000 kr.) 36-37%, op til topskat (846.000 kr.) 39-40%, op til toptopskat (2,8 mio. kr.) 50-51%.</p>
+            <div class="field"><label>Effektiv skat af indkomst</label><input type="text" value="37%"></div>
+            <div class="field"><label>Effektiv skat af pension</label><input type="text" value="34%"></div>
+            <div class="field"><label>Skat af kapitalpension</label><input type="text" value="40%"></div>
+            <div class="field"><label>Note indkomst og skat — person 1</label><textarea rows="2"></textarea></div>
+          </div>
+          <div class="section col-green person-only-2">
+            <p class="title">Indkomst og Skat — Person 2</p>
+            <div class="field"><label>Indkomst årligt (BRUTTO)</label><input type="text"></div>
+            <div class="field"><label>Startalder indkomst</label><input type="number"></div>
+            <div class="field"><label>Slutalder indkomst</label><input type="number"></div>
+            <p class="it-note">*Ekstra årlig indkomst kan komme fra andre pensionsopsparinger uden for Tietgen Pension, virksomhedsindtægt, boligudlejning, andre investeringer m.fl.</p>
+            <div class="field"><label>Ekstra årlig indkomst (NETTO)</label><input type="text"></div>
+            <div class="field"><label>Startalder ekstra indkomst</label><input type="number"></div>
+            <div class="field"><label>Slutalder ekstra indkomst</label><input type="number"></div>
+            <p class="h-sub-bordered">Firmapension</p>
+            <p class="it-note-tight">*Pension udbetalt fra en arbejdsgiverordning (uden for Tietgen Pension). Indtast saldo og forventet udbetalingsstart pr. produkttype.</p>
+            <div class="field"><label>Aldersopsparing Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder aldersopsparing</label><input type="number"></div>
+            <div class="field"><label>Kapitalpension Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder kapitalpension</label><input type="number"></div>
+            <div class="field"><label>Ratepension Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder ratepension</label><input type="number"></div>
+            <div class="field"><label>Antal udbetalingsår for ratepension</label><input type="number"></div>
+            <div class="field"><label>Livrente Saldo</label><input type="text"></div>
+            <div class="field"><label>Startalder livrente</label><input type="number"></div>
+            <p class="h-sub-bordered">Skat</p>
+            <p class="it-note-tight">*Trækprocent niveauer af bruttoløn før AM-bidrag: Op til mellemskat (696.000 kr.) 36-37%, op til topskat (846.000 kr.) 39-40%, og op til toptopskat (2,8 mio. kr.) 50-51%.</p>
+            <div class="field"><label>Effektiv skat af indkomst</label><input type="text"></div>
+            <div class="field"><label>Effektiv skat af pension</label><input type="text"></div>
+            <div class="field"><label>Skat af kapitalpension</label><input type="text"></div>
+            <div class="field"><label>Note indkomst og skat — person 2</label><textarea rows="2"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+            <div class="panel" id="ph-opsparing">
+        <div class="grid-1-when-1">
+          <div class="section col-blue">
+            <p class="title">Pensionsopsparing — Person 1</p>
+            <p style="margin:-6px 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">*Dette felt er kun pensionsopsparing forvaltet af Tietgen Pension.</p>
+            <div class="field"><label>Antal Aldersopsparingsdepoter</label><select data-depot-control="alders-p1"><option selected>1</option><option>2</option><option>3</option></select></div>
+            <div data-depot="alders-p1" data-depot-n="1"><div class="field"><label>Aldersopsparing Saldo (1)</label><input type="text" value="100.000"></div><div class="field"><label>Startalder aldersopsparing (1)</label><input type="number" value="60"></div></div><div data-depot="alders-p1" data-depot-n="2" class="hide"><div class="field"><label>Aldersopsparing Saldo (2)</label><input type="text" value=""></div><div class="field"><label>Startalder aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="3" class="hide"><div class="field"><label>Aldersopsparing Saldo (3)</label><input type="text" value=""></div><div class="field"><label>Startalder aldersopsparing (3)</label><input type="number" value=""></div></div>
+            <div class="field"><label>Antal Kapitalpensionsdepoter</label><select data-depot-control="kap-p1"><option>1</option><option selected>2</option></select></div>
+            <div data-depot="kap-p1" data-depot-n="1"><div class="field"><label>Kapitalpension Saldo (1)</label><input type="text" value="20.000"></div><div class="field"><label>Startalder kapitalpension (1)</label><input type="number" value="65"></div></div><div data-depot="kap-p1" data-depot-n="2" class="hide"><div class="field"><label>Kapitalpension Saldo (2)</label><input type="text" value="50.000"></div><div class="field"><label>Startalder kapitalpension (2)</label><input type="number" value="67"></div></div>
+            <div class="field"><label>Antal Ratepensionsdepoter</label><select data-depot-control="rate-p1"><option selected>1</option><option>2</option></select></div>
+            <div data-depot="rate-p1" data-depot-n="1"><div class="field"><label>Ratepension Saldo (1)</label><input type="text" value="1.000.000"></div><div class="field"><label>Startalder ratepension (1)</label><input type="number" value="60"></div><div class="field"><label>Antal udbetalingsår for ratepension (1)</label><input type="number" value="20"></div></div><div data-depot="rate-p1" data-depot-n="2" class="hide"><div class="field"><label>Ratepension Saldo (2)</label><input type="text" value=""></div><div class="field"><label>Startalder ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Antal udbetalingsår for ratepension (2)</label><input type="number" value=""></div></div>
+            <div class="field"><label>Antal Livrentedepoter</label><select data-depot-control="liv-p1"><option>1</option><option selected>2</option></select></div>
+            <div class="field"><label>Frie Midler udbetales inden Livrenten</label><select><option selected>nej</option><option>ja</option></select></div>
+            <div data-depot="liv-p1" data-depot-n="1"><div class="field"><label>Livrente Saldo (1)</label><input type="text" value="500.000"></div><div class="field"><label>Startalder livrente (1)</label><input type="number" value="65"></div></div><div data-depot="liv-p1" data-depot-n="2" class="hide"><div class="field"><label>Livrente Saldo (2)</label><input type="text" value="200.000"></div><div class="field"><label>Startalder livrente (2)</label><input type="number" value="65"></div></div>
+            <div class="field"><label>Note pensionsopsparing — person 1</label><textarea rows="2"></textarea></div>
+          </div>
+          <div class="section col-blue person-only-2">
+            <p class="title">Pensionsopsparing — Person 2</p>
+            <p style="margin:-6px 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">*Dette felt er kun pensionsopsparing forvaltet af Tietgen Pension.</p>
+            <div class="field"><label>Antal Aldersopsparingsdepoter</label><select data-depot-control="alders-p2"><option>1</option><option>2</option><option>3</option></select></div>
+            <div data-depot="alders-p2" data-depot-n="1"><div class="field"><label>Aldersopsparing Saldo (1)</label><input type="text" value=""></div><div class="field"><label>Startalder aldersopsparing (1)</label><input type="number" value=""></div></div><div data-depot="alders-p2" data-depot-n="2" class="hide"><div class="field"><label>Aldersopsparing Saldo (2)</label><input type="text" value=""></div><div class="field"><label>Startalder aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p2" data-depot-n="3" class="hide"><div class="field"><label>Aldersopsparing Saldo (3)</label><input type="text" value=""></div><div class="field"><label>Startalder aldersopsparing (3)</label><input type="number" value=""></div></div>
+            <div class="field"><label>Antal Kapitalpensionsdepoter</label><select data-depot-control="kap-p2"><option>1</option><option>2</option></select></div>
+            <div data-depot="kap-p2" data-depot-n="1"><div class="field"><label>Kapitalpension Saldo (1)</label><input type="text" value=""></div><div class="field"><label>Startalder kapitalpension (1)</label><input type="number" value=""></div></div><div data-depot="kap-p2" data-depot-n="2" class="hide"><div class="field"><label>Kapitalpension Saldo (2)</label><input type="text" value=""></div><div class="field"><label>Startalder kapitalpension (2)</label><input type="number" value=""></div></div>
+            <div class="field"><label>Antal Ratepensionsdepoter</label><select data-depot-control="rate-p2"><option>1</option><option>2</option></select></div>
+            <div data-depot="rate-p2" data-depot-n="1"><div class="field"><label>Ratepension Saldo (1)</label><input type="text" value=""></div><div class="field"><label>Startalder ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Antal udbetalingsår for ratepension (1)</label><input type="number" value=""></div></div><div data-depot="rate-p2" data-depot-n="2" class="hide"><div class="field"><label>Ratepension Saldo (2)</label><input type="text" value=""></div><div class="field"><label>Startalder ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Antal udbetalingsår for ratepension (2)</label><input type="number" value=""></div></div>
+            <div class="field"><label>Antal Livrentedepoter</label><select data-depot-control="liv-p2"><option>1</option><option>2</option></select></div>
+            <div class="field"><label>Frie Midler udbetales inden Livrenten</label><select><option selected>nej</option><option>ja</option></select></div>
+            <div data-depot="liv-p2" data-depot-n="1"><div class="field"><label>Livrente Saldo (1)</label><input type="text" value=""></div><div class="field"><label>Startalder livrente (1)</label><input type="number" value=""></div></div><div data-depot="liv-p2" data-depot-n="2" class="hide"><div class="field"><label>Livrente Saldo (2)</label><input type="text" value=""></div><div class="field"><label>Startalder livrente (2)</label><input type="number" value=""></div></div>
+            <div class="field"><label>Note pensionsopsparing — person 2</label><textarea rows="2"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+            <div class="panel" id="ph-indbetaling">
+        <div class="grid-1-when-1">
+          <div class="section col-blue">
+            <p class="title">Pensionsindbetalinger — Person 1</p>
+            <p style="margin:-6px 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">*Aldersopsparing indbetaling 2026 (årligt max. 9.900 DKK eller 64.200 DKK 7 år inden pension.)</p>
+            <div class="field"><label>Aldersopsparings indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
+            <div data-depot="alders-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (1)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="3" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (3)</label><input type="number" value=""></div></div>
+            <p class="it-note">*Ratepension indbetaling 2026 (årligt max. Firmapension 74.674 DKK &amp; Privatpension 68.700 DKK).</p>
+            <div class="field"><label>Ratepension indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
+            <div data-depot="rate-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (1)</label><input type="number" value=""></div></div><div data-depot="rate-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (2)</label><input type="number" value=""></div></div>
+            <p class="it-note">*Livrente indbetaling 2026: Der er intet loft for selve indbetalingen. Der ydes dog kun fuldt fradrag i indbetalingsåret op til 63.200 kr. (opfyldningsfradraget). Ved indbetalinger herover skal fradraget som udgangspunkt fordeles over 10 år.</p>
+            <div class="field"><label>Livrente indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
+            <div data-depot="liv-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (1)</label><input type="number" value=""></div></div><div data-depot="liv-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (2)</label><input type="number" value=""></div></div>
+            <div class="notes-block mt-18" >
+              <p><strong>BEMÆRK:</strong> Antallet af depoter pr. produkttype styres på fanen "4 · Pensionsopsparing". Hvis du ændrer antallet der, opdateres felterne her automatisk.</p>
+            </div>
+            <div class="field mt-18" ><label>Note pensionsindbetalinger — person 1</label><textarea rows="2"></textarea></div>
+          </div>
+          <div class="section col-blue person-only-2">
+            <p class="title">Pensionsindbetalinger — Person 2</p>
+            <p style="margin:-6px 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">*Aldersopsparing indbetaling 2026 (årligt max. 9.900 DKK eller 64.200 DKK 7 år inden pension.)</p>
+            <div class="field"><label>Aldersopsparings indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
+            <div data-depot="alders-p2" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (1)</label><input type="number" value=""></div></div><div data-depot="alders-p2" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p2" data-depot-n="3" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (3)</label><input type="number" value=""></div></div>
+            <p class="it-note">*Ratepension indbetaling 2026 (årligt max. Firmapension 74.674 DKK &amp; Privatpension 68.700 DKK).</p>
+            <div class="field"><label>Ratepension indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
+            <div data-depot="rate-p2" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (1)</label><input type="number" value=""></div></div><div data-depot="rate-p2" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (2)</label><input type="number" value=""></div></div>
+            <p class="it-note">*Livrente indbetaling 2026: Der er intet loft for selve indbetalingen. Der ydes dog kun fuldt fradrag i indbetalingsåret op til 63.200 kr. (opfyldningsfradraget). Ved indbetalinger herover skal fradraget som udgangspunkt fordeles over 10 år.</p>
+            <div class="field"><label>Livrente indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
+            <div data-depot="liv-p2" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (1)</label><input type="number" value=""></div></div><div data-depot="liv-p2" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (2)</label><input type="number" value=""></div></div>
+            <div class="notes-block mt-18" >
+              <p><strong>BEMÆRK:</strong> Antallet af depoter pr. produkttype styres på fanen "4 · Pensionsopsparing". Hvis du ændrer antallet der, opdateres felterne her automatisk.</p>
+            </div>
+            <div class="field mt-18" ><label>Note pensionsindbetalinger — person 2</label><textarea rows="2"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-udbetaling">
+        <div class="grid-2">
+          <div class="section col-blue">
+            <p class="title">Rådighedsbehov</p>
+            <div class="field"><label>Rådighedsbehov først år (NETTO)</label><input type="text" value="300.000"></div>
+            <div class="field"><label>Rådighedsbehov ændring</label><input type="text" value="80%"></div>
+            <div class="field"><label>Startalder for ændring af rådighedsbehov</label><input type="number" value="70"></div>
+            <div class="field"><label>Note rådighedsbehov</label><textarea rows="2"></textarea></div>
+          </div>
+          <div class="section col-blue">
+            <p class="title">Pensionsafkast</p>
+            <div class="field"><label>Bruttoafkast</label><input type="text" value="10,4%"></div>
+            <div class="field"><label>Investeringsomkostninger</label><input type="text" value="0,39%"></div>
+            <div class="field"><label>Admin omkostninger</label><input type="text" value="0,45%"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:var(--bg-secondary); border-radius:var(--radius-md); margin:14px 0;">
+              <span style="font-size:14px; color:var(--text-secondary);">Nettoafkast (EFTER 15,3% PAL)</span>
+              <span style="font-size:22px; font-weight:700; color:var(--accent-text);">8,0%</span>
+            </div>
+            <p style="margin:0 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">"Bruttoafkastet er beregnet før omkostninger og skat, og baseret på tallene fra din pensionsplan eller den procentsats, du har aftalt med din rådgiver."</p>
+            <div class="field"><label>Note pensionsafkast</label><textarea rows="2"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-frie">
+        <div class="grid-2">
+          <div class="section col-brown">
+            <p class="title">Frie midler — Anvendelse</p>
+            <div class="field"><label>Samlet startkapital indskud</label><input type="text" value="500.000"></div>
+            <div class="field"><label>Startkapital Aktiesparekonto (ASK — 17% lagerskat)</label><input type="text" value="174.200"></div>
+            <div class="field"><label>Årlig indbetaling ASK</label><input type="text" value="0"></div>
+            <div class="field"><label>Startkapital Aktiedepot portefølje</label><input type="text" value="325.800"></div>
+            <div class="field"><label>Årlig indbetaling Aktiedepot portefølje</label><input type="text" value="0"></div>
+            <div class="field"><label>Afkast skattegrænser af antal person</label><input type="number" value="1"></div>
+            <div class="field"><label>Kontant i reserver på bankkonto</label><input type="text" value="100.000"></div>
+            <div class="field"><label>Note frie midler — anvendelse</label><textarea rows="2"></textarea></div>
+          </div>
+          <div class="section col-brown">
+            <p class="title">Frie midler — Afkast</p>
+            <div class="field"><label>Bruttoafkast</label><input type="text" value="10,4%"></div>
+            <div class="field"><label>Investeringsomk.</label><input type="text" value="0,3%"></div>
+            <div class="field"><label>Platformsomk. (ikke fradragsberettiget)</label><input type="text" value="0,7%"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:var(--bg-secondary); border-radius:var(--radius-md); margin:14px 0;">
+              <span style="font-size:14px; color:var(--text-secondary);">Nettoafkast (FØR afkastskat)</span>
+              <span style="font-size:22px; font-weight:700; color:var(--accent-text);">9,5%</span>
+            </div>
+            <p style="margin:0 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">"Beregningen er baseret på dit valgte bruttoafkast før omkostninger og skat. For at give perspektiv har det globale aktiemarked (aktieindeks) de sidste 47 år leveret et årligt gennemsnitligt afkast på 10,4 %."</p>
+            <div class="field"><label>Note frie midler — afkast</label><textarea rows="2"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-engang">
+        <div class="section col-green">
+          <p class="title">Engangsindskud (arv, virksomhedssalg m.fl.)</p>
+          <div class="row-2col">
+            <div class="field"><label>Engangsindskud 1 — beløb</label><input type="text" value="500.000"></div>
+            <div class="field"><label>Engangsindskud 1 — alder person 1</label><input type="number" value="75"></div>
+            <div class="field"><label>Engangsindskud 2 — beløb</label><input type="text"></div>
+            <div class="field"><label>Engangsindskud 2 — alder person 1</label><input type="number"></div>
+            <div class="field"><label>Engangsindskud 3 — beløb</label><input type="text"></div>
+            <div class="field"><label>Engangsindskud 3 — alder person 1</label><input type="number"></div>
+            <div class="field"><label>Engangsindskud 4 — beløb</label><input type="text"></div>
+            <div class="field"><label>Engangsindskud 4 — alder person 1</label><input type="number"></div>
+            <div class="field"><label>Engangsindskud 5 — beløb</label><input type="text"></div>
+            <div class="field"><label>Engangsindskud 5 — alder person 1</label><input type="number"></div>
+          </div>
+          <div class="field mt-14" ><label>Note engangsindskud</label><textarea rows="2"></textarea></div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-bolig">
+        <div class="section col-green">
+          <p class="title">Engangsindskud ved boligsalg (frivaerdi)</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 22px; align-items:end;">
+            <div class="field"><label>Boligens pris i dag (eller ved fremtidig købsdato)</label><input type="text" value="2.000.000"></div>
+            <div class="field"><label>Gæld i boligen i dag (eller ved fremtidig købsdato)</label><input type="text" value="1.000.000"></div>
+            <div class="field"><label>Friværdi i dag (eller ved fremtidig købsdato)</label><input type="text" value="1.000.000" readonly></div>
+            <div class="field"><label>Boligkøb — din alder (min. din alder i dag)</label><input type="number" value="45"></div>
+            <div class="field"><label>Boligsalg — din alder ved salget</label><input type="number" value="90"></div>
+            <div class="field"><label>Bopælskommune</label><input type="text" value="kbh"></div>
+            <div class="field"><label>Årlig gennemsnits boligprisstigning</label><input type="text" value="5,00%"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:var(--bg-secondary); border-radius:var(--radius-md);">
+              <span style="font-size:14px; color:var(--text-secondary);">Friværdi ved salg</span>
+              <span style="font-size:20px; font-weight:700; color:var(--accent-text);">17.868.516 kr.</span>
+            </div>
+          </div>
+          <p style="margin:14px 0 0; font-size:13px; color:var(--text-secondary); font-style:italic;">"Tilvæksten i din friværdi beregnes med udgangspunkt i den gennemsnitlige boligprisstigning i din kommune over de seneste 30 år, eller ud fra en specifik procentsats aftalt med din rådgiver. Beregningen forudsætter, at boligen er afdragsfrit finansieret, hvilket betyder, at restgælden forbliver konstant, så udviklingen i friværdien udelukkende baseres på boligens forventede værdistigning."</p>
+          <div class="field mt-14" ><label>Note bolig</label><textarea rows="2"></textarea></div>
+          <p style="margin:14px 0 0; font-size:13px; color:var(--text-secondary);">Link til boligprisudvikling (30 års gennemsnit i enkelte kommuner): <a href="https://www.dr.dk/nyheder/indland/se-kortet-saa-meget-er-boligpriserne-steget-hvor-du-bor" target="_blank" rel="noopener" style="color:var(--info-strong); text-decoration:underline;">dr.dk/nyheder/indland/se-kortet-saa-meget-er-boligpriserne-steget-hvor-du-bor</a></p>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-ekstra">
+        <div class="section col-teal" style="margin-bottom:20px;">
+          <p class="title">Ekstra rådighedsbehov i enkelte år</p>
+          <div class="row-2col">
+            <div class="field"><label>Ekstra rådighedsbehov 1</label><input type="text" value="500.000"></div>
+            <div class="field"><label>Alder (person 1) for ekstra rådighedsbehov 1</label><input type="number" value="70"></div>
+            <div class="field"><label>Ekstra rådighedsbehov 2</label><input type="text"></div>
+            <div class="field"><label>Alder (person 1) ekstra rådighedsbehov 2</label><input type="number"></div>
+            <div class="field"><label>Ekstra rådighedsbehov 3</label><input type="text"></div>
+            <div class="field"><label>Alder (person 1) ekstra rådighedsbehov 3</label><input type="number"></div>
+            <div class="field"><label>Ekstra rådighedsbehov 4</label><input type="text"></div>
+            <div class="field"><label>Alder (person 1) ekstra rådighedsbehov 4</label><input type="number"></div>
+            <div class="field"><label>Ekstra rådighedsbehov 5</label><input type="text"></div>
+            <div class="field"><label>Alder (person 1) ekstra rådighedsbehov 5</label><input type="number"></div>
+          </div>
+          <div class="field mt-14" ><label>Note ekstra rådighedsbehov</label><textarea rows="2"></textarea></div>
+        </div>
+        <div class="grid-1-when-1">
+          <div class="section col-teal">
+            <p class="title">Udbetaling af løbende arveforskud — Person 1</p>
+            <div class="field"><label>Skal der udbetales løbende arveforskud</label><select><option>nej</option><option>ja</option></select></div>
+            <div class="field"><label>Startalder for arveforskudsudbetaling</label><input type="number"></div>
+            <div class="field"><label>Slutalder for arveforskudsudbetaling</label><input type="number"></div>
+            <div class="field"><label>Årlig udbetalt arveforskud</label><input type="text"></div>
+            <div class="field"><label>Udbetaling er inflationsreguleret</label><select><option>ja</option><option>nej</option></select></div>
+            <div class="field"><label>Note udbetaling af løbende arveforskud — person 1</label><textarea rows="2"></textarea></div>
+          </div>
+          <div class="section col-teal person-only-2">
+            <p class="title">Udbetaling af løbende arveforskud — Person 2</p>
+            <div class="field"><label>Skal der udbetales løbende arveforskud</label><select><option>nej</option><option>ja</option></select></div>
+            <div class="field"><label>Startalder for arveforskudsudbetaling</label><input type="number"></div>
+            <div class="field"><label>Slutalder for arveforskudsudbetaling</label><input type="number"></div>
+            <div class="field"><label>Årlig udbetalt arveforskud</label><input type="text"></div>
+            <div class="field"><label>Udbetaling er inflationsreguleret</label><select><option>ja</option><option>nej</option></select></div>
+            <div class="field"><label>Note udbetaling af løbende arveforskud — person 2</label><textarea rows="2"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-stress">
+        <div class="section col-red" style="margin-bottom:20px;">
+          <p class="title" style="color:#fff;">Pensionsafkast — Følsomhedsanalyse</p>
+          <div class="field" style="max-width:420px;"><label>Startalder for stress-test (Pers. 1's alder)</label><input type="number"></div>
+          <div class="row-2col">
+            <div class="field"><label>År 1 Afkast (Stress)</label><input type="text" value="-30,0%"></div>
+            <div class="field"><label>År 2 Afkast (Stress)</label><input type="text" value="-15,0%"></div>
+            <div class="field"><label>År 3 Afkast (Stress)</label><input type="text" value="30,0%"></div>
+            <div class="field"><label>År 4 Afkast (Stress)</label><input type="text" value="30,0%"></div>
+          </div>
+          <div class="field mt-14" ><label>Note pensionsafkast — følsomhedsanalyse</label><textarea rows="2"></textarea></div>
+        </div>
+        <div class="section col-red">
+          <p class="title">Frie midler afkast — Følsomhedsanalyse</p>
+          <div class="field" style="max-width:420px;"><label>Startalder for stress-test (Pers. 1's alder)</label><input type="number"></div>
+          <div class="row-2col">
+            <div class="field"><label>År 1 Afkast (Stress)</label><input type="text" value="-30,0%"></div>
+            <div class="field"><label>År 2 Afkast (Stress)</label><input type="text" value="-15,0%"></div>
+            <div class="field"><label>År 3 Afkast (Stress)</label><input type="text" value="30,0%"></div>
+            <div class="field"><label>År 4 Afkast (Stress)</label><input type="text" value="30,0%"></div>
+          </div>
+          <div class="field mt-14" ><label>Note frie midler afkast — følsomhedsanalyse</label><textarea rows="2"></textarea></div>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-r-udbet">
+        <p style="margin:0 0 14px; font-size:22px; font-weight:700; text-align:center;">Din udbetalingsplan (efter skat)</p>
+        <div class="chart-wrap"><canvas id="chartHelhedUdbet"></canvas></div>
+        <p class="chart-caption">*Modellen forsøger at matche indkomsten til rådighedsbehovet, således at mest muligt af formuen forbliver investeret.</p>
+        <div class="year-table-wrap"><table class="year-table" id="tableHelhedUdbet"></table></div>
+      </div>
+
+      <div class="panel" id="ph-r-nod">
+        <p style="margin:0 0 14px; font-size:22px; font-weight:700; text-align:center;">Likvid nødopsparing (efter skat)</p>
+        <div class="chart-wrap"><canvas id="chartHelhedNod"></canvas></div>
+        <p class="chart-caption">*Likvid nødopsparing er midler som straks kan hæves fra pensionen eller investeringen.</p>
+        <div class="year-table-wrap"><table class="year-table" id="tableHelhedNod"></table></div>
+      </div>
+
+      <div class="panel" id="ph-r-kilde">
+        <p style="margin:0 0 14px; font-size:22px; font-weight:700; text-align:center;">Hvor pengene kommer fra (efter skat)</p>
+        <div class="chart-wrap"><canvas id="chartHelhedKilde"></canvas></div>
+        <p class="chart-caption">*Modellen forsøger at matche indkomsten til rådighedsbehovet, således at mest muligt af formuen forbliver investeret.</p>
+        <div class="year-table-wrap"><table class="year-table" id="tableHelhedKilde"></table></div>
+      </div>
+
+      <div class="panel" id="ph-r-arv">
+        <p style="margin:0 0 14px; font-size:22px; font-weight:700; text-align:center;">Formue i alt til arv (efter skat)</p>
+        <div class="chart-wrap"><canvas id="chartHelhedArv"></canvas></div>
+        <p class="chart-caption">*Skatten trækkes fra din pension, før der beregnes arveafgift.</p>
+        <div class="year-table-wrap"><table class="year-table" id="tableHelhedArv"></table></div>
       </div>
 
       </section>
@@ -1222,6 +1623,9 @@
     if (builtSection) {
       builtSection.hidden = false;
       builtSection.classList.add('active');
+      // Lazy-draw charts for sections that need it
+      if (tool === 'afkast' && !drawn.pensionLine) drawPensionDashboard();
+      if (tool === 'helhed') maybeDrawHelhedChart();
     } else {
       const empty = document.querySelector('.tool-section.empty');
       empty.hidden = false;
@@ -1237,7 +1641,7 @@
     section.querySelectorAll('.step').forEach(x => x.classList.toggle('active', x === stepBtn));
     const name = stepBtn.dataset.step;
     section.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    const target = section.querySelector('#p-' + name) || section.querySelector('#pf-' + name);
+    const target = section.querySelector('#p-' + name) || section.querySelector('#pf-' + name) || section.querySelector('#ph-' + name);
     if (target) target.classList.add('active');
     if (section.dataset.tool === 'flyt') {
       if (name === 'result' && !drawn.result) drawResult();
@@ -1253,6 +1657,19 @@
   }));
   document.getElementById('goResult').addEventListener('click', () => activateStep(document.querySelector('.tool-section[data-tool="flyt"] .step[data-step="result"]')));
   document.getElementById('go-input').addEventListener('click', () => activateStep(document.querySelector('.tool-section[data-tool="flyt"] .step[data-step="input"]')));
+
+  // Tab visibility toggle (author tool) — hides the whole tab from the customer's view
+  document.querySelectorAll('input[data-toggle-tool]').forEach(cb => {
+    const apply = () => {
+      const toolName = cb.dataset.toggleTool;
+      const toolBtn = document.querySelector('.tool[data-tool="' + toolName + '"]');
+      if (toolBtn) toolBtn.classList.toggle('tool-hidden', !cb.checked);
+      const stateLbl = cb.parentElement.querySelector('.vis-state');
+      if (stateLbl) stateLbl.textContent = cb.checked ? 'Vist' : 'Skjult';
+    };
+    cb.addEventListener('change', apply);
+    apply();
+  });
 
   // Coverage checkboxes — highlight selected item
   document.querySelectorAll('.coverage-item input[type="checkbox"]').forEach(cb => {
@@ -1532,6 +1949,300 @@
         plugins: { legend: { display: false }, tooltip: { mode: 'index', callbacks: { label: c => c.dataset.label + ': ' + Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } },
         scales: { y: { stacked: true, ticks: { font: { size: 13 }, callback: v => (v/1000000).toFixed(0) + ' mio.' }, grid: { color: 'rgba(0,0,0,0.06)' }, title: { display: true, text: 'DKK', font: { size: 13 } } }, x: { ticks: { font: { size: 13 } }, grid: { display: false }, title: { display: true, text: 'År', font: { size: 13 } } } }
       }
+    });
+  }
+
+  // ============ Din pension dashboard ============
+  function drawPensionDashboard() {
+    drawn.pensionLine = true;
+    const months = ['jun.25','jul.25','aug.25','sep.25','okt.25','nov.25','dec.25','jan.26','feb.26','mar.26','apr.26','maj.26'];
+    // Simulated month-by-month total pension savings (kr.)
+    const totals = [3950000, 3990000, 4040000, 4060000, 4120000, 4180000, 4210000, 4255000, 4275000, 4320000, 4360000, 4396626];
+    // Simulated month-by-month afkast (kr., efter omkostninger og PAL)
+    const afkast = [];
+    for (let i = 0; i < totals.length; i++) {
+      afkast.push(i === 0 ? 22000 : (totals[i] - totals[i-1] + 1500));
+    }
+    new Chart(document.getElementById('chartPensionLine'), {
+      type: 'line',
+      data: { labels: months, datasets: [{
+        label: 'Pensionsopsparing', data: totals,
+        borderColor: '#07A0C3', backgroundColor: 'rgba(7,160,195,0.12)',
+        tension: 0.35, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#07A0C3', fill: true
+      }]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } },
+        scales: { y: { ticks: { font: { size: 13 }, callback: v => (v/1000000).toFixed(1) + ' mio.' }, grid: { color: 'rgba(0,0,0,0.06)' } }, x: { ticks: { font: { size: 13 } }, grid: { display: false } } }
+      }
+    });
+    new Chart(document.getElementById('chartPensionBars'), {
+      type: 'bar',
+      data: { labels: months, datasets: [{
+        label: 'Månedligt afkast', data: afkast,
+        backgroundColor: afkast.map(v => v >= 0 ? '#0F6E56' : '#C44545'),
+        borderRadius: 6, barPercentage: 0.65
+      }]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } },
+        scales: { y: { ticks: { font: { size: 13 }, callback: v => (v/1000).toFixed(0) + ' k' }, grid: { color: 'rgba(0,0,0,0.06)' } }, x: { ticks: { font: { size: 13 } }, grid: { display: false } } }
+      }
+    });
+  }
+
+  // ============ Person count toggle (Helhedsplan) ============
+  const personToggle = document.getElementById('personToggle');
+  if (personToggle) {
+    const helhedSection = personToggle.closest('.tool-section');
+    function clearPerson2Inputs() {
+      helhedSection.querySelectorAll('.person-only-2').forEach(sec => {
+        sec.querySelectorAll('input').forEach(inp => {
+          if (inp.type === 'checkbox' || inp.type === 'radio') inp.checked = false;
+          else inp.value = '';
+        });
+        sec.querySelectorAll('textarea').forEach(t => t.value = '');
+        sec.querySelectorAll('select').forEach(s => { s.selectedIndex = 0; });
+      });
+      // Also reset Person 2 depot-control selects so their hidden rows reset
+      helhedSection.querySelectorAll('[data-depot-control*="p2"]').forEach(s => {
+        s.dispatchEvent(new Event('change'));
+      });
+    }
+    function applyPersons(n) {
+      const prev = personToggle.dataset.persons;
+      personToggle.dataset.persons = n;
+      personToggle.querySelectorAll('button').forEach(b => b.classList.toggle('active', b.dataset.persons === n));
+      helhedSection.classList.toggle('helhed-state-2', n === '2');
+      helhedSection.classList.toggle('helhed-state-1', n === '1');
+      if (n === '1' && prev === '2') clearPerson2Inputs();
+    }
+    personToggle.querySelectorAll('button').forEach(b => b.addEventListener('click', () => applyPersons(b.dataset.persons)));
+    applyPersons('2');
+  }
+
+  // ============ Depot count dynamic visibility (Helhedsplan) ============
+  document.querySelectorAll('[data-depot-control]').forEach(sel => {
+    const apply = () => {
+      const key = sel.dataset.depotControl;
+      const max = parseInt(sel.value, 10) || 1;
+      document.querySelectorAll('[data-depot="' + key + '"]').forEach(row => {
+        const n = parseInt(row.dataset.depotN, 10) || 1;
+        row.style.display = (n <= max) ? '' : 'none';
+      });
+    };
+    sel.addEventListener('change', apply);
+    apply();
+  });
+
+  // ============ Helhedsplan result charts ============
+  // Years (ages) used by all 4 result tabs
+  const HELHED_AGES = Array.from({length: 46}, (_, i) => 45 + i); // 45..90
+  // Helper for currency tick
+  const krTick = v => v >= 1000000 ? (v/1000000).toFixed(1).replace('.0','') + ' mio.' : (v/1000).toFixed(0) + ' k';
+  // Build a HTML table from data series
+  function buildYearTable(tableEl, ages, rows) {
+    if (!tableEl) return;
+    const head = '<thead><tr><th>Alder</th>' + ages.map(a => '<th>' + a + '</th>').join('') + '</tr></thead>';
+    const body = '<tbody>' + rows.map(r => {
+      return '<tr><td>' + r.label + '</td>' + r.values.map(v => '<td>' + (v === null || v === undefined ? '—' : Math.round(v).toLocaleString('da-DK')) + '</td>').join('') + '</tr>';
+    }).join('') + '</tbody>';
+    tableEl.innerHTML = head + body;
+  }
+  // Realistic-ish synthetic data
+  function makeHelhedData() {
+    const n = HELHED_AGES.length;
+    // Salary phase ages 45-59, retirement ages 60+
+    const ages = HELHED_AGES;
+    const lon = ages.map(a => a <= 59 ? 315000 : 0);
+    const ekstra = ages.map(a => a >= 60 && a <= 69 ? 50000 : 0);
+    const folkep = ages.map(a => a >= 70 ? 90000 + (a-70)*900 : 0);
+    const atp = ages.map(a => a >= 70 ? 24000 : 0);
+    const livrente = ages.map(a => a >= 65 ? 180000 + (a-65)*1200 : 0);
+    const ratep = ages.map(a => a >= 60 && a <= 79 ? 180000 + (a-60)*4000 : 0);
+    const kapital = ages.map(a => a === 65 ? 18000 : (a === 67 ? 45000 : 0));
+    const alders = ages.map(a => a >= 60 && a <= 64 ? 14000 : 0);
+    const fri = ages.map(a => {
+      if (a < 48) return Math.round(562 * Math.pow(1.18, a-47));
+      if (a <= 59) return Math.round(562 * Math.pow(1.18, a-47));
+      if (a <= 64) return 250000 + (a-60)*15000;
+      if (a <= 69) return 80000 - (a-64)*5000;
+      return 50000 + (a-69)*8000;
+    });
+    // Rådighedsbehov NETTO (line)
+    const radig = ages.map(a => a < 70 ? 300000 + (a-45)*8000 : (a === 70 ? 1020000 : 380000 + (a-71)*3500));
+    // Samlet indkomst (sum)
+    const samletInd = ages.map((a, i) => lon[i] + ekstra[i] + folkep[i] + atp[i] + livrente[i] + ratep[i] + kapital[i] + alders[i] + fri[i]);
+    // Likvid nødopsparing buckets
+    const fri_bucket = ages.map((a, i) => {
+      if (a <= 60) return 700000 + (a-45)*30000;
+      if (a <= 64) return Math.max(0, 1100000 - (a-60)*250000);
+      if (a <= 71) return 7000 + (a-64)*8000;
+      return 200000 + (a-71)*350000;
+    });
+    const alders_bucket = ages.map(a => a <= 60 ? 80000 + (a-45)*15000 : (a <= 64 ? 320000 - (a-60)*60000 : 0));
+    const kapital_bucket = ages.map(a => a >= 65 && a <= 67 ? 120000 - (a-65)*40000 : 0);
+    // Formue til arv (stacked, growing)
+    const arv_liv = ages.map(a => 500000 * Math.pow(1.085, a-45));
+    const arv_rate = ages.map(a => 1000000 * Math.pow(1.06, a-45) * (a < 75 ? 1 : Math.max(0.4, 1-(a-75)*0.04)));
+    const arv_kap = ages.map(a => 70000 * Math.pow(1.04, a-45) * (a < 70 ? 1 : 0.3));
+    const arv_aold = ages.map(a => 100000 * Math.pow(1.04, a-45) * (a < 65 ? 1 : 0.2));
+    const arv_fri = ages.map(a => 800000 * Math.pow(1.05, a-45));
+    const arv_bolig = ages.map(a => 1000000 * Math.pow(1.05, a-45));
+    return {
+      ages, lon, ekstra, folkep, atp, livrente, ratep, kapital, alders, fri,
+      radig, samletInd,
+      fri_bucket, alders_bucket, kapital_bucket,
+      arv_liv, arv_rate, arv_kap, arv_aold, arv_fri, arv_bolig
+    };
+  }
+  const helhedDrawn = {};
+  function drawHelhedUdbet() {
+    if (helhedDrawn.udbet) return;
+    helhedDrawn.udbet = true;
+    const d = makeHelhedData();
+    new Chart(document.getElementById('chartHelhedUdbet'), {
+      data: { labels: d.ages, datasets: [
+        { type: 'bar', label: 'Samlet indkomst', data: d.samletInd, backgroundColor: '#34A4D7', borderRadius: 4, order: 2 },
+        { type: 'line', label: 'Rådighedsbehov (NETTO)', data: d.radig, borderColor: '#F2A33C', backgroundColor: '#F2A33C', borderWidth: 3, pointRadius: 0, tension: 0.1, order: 1 }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { font: { size: 13 } } }, tooltip: { callbacks: { label: c => c.dataset.label + ': ' + Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } },
+        scales: { y: { ticks: { font: { size: 12 }, callback: krTick }, grid: { color: 'rgba(0,0,0,0.06)' }, title: { display: true, text: 'DKK', font: { size: 12 } } }, x: { ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 0 }, grid: { display: false }, title: { display: true, text: 'Alder — person 1', font: { size: 12 } } } }
+      }
+    });
+    buildYearTable(document.getElementById('tableHelhedUdbet'), d.ages, [
+      { label: 'Samlet indkomst', values: d.samletInd },
+      { label: 'Rådighedsbehov (NETTO)', values: d.radig }
+    ]);
+  }
+  function drawHelhedNod() {
+    if (helhedDrawn.nod) return;
+    helhedDrawn.nod = true;
+    const d = makeHelhedData();
+    new Chart(document.getElementById('chartHelhedNod'), {
+      type: 'bar',
+      data: { labels: d.ages, datasets: [
+        { label: 'Frie Midler', data: d.fri_bucket, backgroundColor: '#A8478C' },
+        { label: 'Aldersopsparing', data: d.alders_bucket, backgroundColor: '#9A8B22' },
+        { label: 'Kapitalpension i alt (efter skat)', data: d.kapital_bucket, backgroundColor: '#3CA59A' }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { font: { size: 13 } } }, tooltip: { mode: 'index', callbacks: { label: c => c.dataset.label + ': ' + Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } },
+        scales: { y: { stacked: true, ticks: { font: { size: 12 }, callback: krTick }, grid: { color: 'rgba(0,0,0,0.06)' } }, x: { stacked: true, ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 0 }, grid: { display: false }, title: { display: true, text: 'Alder — person 1', font: { size: 12 } } } }
+      }
+    });
+    const samlet = d.ages.map((_, i) => d.fri_bucket[i] + d.alders_bucket[i] + d.kapital_bucket[i]);
+    buildYearTable(document.getElementById('tableHelhedNod'), d.ages, [
+      { label: 'Frie Midler', values: d.fri_bucket },
+      { label: 'Aldersopsparing', values: d.alders_bucket },
+      { label: 'Kapitalpension', values: d.kapital_bucket },
+      { label: 'Samlet likvid nødopsparing', values: samlet }
+    ]);
+  }
+  function drawHelhedKilde() {
+    if (helhedDrawn.kilde) return;
+    helhedDrawn.kilde = true;
+    const d = makeHelhedData();
+    new Chart(document.getElementById('chartHelhedKilde'), {
+      type: 'bar',
+      data: { labels: d.ages, datasets: [
+        { label: 'Løn', data: d.lon, backgroundColor: '#E07A7A' },
+        { label: 'Ekstra indkomst', data: d.ekstra, backgroundColor: '#2E2E7C' },
+        { label: 'Folkepension', data: d.folkep, backgroundColor: '#E8C870' },
+        { label: 'ATP', data: d.atp, backgroundColor: '#2E7D52' },
+        { label: 'Livrente', data: d.livrente, backgroundColor: '#9CC8D8' },
+        { label: 'Ratepension', data: d.ratep, backgroundColor: '#8C2A47' },
+        { label: 'Kapitalpension', data: d.kapital, backgroundColor: '#3CA59A' },
+        { label: 'Aldersopsparing', data: d.alders, backgroundColor: '#9A8B22' },
+        { label: 'Frie midler', data: d.fri, backgroundColor: '#A8478C' }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { font: { size: 12 }, boxWidth: 14 } }, tooltip: { mode: 'index', callbacks: { label: c => c.dataset.label + ': ' + Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } },
+        scales: { y: { stacked: true, ticks: { font: { size: 12 }, callback: krTick }, grid: { color: 'rgba(0,0,0,0.06)' }, title: { display: true, text: 'DKK', font: { size: 12 } } }, x: { stacked: true, ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 0 }, grid: { display: false }, title: { display: true, text: 'Alder — person 1', font: { size: 12 } } } }
+      }
+    });
+    buildYearTable(document.getElementById('tableHelhedKilde'), d.ages, [
+      { label: 'Løn', values: d.lon },
+      { label: 'Ekstra indkomst', values: d.ekstra },
+      { label: 'Folkepension', values: d.folkep },
+      { label: 'ATP', values: d.atp },
+      { label: 'Livrente', values: d.livrente },
+      { label: 'Ratepension', values: d.ratep },
+      { label: 'Kapitalpension', values: d.kapital },
+      { label: 'Aldersopsparing', values: d.alders },
+      { label: 'Frie midler', values: d.fri }
+    ]);
+  }
+  function drawHelhedArv() {
+    if (helhedDrawn.arv) return;
+    helhedDrawn.arv = true;
+    const d = makeHelhedData();
+    new Chart(document.getElementById('chartHelhedArv'), {
+      type: 'bar',
+      data: { labels: d.ages, datasets: [
+        { label: 'Livrente', data: d.arv_liv, backgroundColor: '#9CC8D8' },
+        { label: 'Ratepension', data: d.arv_rate, backgroundColor: '#8C2A47' },
+        { label: 'Kapitalpension', data: d.arv_kap, backgroundColor: '#3CA59A' },
+        { label: 'Aldersopsparing', data: d.arv_aold, backgroundColor: '#9A8B22' },
+        { label: 'Frie Midler', data: d.arv_fri, backgroundColor: '#A8478C' },
+        { label: 'Bolig friværdi', data: d.arv_bolig, backgroundColor: '#E07A57' }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { font: { size: 12 }, boxWidth: 14 } }, tooltip: { mode: 'index', callbacks: { label: c => c.dataset.label + ': ' + Math.round(c.parsed.y).toLocaleString('da-DK') + ' kr.' } } },
+        scales: { y: { stacked: true, ticks: { font: { size: 12 }, callback: krTick }, grid: { color: 'rgba(0,0,0,0.06)' } }, x: { stacked: true, ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 0 }, grid: { display: false }, title: { display: true, text: 'Alder — person 1', font: { size: 12 } } } }
+      }
+    });
+    const opsparet = d.ages.map((_, i) => d.arv_liv[i] + d.arv_rate[i] + d.arv_kap[i] + d.arv_aold[i] + d.arv_fri[i] + d.arv_bolig[i]);
+    buildYearTable(document.getElementById('tableHelhedArv'), d.ages, [
+      { label: 'Livrente', values: d.arv_liv },
+      { label: 'Ratepension', values: d.arv_rate },
+      { label: 'Kapitalpension', values: d.arv_kap },
+      { label: 'Aldersopsparing', values: d.arv_aold },
+      { label: 'Frie Midler', values: d.arv_fri },
+      { label: 'Bolig friværdi', values: d.arv_bolig },
+      { label: 'Opsparet arv (før arveafgift)', values: opsparet }
+    ]);
+  }
+  function maybeDrawHelhedChart() {
+    // Draw charts for whichever result panel is currently active
+    const active = document.querySelector('.tool-section[data-tool="helhed"] .panel.active');
+    if (!active) return;
+    if (active.id === 'ph-r-udbet') drawHelhedUdbet();
+    if (active.id === 'ph-r-nod') drawHelhedNod();
+    if (active.id === 'ph-r-kilde') drawHelhedKilde();
+    if (active.id === 'ph-r-arv') drawHelhedArv();
+  }
+  // Hook into step navigation for helhed
+  document.querySelectorAll('.tool-section[data-tool="helhed"] .step').forEach(s => {
+    s.addEventListener('click', () => setTimeout(maybeDrawHelhedChart, 0));
+  });
+
+  // ============ Flyt pension — Afkast i dag calculator ============
+  (function(){
+    const inv = document.getElementById('afkast-invest');
+    const tot = document.getElementById('afkast-total');
+    const yrs = document.getElementById('afkast-years');
+    const out = document.getElementById('afkast-result');
+    if (!inv || !tot || !yrs || !out) return;
+    function compute() {
+      const investedNum = parseFloat((inv.value+'').replace(/\./g,'').replace(',','.')) || 0;
+      const totalNum = parseFloat((tot.value+'').replace(/\./g,'').replace(',','.')) || 0;
+      const years = parseFloat(yrs.value) || 0;
+      if (investedNum <= 0 || totalNum <= 0 || years <= 0) { out.textContent = '—'; return; }
+      const annual = Math.pow(totalNum/investedNum, 1/years) - 1;
+      out.textContent = (annual*100).toLocaleString('da-DK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).replace('.', ',') + '%';
+    }
+    [inv, tot, yrs].forEach(el => el.addEventListener('input', compute));
+    compute();
+  })();
+
+  // ============ Beregn topbar button — navigate to Resultat ============
+  const calcBtnEl = document.getElementById('calcBtn');
+  if (calcBtnEl) {
+    calcBtnEl.addEventListener('click', () => {
+      const flytTool = document.querySelector('.tool[data-tool="flyt"]');
+      if (flytTool && !flytTool.classList.contains('active')) flytTool.click();
+      const resultStep = document.querySelector('.tool-section[data-tool="flyt"] .step[data-step="result"]');
+      if (resultStep) resultStep.click();
     });
   }
 })();
