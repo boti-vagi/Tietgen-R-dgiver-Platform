@@ -71,11 +71,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--info-str
 .field:last-child{margin-bottom:0}
 .field label{font-size:14px;color:var(--text-secondary);font-weight:500}
 .field .accent{border-color:var(--info-strong);box-shadow:0 0 0 4px rgba(7,160,195,0.10)}
-.section
-  .section.flex-grow 
-  .section.flex-grow 
-
-  .notes-block{margin-top:22px;padding:20px 22px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-lg);font-size:14px;color:var(--accent-text);line-height:1.7;border:1px solid rgba(255,217,50,0.45)}
+.notes-block{margin-top:22px;padding:20px 22px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-lg);font-size:14px;color:var(--accent-text);line-height:1.7;border:1px solid rgba(255,217,50,0.45)}
 .notes-block p{margin:0}
 .notes-block strong{color:#4A3A00;font-weight:600}
 .actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px}
@@ -110,7 +106,7 @@ tbody tr:hover{background:var(--bg-secondary)}
 .modal-head p{margin:0 0 0 58px;font-size:14px;color:var(--text-secondary)}
 .modal-body{padding:22px 28px;overflow-y:auto;font-size:15px}
 .modal-foot{display:flex;justify-content:flex-end;gap:12px;padding:18px 28px;border-top:1px solid var(--border-tertiary);background:var(--bg-secondary)}
-.change-list{border:1px solid var(--border-tertiary);border-radius:var(--radius-md);overflow:hidden;max-height:340px;overflow-y:auto;background:var(--bg-primary)}
+.change-list {border:1px solid var(--border-tertiary);border-radius:var(--radius-md);overflow:hidden;max-height:340px;overflow-y:auto;background:var(--bg-primary)}
 .change-list .group{padding:10px 16px;background:var(--bg-secondary);font-size:13px;color:var(--info-strong);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-top:1px solid var(--border-tertiary)}
 .change-list .group:first-child{border-top:none}
 .change-list .item{display:flex;align-items:center;gap:14px;padding:13px 16px;font-size:15px;border-top:1px solid var(--border-tertiary)}
@@ -154,15 +150,16 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .preview-card .head{margin:0 0 4px;font-size:16px;font-weight:600;color:var(--info-strong)}
 .preview-card .desc{margin:0 0 12px;font-size:14px;color:var(--text-secondary);line-height:1.5}
 .pills{display:flex;gap:6px;flex-wrap:wrap}
-.pill{font-size:11px;padding:4px 12px;border-radius:100px;font-weight:600}
 .pill.blue{background:var(--info-strong);color:#fff}
 .pill.gray{background:var(--bg-secondary);color:var(--text-secondary);border:1px solid var(--border-tertiary)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:32px;padding:14px 24px;background:var(--text-primary);color:#fff;border-radius:100px;font-size:15px;z-index:200;opacity:0;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);pointer-events:none;box-shadow:var(--shadow-md);font-weight:500}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+.depot-card{border:1px solid var(--border-tertiary);border-radius:var(--radius-lg);padding:22px 24px;background:var(--bg-primary);transition:all 0.2s;margin-bottom:14px}
 .depot-card.empty{border:2px dashed var(--border-secondary);background:rgba(7,160,195,0.02)}
 .depot-card.empty:hover{border-color:var(--info-strong);background:rgba(7,160,195,0.04)}
-.depot-card
-  @keyframes popIn{from{opacity:0;transform:translateY(-8px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.depot-card.filled{background:linear-gradient(135deg,var(--bg-secondary),var(--bg-primary));border-color:var(--info-strong)}
+.pop{animation:popIn 0.3s cubic-bezier(0.16,1,0.3,1)}
+@keyframes popIn{from{opacity:0;transform:translateY(-8px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .depot-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .depot-num{font-size:13px;font-weight:600;color:var(--info-strong);text-transform:uppercase;letter-spacing:0.5px;display:inline-flex;align-items:center;gap:10px}
 .depot-num::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent)}
@@ -190,7 +187,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .kpi-card .val{font-size:42px;font-weight:700;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1}
 .kpi-card .sub{font-size:13px;color:var(--text-tertiary);margin-top:6px}
 .kpi-card.primary .sub{color:rgba(255,255,255,0.8)}
-.kpi-card .pos .val{color:var(--success-strong)}
+.kpi-card .val{color:var(--success-strong)}
 .kpi-updated{font-size:13px;color:var(--text-tertiary);display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
 .kpi-updated i{font-size:14px;color:var(--info-strong)}
 .vis-toggle-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;padding:14px 20px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-md);border:1px solid rgba(255,217,50,0.55)}
@@ -326,7 +323,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 
   <div class="demo-banner">
     <i class="ti ti-sparkles"></i>
-    <span><strong>Designtest v2</strong> — VI-farver, Poppins og lidt mere personlighed.</span>
+    <span><strong>Designtest v2</strong> — VI-farver, Poppins og lidt more personlighed.</span>
   </div>
 
   <div class="app">
@@ -417,6 +414,21 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
         <span class="saved"><span class="dot"></span>Kladde gemt · for 2 min siden</span>
       </div>
 
+      <div class="vis-toggle-bar">
+        <div class="vis-info">
+          <i class="ti ti-eye"></i>
+          <div class="vis-text">
+            <strong>Vis fanen "Flyt pension" for kunden</strong>
+            <em>Slå fra for at skjule hele fanen i kundens visning</em>
+          </div>
+        </div>
+        <label class="vis-switch">
+          <input type="checkbox" data-toggle-tool="flyt" checked>
+          <span class="vis-state">Vist</span>
+          <span class="vis-track"><span class="vis-thumb"></span></span>
+        </label>
+      </div>
+
       <div class="steps" role="tablist">
         <button class="step active" data-step="depot">1 · Depotvalg</button>
         <button class="step" data-step="input">2 · Inputs</button>
@@ -483,13 +495,13 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
               <div class="field"><label>Udtrædelsesgebyr (afgivende)</label><input type="text" value="4.360 kr."></div>
               <div class="field"><label>ÅOP: Dit pensionsselskab i dag</label><input type="text" value="1,29%"></div>
             </div>
+
+            <div class="section">
+              <p class="title">Noter</p>
+              <div class="field" style="margin-bottom:0;"><label>Tilføj kommentar til kunden</label><textarea placeholder="Skriv en note om kundens situation, ønsker eller andre relevante oplysninger…" style="min-height:120px;"></textarea></div>
+            </div>
           </div>
 
-        </div>
-
-        <div class="section mt-20" >
-          <p class="title">Noter</p>
-          <div class="field" style="margin-bottom:0;"><label>Tilføj kommentar til kunden</label><textarea placeholder="Skriv en note om kundens situation, ønsker eller andre relevante oplysninger…" style="min-height:120px;"></textarea></div>
         </div>
 
         <div class="notes-block">
@@ -539,7 +551,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <div class="item"><span class="swatch" style="background:#B8C5CC"></span>Rådet for Afkastforventninger</div>
         </div>
         <div class="notes-block mt-18" >
-          <p><strong>Sådan læses grafen:</strong> Grafen viser din mulige opsparing efter omkostninger og pensionsskat (PAL). Historisk afkast is aldrig en garanti for fremtidigt afkast. Selvom grafen viser din mulige opsparing, kan værdien af opsparingen både stige og falde, afhængigt af markedsudviklingen.</p>
+          <p><strong>Sådan læses grafen:</strong> Grafen viser din mulige opsparing efter omkostninger og pensionsskat (PAL). Historisk afkast er aldrig en garanti for fremtidigt afkast. Selvom grafen viser din mulige opsparing, kan værdien af opsparingen både stige og falde, afhængigt af markedsudviklingen.</p>
           <p style="margin-top:8px;">Dit pensionsselskab i dag og Tietgens anbefalede løsning er baseret på gennemsnitligt historisk afkast de sidste 10 år. Rådet for Afkastforventninger bygger på beregnede forudsætninger for forventet afkast og risiko, ikke historiske tal, og opdateres halvårligt. De viste beregninger bygger på specifikke forudsætninger for afkast og risiko, som kan ændre sig over tid.</p>
         </div>
       </div>
@@ -624,6 +636,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <div style="display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:18px; padding:18px 22px; background:var(--bg-secondary); border-radius:var(--radius-md);">
             <span style="font-size:15px; color:var(--text-secondary);">Gennemsnitlige årlige afkast (kr.)</span>
             <span id="afkast-result" style="font-size:28px; font-weight:700; color:var(--info-strong); font-variant-numeric:tabular-nums;">8,4%</span>
+          </div>
+
+          <div class="section mt-20">
+            <p class="title">Noter</p>
+            <div class="field" style="margin-bottom:0;"><label>Tilføj kommentar til beregningen</label><textarea placeholder="Skriv en note om beregningen, antagelser eller resultatet…" style="min-height:120px;"></textarea></div>
           </div>
         </div>
       </div>
@@ -840,19 +857,20 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
       <div class="steps" role="tablist">
         <button class="step active" data-step="setup">1 · Opsætning</button>
         <button class="step" data-step="grund">2 · Grunddata</button>
-        <button class="step" data-step="indkomst">3 · Indkomst</button>
-        <button class="step" data-step="opsparing">4 · Pensionsopsparing</button>
-        <button class="step" data-step="indbetaling">5 · Indbetalinger</button>
-        <button class="step" data-step="udbetaling">6 · Levestandard</button>
-        <button class="step" data-step="frie">7 · Frie midler</button>
-        <button class="step" data-step="bolig">8 · Bolig</button>
-        <button class="step" data-step="engang">9 · Engangsindskud</button>
-        <button class="step" data-step="ekstra">10 · Ekstra &amp; Arv</button>
-        <button class="step" data-step="r-udbet">11 · Resultat: Udbetalingsplan</button>
-        <button class="step" data-step="r-nod">12 · Resultat: Nødopsparing</button>
-        <button class="step" data-step="r-kilde">13 · Resultat: Indkomstkilder</button>
-        <button class="step" data-step="r-arv">14 · Resultat: Formue &amp; Arv</button>
-        <button class="step" data-step="stress">15 · Følsomhed</button>
+        <button class="step" data-step="depotvalg">3 · Depotvalg</button>
+        <button class="step" data-step="indkomst">4 · Indkomst</button>
+        <button class="step" data-step="opsparing">5 · Pensionsopsparing</button>
+        <button class="step" data-step="indbetaling">6 · Indbetalinger</button>
+        <button class="step" data-step="udbetaling">7 · Levestandard</button>
+        <button class="step" data-step="frie">8 · Frie midler</button>
+        <button class="step" data-step="bolig">9 · Bolig</button>
+        <button class="step" data-step="engang">10 · Engangsindskud</button>
+        <button class="step" data-step="ekstra">11 · Ekstra &amp; Arv</button>
+        <button class="step" data-step="r-udbet">12 · Resultat: Udbetalingsplan</button>
+        <button class="step" data-step="r-nod">13 · Resultat: Nødopsparing</button>
+        <button class="step" data-step="r-kilde">14 · Resultat: Indkomstkilder</button>
+        <button class="step" data-step="r-arv">15 · Resultat: Formue &amp; Arv</button>
+        <button class="step" data-step="stress">16 · Følsomhed</button>
       </div>
 
       <div class="panel active" id="ph-setup">
@@ -877,11 +895,16 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
         </div>
 
         <div class="section col-yellow mt-20" >
-          <p class="title">Geninvestering af overskud</p>
+          <p class="title">Geninvestering og overskud</p>
           <div class="row-2col">
             <div class="field"><label>Geninvesteres overskydende Pension og Indkomst</label><select><option>ja</option><option>nej</option></select></div>
             <div class="field"><label>Geninvester overskud som Frie midler</label><select><option>ja</option><option>nej</option></select></div>
           </div>
+        </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
         </div>
       </div>
 
@@ -905,6 +928,57 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="field"><label>ATP årligt (BRUTTO)</label><input type="text"></div>
             <div class="field"><label>Note grunddata — person 2</label><textarea rows="2"></textarea></div>
           </div>
+        </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="panel" id="ph-depotvalg">
+        <div class="section col-yellow" style="margin-bottom:18px;">
+          <p class="title">Hent deal-information</p>
+          <p class="it-note-tight">Indtast et 4-cifret deal-nummer for automatisk at hente kundens eksisterende depoter fra rådgiversystemet.</p>
+          <div style="display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap;">
+            <div class="field" style="flex:1; min-width:180px; margin-bottom:0;">
+              <label>Deal-nummer</label>
+              <input type="text" id="ph-deal-nr" maxlength="4" placeholder="fx 4321" pattern="[0-9]{4}" inputmode="numeric" style="font-variant-numeric:tabular-nums; letter-spacing:0.15em;">
+            </div>
+            <button class="btn primary" id="ph-fetch-deal" type="button"><i class="ti ti-download"></i> Hent depoter</button>
+          </div>
+        </div>
+
+        <div class="grid-1-when-1">
+          <div class="section col-blue">
+            <p class="title">Vælg depoter som Tietgen overtager — Person 1</p>
+            <div id="phd-list-p1"></div>
+            <div id="phd-summary-p1" class="depot-summary" hidden>
+              <i class="ti ti-database"></i>
+              <span><span class="count" id="phd-count-p1">0</span> depoter valgt</span>
+              <span class="total">Samlet: <span id="phd-total-p1">0 kr.</span></span>
+            </div>
+            <div class="actions">
+              <button class="btn" id="phd-reset-p1" type="button">Nulstil valg</button>
+            </div>
+          </div>
+          <div class="section col-blue person-only-2">
+            <p class="title">Vælg depoter som Tietgen overtager — Person 2</p>
+            <div id="phd-list-p2"></div>
+            <div id="phd-summary-p2" class="depot-summary" hidden>
+              <i class="ti ti-database"></i>
+              <span><span class="count" id="phd-count-p2">0</span> depoter valgt</span>
+              <span class="total">Samlet: <span id="phd-total-p2">0 kr.</span></span>
+            </div>
+            <div class="actions">
+              <button class="btn" id="phd-reset-p2" type="button">Nulstil valg</button>
+            </div>
+          </div>
+        </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
         </div>
       </div>
 
@@ -965,9 +1039,14 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="field"><label>Note indkomst og skat — person 2</label><textarea rows="2"></textarea></div>
           </div>
         </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
+        </div>
       </div>
 
-            <div class="panel" id="ph-opsparing">
+      <div class="panel" id="ph-opsparing">
         <div class="grid-1-when-1">
           <div class="section col-blue">
             <p class="title">Pensionsopsparing — Person 1</p>
@@ -982,6 +1061,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="field"><label>Frie Midler udbetales inden Livrenten</label><select><option selected>nej</option><option>ja</option></select></div>
             <div data-depot="liv-p1" data-depot-n="1"><div class="field"><label>Livrente Saldo (1)</label><input type="text" value="500.000"></div><div class="field"><label>Startalder livrente (1)</label><input type="number" value="65"></div></div><div data-depot="liv-p1" data-depot-n="2" class="hide"><div class="field"><label>Livrente Saldo (2)</label><input type="text" value="200.000"></div><div class="field"><label>Startalder livrente (2)</label><input type="number" value="65"></div></div>
             <div class="field"><label>Note pensionsopsparing — person 1</label><textarea rows="2"></textarea></div>
+          
+            <div class="actions" style="margin-top:24px;">
+              <button class="btn ph-reset" type="button">Nulstil</button>
+              <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
+            </div>
           </div>
           <div class="section col-blue person-only-2">
             <p class="title">Pensionsopsparing — Person 2</p>
@@ -1000,13 +1084,18 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
         </div>
       </div>
 
-            <div class="panel" id="ph-indbetaling">
+      <div class="panel" id="ph-indbetaling">
         <div class="grid-1-when-1">
           <div class="section col-blue">
             <p class="title">Pensionsindbetalinger — Person 1</p>
             <p style="margin:-6px 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">*Aldersopsparing indbetaling 2026 (årligt max. 9.900 DKK eller 64.200 DKK 7 år inden pension.)</p>
             <div class="field"><label>Aldersopsparings indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
-            <div data-depot="alders-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (1)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="3" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (3)</label><input type="number" value=""></div></div>
+            <div data-depot="alders-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (1)</label><input type="number" value="">
+            <div class="actions" style="margin-top:24px;">
+              <button class="btn ph-reset" type="button">Nulstil</button>
+              <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
+            </div>
+          </div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (1)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="3" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (3)</label><input type="number" value=""></div></div>
             <p class="it-note">*Ratepension indbetaling 2026 (årligt max. Firmapension 74.674 DKK &amp; Privatpension 68.700 DKK).</p>
             <div class="field"><label>Ratepension indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
             <div data-depot="rate-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (1)</label><input type="number" value=""></div></div><div data-depot="rate-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (2)</label><input type="number" value=""></div></div>
@@ -1028,7 +1117,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div data-depot="rate-p2" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (1)</label><input type="number" value=""></div></div><div data-depot="rate-p2" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (2)</label><input type="number" value=""></div></div>
             <p class="it-note">*Livrente indbetaling 2026: Der er intet loft for selve indbetalingen. Der ydes dog kun fuldt fradrag i indbetalingsåret op til 63.200 kr. (opfyldningsfradraget). Ved indbetalinger herover skal fradraget som udgangspunkt fordeles over 10 år.</p>
             <div class="field"><label>Livrente indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
-            <div data-depot="liv-p2" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (1)</label><input type="number" value=""></div></div><div data-depot="liv-p2" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (2)</label><input type="number" value=""></div></div>
+            <div data-depot="liv-p2" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (1)</label><input type="number" value=""></div></div><div data-depot="liv-p2" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — livrente (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — livrente (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — livrente (2)</label><input type="number" value=""></div></div>
             <div class="notes-block mt-18" >
               <p><strong>BEMÆRK:</strong> Antallet af depoter pr. produkttype styres på fanen "4 · Pensionsopsparing". Hvis du ændrer antallet der, opdateres felterne her automatisk.</p>
             </div>
@@ -1049,7 +1138,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <div class="section col-blue">
             <p class="title">Pensionsafkast</p>
             <div class="field"><label>Bruttoafkast</label><input type="text" value="10,4%"></div>
-            <div class="field"><label>Investeringsomkostninger</label><input type="text" value="0,39%"></div>
+            <div class="field"><label>Investeringsomkostenninger</label><input type="text" value="0,39%"></div>
             <div class="field"><label>Admin omkostninger</label><input type="text" value="0,45%"></div>
             <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:var(--bg-secondary); border-radius:var(--radius-md); margin:14px 0;">
               <span style="font-size:14px; color:var(--text-secondary);">Nettoafkast (EFTER 15,3% PAL)</span>
@@ -1058,6 +1147,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <p style="margin:0 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">"Bruttoafkastet er beregnet før omkostninger og skat, og baseret på tallene fra din pensionsplan eller den procentsats, du har aftalt med din rådgiver."</p>
             <div class="field"><label>Note pensionsafkast</label><textarea rows="2"></textarea></div>
           </div>
+        </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
         </div>
       </div>
 
@@ -1087,6 +1181,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="field"><label>Note frie midler — afkast</label><textarea rows="2"></textarea></div>
           </div>
         </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
+        </div>
       </div>
 
       <div class="panel" id="ph-engang">
@@ -1105,6 +1204,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="field"><label>Engangsindskud 5 — alder person 1</label><input type="number"></div>
           </div>
           <div class="field mt-14" ><label>Note engangsindskud</label><textarea rows="2"></textarea></div>
+        </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
         </div>
       </div>
 
@@ -1127,6 +1231,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <p style="margin:14px 0 0; font-size:13px; color:var(--text-secondary); font-style:italic;">"Tilvæksten i din friværdi beregnes med udgangspunkt i den gennemsnitlige boligprisstigning i din kommune over de seneste 30 år, eller ud fra en specifik procentsats aftalt med din rådgiver. Beregningen forudsætter, at boligen er afdragsfrit finansieret, hvilket betyder, at restgælden forbliver konstant, så udviklingen i friværdien udelukkende baseres på boligens forventede værdistigning."</p>
           <div class="field mt-14" ><label>Note bolig</label><textarea rows="2"></textarea></div>
           <p style="margin:14px 0 0; font-size:13px; color:var(--text-secondary);">Link til boligprisudvikling (30 års gennemsnit i enkelte kommuner): <a href="https://www.dr.dk/nyheder/indland/se-kortet-saa-meget-er-boligpriserne-steget-hvor-du-bor" target="_blank" rel="noopener" style="color:var(--info-strong); text-decoration:underline;">dr.dk/nyheder/indland/se-kortet-saa-meget-er-boligpriserne-steget-hvor-du-bor</a></p>
+        </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
         </div>
       </div>
 
@@ -1166,6 +1275,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="field"><label>Udbetaling er inflationsreguleret</label><select><option>ja</option><option>nej</option></select></div>
             <div class="field"><label>Note udbetaling af løbende arveforskud — person 2</label><textarea rows="2"></textarea></div>
           </div>
+        </div>
+      
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
         </div>
       </div>
 
@@ -1842,6 +1956,126 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 
   renderDepots();
 
+  // ============ Helhedsplan — Depotvalg (per person) ============
+  const phDepotPool = [
+    { id: 'nordea-1', selskab: 'Nordea', nr: '9535045698', form: 'Gennemsnitsrente', aarlig: '0 kr.', opsparing: '1.778.000 kr.', dato: '20.11.2025', value: 1778000 },
+    { id: 'velliv-1', selskab: 'Velliv', nr: '4421887331', form: 'Markedsrente', aarlig: '12.000 kr.', opsparing: '950.000 kr.', dato: '15.10.2025', value: 950000 },
+    { id: 'pfa-1', selskab: 'PFA', nr: '7782305519', form: 'Markedsrente', aarlig: '0 kr.', opsparing: '1.250.000 kr.', dato: '01.11.2025', value: 1250000 },
+    { id: 'danica-1', selskab: 'Danica Pension', nr: '6610948822', form: 'Gennemsnitsrente', aarlig: '24.000 kr.', opsparing: '540.000 kr.', dato: '30.09.2025', value: 540000 },
+    { id: 'ap-1', selskab: 'AP Pension', nr: '3398765544', form: 'Markedsrente', aarlig: '0 kr.', opsparing: '820.000 kr.', dato: '12.11.2025', value: 820000 }
+  ];
+  const phDepotSel = { p1: [], p2: [] };
+
+  function renderPhDepots(p) {
+    const list = document.getElementById('phd-list-' + p);
+    if (!list) return;
+    list.innerHTML = '';
+    phDepotSel[p].forEach((d, i) => {
+      const card = document.createElement('div');
+      card.className = 'depot-card filled';
+      card.innerHTML =
+        '<div class="depot-head">' +
+          '<span class="depot-num">Depot ' + (i+1) + '</span>' +
+          '<button class="depot-remove" data-idx="' + i + '" data-p="' + p + '" aria-label="Fjern depot"><i class="ti ti-x"></i></button>' +
+        '</div>' +
+        '<div class="depot-main-row">' +
+          '<span class="selskab">' + d.selskab + '</span>' +
+          '<span class="nr">· ' + d.nr + '</span>' +
+        '</div>' +
+        '<div class="depot-details">' +
+          '<div><span class="label">Investeringsform</span><span class="value">' + d.form + '</span></div>' +
+          '<div><span class="label">Årlig indbetaling</span><span class="value">' + d.aarlig + '</span></div>' +
+          '<div><span class="label">Opsparing</span><span class="value">' + d.opsparing + '</span></div>' +
+          '<div><span class="label">Pr. dato</span><span class="value">' + d.dato + '</span></div>' +
+        '</div>';
+      list.appendChild(card);
+    });
+    const available = phDepotPool.filter(d => !phDepotSel[p].find(s => s.id === d.id));
+    if (available.length > 0) {
+      const empty = document.createElement('div');
+      empty.className = 'depot-card empty' + (phDepotSel[p].length > 0 ? ' pop' : '');
+      const opts = available.map(d => '<option value="' + d.id + '">' + d.selskab + ', ' + d.nr + ', ' + d.form + ', Indb. ' + d.aarlig + ', Opsparing ' + d.opsparing + '</option>').join('');
+      empty.innerHTML =
+        '<div class="depot-head"><span class="depot-num">Depot ' + (phDepotSel[p].length + 1) + '</span></div>' +
+        '<select class="depot-select"><option value="">Vælg depot…</option>' + opts + '</select>';
+      empty.querySelector('.depot-select').addEventListener('change', e => {
+        const id = e.target.value;
+        if (id) {
+          phDepotSel[p].push(phDepotPool.find(d => d.id === id));
+          renderPhDepots(p);
+        }
+      });
+      list.appendChild(empty);
+    } else {
+      const done = document.createElement('div');
+      done.className = 'depot-done';
+      done.innerHTML = '<i class="ti ti-check"></i> Alle tilgængelige depoter er valgt';
+      list.appendChild(done);
+    }
+    const sum = document.getElementById('phd-summary-' + p);
+    if (phDepotSel[p].length === 0) {
+      sum.setAttribute('hidden', '');
+    } else {
+      sum.removeAttribute('hidden');
+      document.getElementById('phd-count-' + p).textContent = phDepotSel[p].length;
+      const total = phDepotSel[p].reduce((s, d) => s + d.value, 0);
+      document.getElementById('phd-total-' + p).textContent = total.toLocaleString('da-DK') + ' kr.';
+    }
+  }
+  ['p1','p2'].forEach(p => {
+    const list = document.getElementById('phd-list-' + p);
+    if (list) list.addEventListener('click', e => {
+      const btn = e.target.closest('.depot-remove');
+      if (btn) {
+        phDepotSel[p].splice(parseInt(btn.dataset.idx), 1);
+        renderPhDepots(p);
+      }
+    });
+    const reset = document.getElementById('phd-reset-' + p);
+    if (reset) reset.addEventListener('click', () => { phDepotSel[p] = []; renderPhDepots(p); });
+    renderPhDepots(p);
+  });
+
+  // Nulstil / Beregn resultat — for hver Helhedsplan input-fane
+  document.querySelectorAll('.tool-section[data-tool="helhed"] .ph-reset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = btn.closest('.panel');
+      if (!panel) return;
+      panel.querySelectorAll('input').forEach(inp => {
+        if (inp.type === 'checkbox' || inp.type === 'radio') inp.checked = inp.defaultChecked;
+        else inp.value = inp.defaultValue || '';
+      });
+      panel.querySelectorAll('textarea').forEach(t => t.value = '');
+      panel.querySelectorAll('select').forEach(s => { s.selectedIndex = 0; s.dispatchEvent(new Event('change')); });
+      toast('Fane nulstillet');
+    });
+  });
+  document.querySelectorAll('.tool-section[data-tool="helhed"] .ph-calc').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const resultStep = document.querySelector('.tool-section[data-tool="helhed"] .step[data-step="r-udbet"]');
+      if (resultStep) resultStep.click();
+    });
+  });
+
+  // 4-digit deal fetch — demo: fills both persons with sample picks
+  const dealBtn = document.getElementById('ph-fetch-deal');
+  const dealInp = document.getElementById('ph-deal-nr');
+  if (dealBtn && dealInp) {
+    dealBtn.addEventListener('click', () => {
+      const v = (dealInp.value || '').trim();
+      if (!/^\d{4}$/.test(v)) {
+        dealInp.focus();
+        toast('Indtast et 4-cifret deal-nummer');
+        return;
+      }
+      // Demo: pick 2 depots for P1, 1 for P2
+      phDepotSel.p1 = [phDepotPool[0], phDepotPool[2]];
+      phDepotSel.p2 = [phDepotPool[1]];
+      renderPhDepots('p1'); renderPhDepots('p2');
+      toast('Deal ' + v + ' hentet — ' + (phDepotSel.p1.length + phDepotSel.p2.length) + ' depoter');
+    });
+  }
+
   // Modals
   function open(id) { document.getElementById(id).classList.add('open'); }
   function close(id) { document.getElementById(id).classList.remove('open'); }
@@ -2075,7 +2309,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
     const fri_bucket = ages.map((a, i) => {
       if (a <= 60) return 700000 + (a-45)*30000;
       if (a <= 64) return Math.max(0, 1100000 - (a-60)*250000);
-      if (a <= 71) return 7000 + (a-64)*8000;
+      if (a <= 71) return 70000 + (a-64)*8000;
       return 200000 + (a-71)*350000;
     });
     const alders_bucket = ages.map(a => a <= 60 ? 80000 + (a-45)*15000 : (a <= 64 ? 320000 - (a-60)*60000 : 0));
