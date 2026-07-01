@@ -14,7 +14,8 @@
 body{margin:0;font-family:var(--font-sans);font-size:17px;line-height:1.55;color:var(--text-primary);background:radial-gradient(ellipse 60% 50% at 10% 0%,rgba(7,160,195,0.10),transparent 60%),radial-gradient(ellipse 50% 40% at 95% 5%,rgba(255,217,50,0.16),transparent 60%),var(--bg-tertiary);background-attachment:fixed;-webkit-font-smoothing:antialiased;font-weight:400}
 .page{max-width:1320px;margin:0 auto;padding:40px 28px 64px}
 .app{background:var(--bg-primary);border-radius:var(--radius-xl);border:1px solid var(--border-tertiary);overflow:hidden;box-shadow:var(--shadow-md)}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid var(--border-tertiary);gap:14px;background:linear-gradient(180deg,rgba(255,217,50,0.04),transparent)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:2px solid var(--border-tertiary);gap:14px;background:linear-gradient(180deg,rgba(255,217,50,0.04),transparent);position:relative}
+.topbar::after{content:'';position:absolute;left:28px;right:28px;bottom:-4px;height:2px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 60px,transparent 60px);border-radius:2px}
 .topbar-actions{display:inline-flex;align-items:center;gap:10px;flex-shrink:0}
 .crumbs{display:flex;align-items:center;gap:14px;min-width:0;font-size:15px}
 .crumbs .sep{color:var(--text-tertiary)}
@@ -43,11 +44,25 @@ input,select,textarea{font-family:inherit;font-size:15px;padding:10px 14px;borde
 textarea{height:auto;resize:vertical;line-height:1.5}
 input:hover,select:hover,textarea:hover{border-color:var(--border-secondary)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--info-strong);box-shadow:0 0 0 4px rgba(7,160,195,0.14)}
-.tools{display:flex;gap:4px;padding:12px 18px 0;border-bottom:1px solid var(--border-tertiary);background:var(--bg-secondary);overflow-x:auto}
-.tool{font-size:15px;padding:14px 20px;border:none;background:transparent;color:var(--text-secondary);border-radius:var(--radius-md) var(--radius-md) 0 0;white-space:nowrap;display:inline-flex;align-items:center;gap:9px;transition:all 0.18s;font-weight:500;position:relative;margin-bottom:-1px}
-.tool:hover{color:var(--info-strong);background:rgba(7,160,195,0.06)}
-.tool.active{color:var(--info-strong);background:var(--bg-primary);border:1px solid var(--border-tertiary);border-bottom:1px solid var(--bg-primary);font-weight:600}
-.tool.active::before{content:'';position:absolute;top:0;left:14px;right:14px;height:3px;background:var(--accent);border-radius:0 0 3px 3px}
+.tools{display:none}
+.tool-picker{position:relative;display:inline-block}
+.tool-picker-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;font-family:inherit;font-size:14px;font-weight:600;color:var(--info-strong);background:var(--bg-primary);border:1px solid var(--border-tertiary);border-radius:100px;cursor:pointer;transition:all 0.18s;min-width:200px;box-shadow:var(--shadow-sm)}
+.tool-picker-btn:hover{border-color:var(--info-strong);background:rgba(7,160,195,0.04)}
+.tool-picker-btn .chev{margin-left:auto;font-size:14px;color:var(--text-tertiary);transition:transform 0.2s}
+.tool-picker.open .tool-picker-btn{border-color:var(--info-strong);box-shadow:0 0 0 4px rgba(7,160,195,0.14)}
+.tool-picker.open .tool-picker-btn .chev{transform:rotate(180deg)}
+.tool-picker-menu{position:absolute;top:calc(100% + 6px);right:0;min-width:260px;background:var(--bg-primary);border:1px solid var(--border-tertiary);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:6px;z-index:80;opacity:0;pointer-events:none;transform:translateY(-4px);transition:all 0.18s}
+.tool-picker.open .tool-picker-menu{opacity:1;pointer-events:auto;transform:translateY(0)}
+.tool-picker-item{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;font-family:inherit;font-size:14px;font-weight:500;color:var(--text-secondary);background:transparent;border:none;border-radius:var(--radius-md);cursor:pointer;text-align:left;transition:all 0.15s;position:relative}
+.tool-picker-item:hover{background:var(--bg-secondary);color:var(--info-strong)}
+.tool-picker-item.active{background:rgba(7,160,195,0.08);color:var(--info-strong);font-weight:600}
+.tool-picker-item.active::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--accent);border-radius:0 3px 3px 0}
+.tool-picker-item i{font-size:18px;flex-shrink:0}
+.tool-picker-item.tool-hidden{opacity:0.55}
+.tool-picker-item.tool-hidden::after{content:'\ea76';font-family:'tabler-icons';margin-left:auto;font-size:15px;color:var(--text-tertiary)}
+.profile-btn{padding:8px;background:transparent;border:none;color:var(--text-secondary);cursor:pointer;border-radius:100px;display:inline-flex;align-items:center;justify-content:center;transition:all 0.18s}
+.profile-btn i{font-size:26px}
+.profile-btn:hover{background:var(--bg-secondary);color:var(--info-strong)}
 .content{padding:32px 34px 36px}
 .page-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:28px;flex-wrap:wrap}
 .page-head h1{margin:0;font-size:34px;font-weight:700;letter-spacing:-0.02em}
@@ -459,6 +474,22 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
         <span class="current">Flyt pension</span>
       </div>
       <div class="topbar-actions">
+        <div class="tool-picker" id="toolPicker">
+          <button class="tool-picker-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+            <i class="ti ti-transfer" id="tpIcon"></i>
+            <span id="tpLabel">Flyt pension</span>
+            <i class="ti ti-chevron-down chev"></i>
+          </button>
+          <div class="tool-picker-menu" role="menu">
+            <button class="tool-picker-item" data-tool="afkast" role="menuitem"><i class="ti ti-chart-line"></i> Din pension</button>
+            <button class="tool-picker-item active" data-tool="flyt" role="menuitem"><i class="ti ti-transfer"></i> Flyt pension</button>
+            <button class="tool-picker-item" data-tool="investering" role="menuitem"><i class="ti ti-chart-histogram"></i> Investering</button>
+            <button class="tool-picker-item" data-tool="forsikring" role="menuitem"><i class="ti ti-shield"></i> Forsikringer</button>
+            <button class="tool-picker-item" data-tool="helhed" role="menuitem"><i class="ti ti-layout-grid"></i> Helhedsplan</button>
+            <button class="tool-picker-item" data-tool="referat" role="menuitem"><i class="ti ti-file-text"></i> Møderesume</button>
+            <button class="tool-picker-item" data-tool="dokumenter" role="menuitem"><i class="ti ti-folder"></i> Dokumenter</button>
+          </div>
+        </div>
         <button class="btn" id="calcBtn">
           <i class="ti ti-calculator"></i>
           Beregn
@@ -467,18 +498,8 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <i class="ti ti-cloud-upload"></i>
           Udgiv
         </button>
+        <button class="profile-btn" type="button" aria-label="Profil"><i class="ti ti-user-circle"></i></button>
       </div>
-    </div>
-
-    <div class="tools">
-      <button class="tool" data-tool="afkast"><i class="ti ti-chart-line"></i> Din pension</button>
-      <button class="tool active" data-tool="flyt"><i class="ti ti-transfer"></i> Flyt pension</button>
-      <button class="tool" data-tool="investering"><i class="ti ti-chart-histogram"></i> Investering</button>
-      <button class="tool" data-tool="forsikring"><i class="ti ti-shield"></i> Forsikringer</button>
-      <button class="tool" data-tool="helhed"><i class="ti ti-layout-grid"></i> Helhedsplan</button>
-      <button class="tool" data-tool="referat"><i class="ti ti-file-text"></i> Møderesume</button>
-      <button class="tool" data-tool="dokumenter"><i class="ti ti-folder"></i> Dokumenter</button>
-      <button class="tool tool-profil" data-tool="profil" aria-label="Profil"><i class="ti ti-user-circle"></i></button>
     </div>
 
     <div class="content">
@@ -1987,11 +2008,20 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 (function(){
-  // Tools
-  document.querySelectorAll('.tool').forEach(t => t.addEventListener('click', () => {
-    document.querySelectorAll('.tool').forEach(x => x.classList.remove('active'));
-    t.classList.add('active');
-    const tool = t.dataset.tool;
+  // ---- Tool switching (works for both .tool-picker-item and legacy .tool) ----
+  function switchTool(tool) {
+    document.querySelectorAll('.tool, .tool-picker-item').forEach(x => x.classList.remove('active'));
+    const items = document.querySelectorAll('[data-tool="' + tool + '"]');
+    items.forEach(i => i.classList.add('active'));
+    // Update dropdown button label + icon
+    const activeItem = document.querySelector('.tool-picker-item[data-tool="' + tool + '"]');
+    if (activeItem) {
+      const lbl = activeItem.textContent.trim();
+      const iconEl = activeItem.querySelector('i');
+      document.getElementById('tpLabel').textContent = lbl;
+      const tpIcon = document.getElementById('tpIcon');
+      if (tpIcon && iconEl) tpIcon.className = iconEl.className;
+    }
     const builtSection = document.querySelector('.tool-section:not(.empty)[data-tool="' + tool + '"]');
     document.querySelectorAll('.tool-section').forEach(s => {
       s.hidden = true;
@@ -2000,16 +2030,38 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
     if (builtSection) {
       builtSection.hidden = false;
       builtSection.classList.add('active');
-      // Lazy-draw charts for sections that need it
       if (tool === 'afkast' && !drawn.pensionLine) drawPensionDashboard();
       if (tool === 'helhed') maybeDrawHelhedChart();
     } else {
       const empty = document.querySelector('.tool-section.empty');
       empty.hidden = false;
       empty.classList.add('active');
-      empty.querySelector('#empty-title').textContent = t.textContent.trim();
+      const lblForEmpty = activeItem ? activeItem.textContent.trim() : tool;
+      empty.querySelector('#empty-title').textContent = lblForEmpty;
     }
-  }));
+  }
+
+  // Dropdown wiring
+  const picker = document.getElementById('toolPicker');
+  const pickerBtn = picker.querySelector('.tool-picker-btn');
+  function togglePicker(open) {
+    const willOpen = open ?? !picker.classList.contains('open');
+    picker.classList.toggle('open', willOpen);
+    pickerBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  }
+  pickerBtn.addEventListener('click', e => { e.stopPropagation(); togglePicker(); });
+  picker.querySelectorAll('.tool-picker-item').forEach(it => {
+    it.addEventListener('click', () => {
+      switchTool(it.dataset.tool);
+      togglePicker(false);
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!picker.contains(e.target)) togglePicker(false);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && picker.classList.contains('open')) togglePicker(false);
+  });
 
   // Steps — scoped to active section
   const drawn = {};
@@ -2039,8 +2091,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   document.querySelectorAll('input[data-toggle-tool]').forEach(cb => {
     const apply = () => {
       const toolName = cb.dataset.toggleTool;
-      const toolBtn = document.querySelector('.tool[data-tool="' + toolName + '"]');
-      if (toolBtn) toolBtn.classList.toggle('tool-hidden', !cb.checked);
+      document.querySelectorAll('[data-tool="' + toolName + '"]').forEach(el => {
+        if (el.classList.contains('tool-picker-item') || el.classList.contains('tool')) {
+          el.classList.toggle('tool-hidden', !cb.checked);
+        }
+      });
       const stateLbl = cb.parentElement.querySelector('.vis-state');
       if (stateLbl) stateLbl.textContent = cb.checked ? 'Vist' : 'Skjult';
     };
@@ -2736,8 +2791,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   const calcBtnEl = document.getElementById('calcBtn');
   if (calcBtnEl) {
     calcBtnEl.addEventListener('click', () => {
-      const flytTool = document.querySelector('.tool[data-tool="flyt"]');
-      if (flytTool && !flytTool.classList.contains('active')) flytTool.click();
+      switchTool('flyt');
       const resultStep = document.querySelector('.tool-section[data-tool="flyt"] .step[data-step="result"]');
       if (resultStep) resultStep.click();
     });
@@ -3014,7 +3068,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
     applyWeights(50, 30, 20);
   }
   // Init when Investering tab becomes active
-  const invTool = document.querySelector('.tool[data-tool="investering"]');
+  const invTool = document.querySelector('.tool-picker-item[data-tool="investering"]');
   if (invTool) invTool.addEventListener('click', () => setTimeout(initInv, 30));
   // If Investering is default active on load, init immediately
   const invSection = document.querySelector('.tool-section[data-tool="investering"]');
