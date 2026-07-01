@@ -374,9 +374,9 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .inv-scope .pi{display:grid;grid-template-columns:1fr auto;align-items:start;gap:10px;margin-bottom:13px}
 .inv-scope .pi:last-child{margin-bottom:0}
 .inv-scope .ph{display:flex;align-items:baseline;gap:3px;font-size:12px;font-weight:600;color:var(--inv-tp);margin-bottom:4px}
-.inv-scope .ti{width:38px;border:none;border-bottom:1.5px solid rgba(7,160,195,0.6);background:transparent;font-size:12px;font-weight:600;color:var(--inv-tp);font-family:inherit;text-align:center;padding:0 1px 1px;outline:none;-moz-appearance:textfield;height:auto;border-radius:0}
-.inv-scope .ti::-webkit-inner-spin-button,.inv-scope .ti::-webkit-outer-spin-button{-webkit-appearance:none}
-.inv-scope .ti:focus{border-bottom-color:#07A0C3}
+.inv-scope .inv-thi{width:38px;border:none;border-bottom:1.5px solid rgba(7,160,195,0.6);background:transparent;font-size:12px;font-weight:600;color:var(--inv-tp);font-family:inherit;text-align:center;padding:0 1px 1px;outline:none;-moz-appearance:textfield;height:auto;border-radius:0}
+.inv-scope .inv-thi::-webkit-inner-spin-button,.inv-scope .inv-thi::-webkit-outer-spin-button{-webkit-appearance:none}
+.inv-scope .inv-thi:focus{border-bottom-color:#07A0C3}
 .inv-scope .ptrack{height:6px;background:var(--inv-bg);border-radius:3px;overflow:hidden;margin-bottom:3px}
 .inv-scope .pfill{height:100%;border-radius:3px;transition:width .4s}
 .inv-scope .pctx{font-size:9px;color:var(--inv-ts)}
@@ -863,15 +863,15 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="probpnl">
               <div class="probtitle">Sandsynlighed for at overskride afkastmål — justerbare grænser</div>
               <div class="pi">
-                <div><div class="ph"><span>&gt;&nbsp;</span><input class="ti" id="t1" type="number" value="7.5" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f1" style="width:0%"></div></div><div class="pctx" id="c1"></div></div>
+                <div><div class="ph"><span>&gt;&nbsp;</span><input class="inv-thi" id="t1" type="number" value="5" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f1" style="width:0%"></div></div><div class="pctx" id="c1"></div></div>
                 <div class="pnum" id="p1">–</div>
               </div>
               <div class="pi">
-                <div><div class="ph"><span>&gt;&nbsp;</span><input class="ti" id="t2" type="number" value="10" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f2" style="width:0%"></div></div><div class="pctx" id="c2"></div></div>
+                <div><div class="ph"><span>&gt;&nbsp;</span><input class="inv-thi" id="t2" type="number" value="10" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f2" style="width:0%"></div></div><div class="pctx" id="c2"></div></div>
                 <div class="pnum" id="p2">–</div>
               </div>
               <div class="pi">
-                <div><div class="ph"><span>&gt;&nbsp;</span><input class="ti" id="t3" type="number" value="15" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f3" style="width:0%"></div></div><div class="pctx" id="c3"></div></div>
+                <div><div class="ph"><span>&gt;&nbsp;</span><input class="inv-thi" id="t3" type="number" value="12.5" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f3" style="width:0%"></div></div><div class="pctx" id="c3"></div></div>
                 <div class="pnum" id="p3">–</div>
               </div>
             </div>
@@ -2751,7 +2751,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
     cons: [{ mu: .13, sig: .2012 }, { mu: .08, sig: .1985 }, { mu: .07, sig: .1460 }]
   };
   const RHO = [[1, .45, .80], [.45, 1, .70], [.80, .70, 1]];
-  let sc = 'hist', T = 9, W = [.50, .30, .20], amount = 1000000, thresholds = [.075, .10, .15];
+  let sc = 'hist', T = 9, W = [.50, .30, .20], amount = 1000000, thresholds = [.05, .10, .125];
   let PAL = 0.157, AOP = 0.0056;
   function normCDF(z) {
     const t = 1/(1 + .2316419*Math.abs(z));
@@ -2983,9 +2983,9 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   };
   window.onThresh = function() {
     thresholds = [
-      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t1').value) || 7.5) / 100)),
+      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t1').value) || 5) / 100)),
       Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t2').value) || 10) / 100)),
-      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t3').value) || 15) / 100))
+      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t3').value) || 12.5) / 100))
     ];
     update();
   };
