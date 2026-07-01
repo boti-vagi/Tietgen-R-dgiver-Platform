@@ -13,7 +13,6 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--font-sans);font-size:17px;line-height:1.55;color:var(--text-primary);background:radial-gradient(ellipse 60% 50% at 10% 0%,rgba(7,160,195,0.10),transparent 60%),radial-gradient(ellipse 50% 40% at 95% 5%,rgba(255,217,50,0.16),transparent 60%),var(--bg-tertiary);background-attachment:fixed;-webkit-font-smoothing:antialiased;font-weight:400}
 .page{max-width:1320px;margin:0 auto;padding:40px 28px 64px}
-.demo-banner{background:var(--accent-bg);color:var(--accent-text);padding:12px 20px;border-radius:100px;font-size:14px;margin-bottom:24px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--accent);font-weight:500}
 .app{background:var(--bg-primary);border-radius:var(--radius-xl);border:1px solid var(--border-tertiary);overflow:hidden;box-shadow:var(--shadow-md)}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid var(--border-tertiary);gap:14px;background:linear-gradient(180deg,rgba(255,217,50,0.04),transparent)}
 .topbar-actions{display:inline-flex;align-items:center;gap:10px;flex-shrink:0}
@@ -71,7 +70,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--info-str
 .field:last-child{margin-bottom:0}
 .field label{font-size:14px;color:var(--text-secondary);font-weight:500}
 .field .accent{border-color:var(--info-strong);box-shadow:0 0 0 4px rgba(7,160,195,0.10)}
-.notes-block{margin-top:22px;padding:20px 22px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-lg);font-size:14px;color:var(--accent-text);line-height:1.7;border:1px solid rgba(255,217,50,0.45)}
+.section
+  .section.flex-grow 
+  .section.flex-grow 
+
+  .notes-block{margin-top:22px;padding:20px 22px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-lg);font-size:14px;color:var(--accent-text);line-height:1.7;border:1px solid rgba(255,217,50,0.45)}
 .notes-block p{margin:0}
 .notes-block strong{color:#4A3A00;font-weight:600}
 .actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px}
@@ -106,7 +109,7 @@ tbody tr:hover{background:var(--bg-secondary)}
 .modal-head p{margin:0 0 0 58px;font-size:14px;color:var(--text-secondary)}
 .modal-body{padding:22px 28px;overflow-y:auto;font-size:15px}
 .modal-foot{display:flex;justify-content:flex-end;gap:12px;padding:18px 28px;border-top:1px solid var(--border-tertiary);background:var(--bg-secondary)}
-.change-list {border:1px solid var(--border-tertiary);border-radius:var(--radius-md);overflow:hidden;max-height:340px;overflow-y:auto;background:var(--bg-primary)}
+.change-list{border:1px solid var(--border-tertiary);border-radius:var(--radius-md);overflow:hidden;max-height:340px;overflow-y:auto;background:var(--bg-primary)}
 .change-list .group{padding:10px 16px;background:var(--bg-secondary);font-size:13px;color:var(--info-strong);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-top:1px solid var(--border-tertiary)}
 .change-list .group:first-child{border-top:none}
 .change-list .item{display:flex;align-items:center;gap:14px;padding:13px 16px;font-size:15px;border-top:1px solid var(--border-tertiary)}
@@ -150,6 +153,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .preview-card .head{margin:0 0 4px;font-size:16px;font-weight:600;color:var(--info-strong)}
 .preview-card .desc{margin:0 0 12px;font-size:14px;color:var(--text-secondary);line-height:1.5}
 .pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{font-size:11px;padding:4px 12px;border-radius:100px;font-weight:600}
 .pill.blue{background:var(--info-strong);color:#fff}
 .pill.gray{background:var(--bg-secondary);color:var(--text-secondary);border:1px solid var(--border-tertiary)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:32px;padding:14px 24px;background:var(--text-primary);color:#fff;border-radius:100px;font-size:15px;z-index:200;opacity:0;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);pointer-events:none;box-shadow:var(--shadow-md);font-weight:500}
@@ -187,14 +191,9 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .kpi-card .val{font-size:42px;font-weight:700;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1}
 .kpi-card .sub{font-size:13px;color:var(--text-tertiary);margin-top:6px}
 .kpi-card.primary .sub{color:rgba(255,255,255,0.8)}
-.kpi-card .val{color:var(--success-strong)}
+.kpi-card.pos .val{color:var(--success-strong)}
 .kpi-updated{font-size:13px;color:var(--text-tertiary);display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
 .kpi-updated i{font-size:14px;color:var(--info-strong)}
-.vis-toggle-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;padding:14px 20px;background:linear-gradient(135deg,var(--accent-bg),#FFFDF0);border-radius:var(--radius-md);border:1px solid rgba(255,217,50,0.55)}
-.vis-toggle-bar .vis-info{display:flex;align-items:center;gap:12px}
-.vis-toggle-bar .vis-info i{font-size:18px;color:var(--accent-text);padding:6px;background:var(--accent);border-radius:100px;box-shadow:var(--shadow-yellow)}
-.vis-toggle-bar .vis-text strong{font-size:14px;font-weight:600;color:#4A3A00;display:block}
-.vis-toggle-bar .vis-text em{font-size:13px;font-style:normal;color:var(--accent-text);display:block;margin-top:2px}
 .vis-switch{position:relative;display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;flex-shrink:0}
 .vis-switch input{position:absolute;opacity:0;pointer-events:none}
 .vis-switch .vis-state{font-size:13px;font-weight:600;color:var(--success-strong);min-width:56px;text-align:right}
@@ -203,6 +202,12 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .vis-switch input:checked~.vis-track{background:var(--success-strong)}
 .vis-switch .vis-thumb{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:transform 0.22s cubic-bezier(0.16,1,0.3,1);box-shadow:0 2px 6px rgba(0,0,0,0.2)}
 .vis-switch input:checked~.vis-track .vis-thumb{transform:translateX(22px)}
+.vis-switch.vis-inline{margin-left:auto;gap:8px}
+.vis-switch.vis-inline .vis-state{font-size:12px;font-weight:500;min-width:auto;color:var(--text-secondary)}
+.vis-switch.vis-inline input:checked~.vis-state{color:var(--success-strong)}
+.vis-switch.vis-inline .vis-track{width:38px;height:22px}
+.vis-switch.vis-inline .vis-thumb{width:16px;height:16px;top:3px;left:3px}
+.vis-switch.vis-inline input:checked~.vis-track .vis-thumb{transform:translateX(16px)}
 .tool.tool-hidden{opacity:0.45;position:relative}
 .tool.tool-hidden::after{content:'\ea76';font-family:'tabler-icons';position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--text-tertiary)}
 .person-toggle{display:inline-flex;padding:5px;background:var(--bg-secondary);border-radius:100px;border:1px solid var(--border-tertiary);position:relative;gap:0;box-shadow:var(--shadow-sm)}
@@ -305,7 +310,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .fetch-btn:active{transform:translateY(0)}
 .fetch-btn i{font-size:16px}
 @media (max-width:900px){.price-summary{grid-template-columns:1fr}}
-@media (max-width:700px){body{font-size:13px}.page{padding:14px 10px 32px}.demo-banner{font-size:11px;padding:8px 12px}.app{border-radius:var(--radius-lg)}.topbar{padding:12px 14px;flex-wrap:wrap;gap:10px}.crumbs{font-size:12px;gap:8px;flex-wrap:wrap}.brand-logo img{height:36px;max-width:180px}.brand-text strong{font-size:16px}.brand-text em{font-size:9px;letter-spacing:1.5px}.brand-sep{height:24px;margin:0 2px}#publishBtn{padding:8px 14px;font-size:12px}.tools{padding:8px 10px 0;gap:2px;-webkit-overflow-scrolling:touch}.tool{padding:9px 12px;font-size:12px;gap:5px}.tool i{font-size:14px}.content{padding:18px 14px 22px}.page-head{margin-bottom:16px;gap:8px}.page-head h1{font-size:22px}.saved{font-size:11px;padding:4px 10px}.steps{margin-bottom:16px;padding:4px;gap:2px}.step{font-size:11px;padding:7px 11px}.grid-2{grid-template-columns:1fr;gap:12px}.grid-2>.col{gap:12px}.section{padding:14px 16px;border-radius:var(--radius-md)}.section .title{font-size:10px;margin-bottom:12px}.field{margin-bottom:10px}.field label{font-size:11px}input,select,textarea{font-size:14px;height:40px;padding:8px 12px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.nyt-grid{grid-template-columns:1fr}.actions{flex-direction:column-reverse;gap:8px}.actions .btn{width:100%;justify-content:center}.btn{padding:10px 16px;font-size:13px}.chart-wrap{height:240px;margin-bottom:12px}table{font-size:12px}th,td{padding:9px 8px}.table-wrap{overflow-x:auto}.subtabs{gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch}.subtab{font-size:13px;padding:10px 0;white-space:nowrap}.depot-main-row .selskab{font-size:14px}.modal{border-radius:var(--radius-lg)}.modal-head{padding:16px 16px 12px}.modal-head h3{font-size:16px}.modal-body{padding:14px 16px}.modal-foot{padding:12px 16px}.modal-foot{flex-direction:column-reverse;gap:8px}.modal-foot .btn{width:100%;justify-content:center}.fetch-row{padding:12px 14px;gap:10px}.fetch-btns{gap:6px}.fetch-btn{padding:7px 11px;font-size:11px}.price-summary{gap:10px;margin-bottom:18px}.price-summary .price-item{padding:16px 18px}.price-summary .val{font-size:24px}.empty-state{padding:48px 16px}.empty-state>i{font-size:36px;width:60px;height:60px}.empty-state h2{font-size:18px}.upload-area{padding:32px 16px}.folder-head{padding:12px 14px}.doc-item{padding:10px 14px;gap:10px}.notes-block{padding:12px 14px;font-size:11px}.legend{gap:10px;font-size:10px}}
+@media (max-width:700px){body{font-size:13px}.page{padding:14px 10px 32px}.app{border-radius:var(--radius-lg)}.topbar{padding:12px 14px;flex-wrap:wrap;gap:10px}.crumbs{font-size:12px;gap:8px;flex-wrap:wrap}.brand-logo img{height:36px;max-width:180px}.brand-text strong{font-size:16px}.brand-text em{font-size:9px;letter-spacing:1.5px}.brand-sep{height:24px;margin:0 2px}#publishBtn{padding:8px 14px;font-size:12px}.tools{padding:8px 10px 0;gap:2px;-webkit-overflow-scrolling:touch}.tool{padding:9px 12px;font-size:12px;gap:5px}.tool i{font-size:14px}.content{padding:18px 14px 22px}.page-head{margin-bottom:16px;gap:8px}.page-head h1{font-size:22px}.saved{font-size:11px;padding:4px 10px}.steps{margin-bottom:16px;padding:4px;gap:2px}.step{font-size:11px;padding:7px 11px}.grid-2{grid-template-columns:1fr;gap:12px}.grid-2>.col{gap:12px}.section{padding:14px 16px;border-radius:var(--radius-md)}.section .title{font-size:10px;margin-bottom:12px}.field{margin-bottom:10px}.field label{font-size:11px}input,select,textarea{font-size:14px;height:40px;padding:8px 12px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.nyt-grid{grid-template-columns:1fr}.actions{flex-direction:column-reverse;gap:8px}.actions .btn{width:100%;justify-content:center}.btn{padding:10px 16px;font-size:13px}.chart-wrap{height:240px;margin-bottom:12px}table{font-size:12px}th,td{padding:9px 8px}.table-wrap{overflow-x:auto}.subtabs{gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch}.subtab{font-size:13px;padding:10px 0;white-space:nowrap}.depot-main-row .selskab{font-size:14px}.modal{border-radius:var(--radius-lg)}.modal-head{padding:16px 16px 12px}.modal-head h3{font-size:16px}.modal-body{padding:14px 16px}.modal-foot{padding:12px 16px}.modal-foot{flex-direction:column-reverse;gap:8px}.modal-foot .btn{width:100%;justify-content:center}.fetch-row{padding:12px 14px;gap:10px}.fetch-btns{gap:6px}.fetch-btn{padding:7px 11px;font-size:11px}.price-summary{gap:10px;margin-bottom:18px}.price-summary .price-item{padding:16px 18px}.price-summary .val{font-size:24px}.empty-state{padding:48px 16px}.empty-state>i{font-size:36px;width:60px;height:60px}.empty-state h2{font-size:18px}.upload-area{padding:32px 16px}.folder-head{padding:12px 14px}.doc-item{padding:10px 14px;gap:10px}.notes-block{padding:12px 14px;font-size:11px}.legend{gap:10px;font-size:10px}}
 @media (max-width:420px){.page-head h1{font-size:19px}.tool{padding:8px 10px;font-size:11px}.step{font-size:10px;padding:6px 9px}}
 .hide{display:none}
 .mt-14{margin-top:14px}
@@ -316,15 +321,120 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 .h-sub{margin:0 0 12px;font-size:17px;font-weight:500}
 .h-sub-bordered{margin:18px 0 10px;font-size:14px;font-weight:600;color:var(--text-primary);border-top:1px solid var(--border);padding-top:14px}
 .row-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+
+.inv-scope{--inv-bg:#ffffff;--inv-bg2:#f4f5f7;--inv-tp:#111827;--inv-ts:#6b7280;--inv-bd:#e5e7eb;color:var(--inv-tp)}
+.inv-scope *,.inv-scope *::before,.inv-scope *::after{box-sizing:border-box}
+.inv-scope .cols{display:grid;grid-template-columns:245px 1fr;gap:16px;align-items:start;margin-bottom:14px}
+.inv-scope .left,.inv-scope .right{display:flex;flex-direction:column;gap:11px}
+.inv-scope .left{gap:9px}
+.inv-scope .pnl{background:var(--inv-bg2);border-radius:12px;padding:12px 14px}
+.inv-scope .ptitle{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--inv-ts);margin-bottom:10px}
+.inv-scope .badge{display:inline-block;font-size:8px;font-weight:600;background:rgba(7,160,195,0.12);color:#07A0C3;border:1px solid rgba(7,160,195,0.25);border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle;letter-spacing:.04em}
+.inv-scope .toggle{display:flex;background:var(--inv-bg2);border-radius:8px;padding:3px;gap:3px}
+.inv-scope .tbtn{font-size:11px;font-weight:500;padding:5px 14px;border-radius:6px;border:none;background:transparent;color:var(--inv-ts);cursor:pointer;font-family:inherit;transition:.2s}
+.inv-scope .tbtn.on{background:#07A0C3;color:#fff}
+.inv-scope .fund-row{margin-bottom:12px}
+.inv-scope .fund-row:last-child{margin-bottom:0}
+.inv-scope .fmeta{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.inv-scope .finfo{display:flex;align-items:center;gap:7px}
+.inv-scope .fdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.inv-scope .fname{font-size:11px;font-weight:500;color:var(--inv-tp)}
+.inv-scope .fisin{font-size:9px;color:var(--inv-ts);font-family:monospace;margin-left:15px;margin-bottom:3px}
+.inv-scope .fpct{font-size:13px;font-weight:600}
+.inv-scope .autobar{height:4px;background:var(--inv-bg);border-radius:2px;margin-top:5px}
+.inv-scope .autoinner{height:100%;border-radius:2px;transition:width .3s}
+.inv-scope .autonote{font-size:9px;color:var(--inv-ts);margin-top:2px}
+.inv-scope input[type=range]{width:100%;height:auto;cursor:pointer;accent-color:#07A0C3;padding:0}
+.inv-scope .hrow{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.inv-scope .hval{font-size:22px;font-weight:600;color:#07A0C3;min-width:48px;line-height:1}
+.inv-scope .hsub{font-size:10px;color:var(--inv-ts)}
+.inv-scope .rlbls{display:flex;justify-content:space-between;font-size:9px;color:var(--inv-ts);margin-top:2px}
+.inv-scope .amt-wrap{display:flex;align-items:baseline;gap:6px;margin-bottom:4px}
+.inv-scope .amt-in{flex:1;border:none;border-bottom:2px solid #07A0C3;background:transparent;font-size:18px;font-weight:600;color:#07A0C3;font-family:inherit;text-align:right;padding:2px 0;outline:none;-moz-appearance:textfield;height:auto;border-radius:0}
+.inv-scope .amt-in::-webkit-inner-spin-button,.inv-scope .amt-in::-webkit-outer-spin-button{-webkit-appearance:none}
+.inv-scope .amt-unit{font-size:11px;color:var(--inv-ts);font-weight:500}
+.inv-scope .amt-fmt{font-size:10px;color:var(--inv-ts);text-align:right}
+.inv-scope .fdgrid{display:grid;grid-template-columns:1fr auto auto;gap:2px 8px;font-size:10px}
+.inv-scope .fdh{font-weight:600;color:var(--inv-ts);font-size:9px;text-transform:uppercase;letter-spacing:.04em;padding-bottom:3px;border-bottom:1px solid var(--inv-bd)}
+.inv-scope .fdv{color:var(--inv-tp);font-weight:500;text-align:right}
+.inv-scope .fdn{color:var(--inv-ts)}
+.inv-scope .srow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.inv-scope .sc{background:var(--inv-bg2);border-radius:10px;padding:11px 13px}
+.inv-scope .sc.hi{background:rgba(7,160,195,0.1);border:1.5px solid rgba(7,160,195,0.35)}
+.inv-scope .sc.primary{background:rgba(7,160,195,0.13);border:2px solid #07A0C3;padding:13px 14px}
+.inv-scope .sl{font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--inv-ts);margin-bottom:3px}
+.inv-scope .sn{font-size:22px;font-weight:600;color:var(--inv-tp);line-height:1.1}
+.inv-scope .sc.hi .sn{color:#07A0C3}
+.inv-scope .sc.primary .sn{font-size:30px;color:#07A0C3}
+.inv-scope .sc.primary .sl{color:#07A0C3}
+.inv-scope .snote{font-size:9px;color:var(--inv-ts);margin-top:2px}
+.inv-scope .primary-tag{display:inline-block;font-size:8px;font-weight:600;background:#07A0C3;color:#fff;border-radius:3px;padding:1px 5px;margin-left:5px;vertical-align:middle;letter-spacing:.04em}
+.inv-scope .probpnl,.inv-scope .mer-pnl,.inv-scope .chpnl,.inv-scope .hppnl{background:var(--inv-bg2);border-radius:12px;padding:13px 15px}
+.inv-scope .probtitle{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--inv-ts);margin-bottom:11px}
+.inv-scope .pi{display:grid;grid-template-columns:1fr auto;align-items:start;gap:10px;margin-bottom:13px}
+.inv-scope .pi:last-child{margin-bottom:0}
+.inv-scope .ph{display:flex;align-items:baseline;gap:3px;font-size:12px;font-weight:600;color:var(--inv-tp);margin-bottom:4px}
+.inv-scope .ti{width:38px;border:none;border-bottom:1.5px solid rgba(7,160,195,0.6);background:transparent;font-size:12px;font-weight:600;color:var(--inv-tp);font-family:inherit;text-align:center;padding:0 1px 1px;outline:none;-moz-appearance:textfield;height:auto;border-radius:0}
+.inv-scope .ti::-webkit-inner-spin-button,.inv-scope .ti::-webkit-outer-spin-button{-webkit-appearance:none}
+.inv-scope .ti:focus{border-bottom-color:#07A0C3}
+.inv-scope .ptrack{height:6px;background:var(--inv-bg);border-radius:3px;overflow:hidden;margin-bottom:3px}
+.inv-scope .pfill{height:100%;border-radius:3px;transition:width .4s}
+.inv-scope .pctx{font-size:9px;color:var(--inv-ts)}
+.inv-scope .pnum{font-size:25px;font-weight:600;text-align:right;line-height:1}
+.inv-scope .mer-header{display:flex;align-items:baseline;gap:6px;margin-bottom:11px}
+.inv-scope .mer-title{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--inv-ts)}
+.inv-scope .mer-thresh{font-size:9px;color:var(--inv-ts)}
+.inv-scope .mer-grid{display:grid;grid-template-columns:1fr 32px 1fr;align-items:center;gap:8px;margin-bottom:11px}
+.inv-scope .mbox{background:var(--inv-bg);border-radius:9px;padding:10px 12px}
+.inv-scope .mbox.blue{background:rgba(7,160,195,0.08);border:1px solid rgba(7,160,195,0.2)}
+.inv-scope .mbox-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--inv-ts);margin-bottom:4px}
+.inv-scope .mbox-val{font-size:17px;font-weight:600;color:var(--inv-tp);line-height:1.1}
+.inv-scope .mbox.blue .mbox-val{color:#07A0C3}
+.inv-scope .mbox-sub{font-size:9px;color:var(--inv-ts);margin-top:2px}
+.inv-scope .mer-vs{font-size:11px;color:var(--inv-ts);text-align:center;font-weight:500}
+.inv-scope .mer-result{display:flex;align-items:center;justify-content:space-between;background:rgba(255,217,50,0.14);border:1px solid rgba(230,184,0,0.35);border-radius:9px;padding:10px 14px}
+.inv-scope .mer-result-lbl{font-size:11px;font-weight:500;color:var(--inv-tp)}
+.inv-scope .mer-result-sub{font-size:9px;color:var(--inv-ts);margin-top:1px}
+.inv-scope .mer-result-val{font-size:22px;font-weight:600;color:#9a7000;text-align:right}
+.inv-scope .mer-result-pct{font-size:10px;color:var(--inv-ts);text-align:right;margin-top:1px}
+.inv-scope .chlbl{font-size:11px;font-weight:600;color:var(--inv-tp);margin-bottom:2px}
+.inv-scope .chsub{font-size:10px;color:var(--inv-ts);margin-bottom:11px}
+.inv-scope .chwrap{position:relative;width:100%;height:130px}
+.inv-scope .hpwrap{position:relative;width:100%;height:220px}
+.inv-scope .leg{display:flex;flex-wrap:wrap;gap:12px;margin-top:7px;font-size:9px;color:var(--inv-ts)}
+.inv-scope .li{display:flex;align-items:center;gap:5px}
+.inv-scope .ld{width:14px;height:2px;display:inline-block;border-radius:1px}
+.inv-scope .hp-leg{display:flex;gap:14px;margin-top:8px;font-size:9px;color:var(--inv-ts)}
+.inv-scope .hp-swatch{width:12px;height:10px;display:inline-block;border-radius:2px;margin-right:4px;vertical-align:middle}
+.inv-scope .pctrow{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:10px}
+.inv-scope .pb{background:var(--inv-bg);border-radius:7px;padding:7px 5px;text-align:center}
+.inv-scope .pb.mid{background:rgba(7,160,195,0.1);border:1px solid rgba(7,160,195,0.25)}
+.inv-scope .pbl{font-size:8px;color:var(--inv-ts);margin-bottom:2px;line-height:1.3}
+.inv-scope .pbv{font-size:12px;font-weight:600;color:var(--inv-tp)}
+.inv-scope .pb.mid .pbv{color:#07A0C3}
+.inv-scope .inv-note{font-size:9px;color:var(--inv-ts);line-height:1.6;padding:8px 12px;background:var(--inv-bg2);border-radius:8px;border-left:3px solid #FFD932;margin-top:8px}
+.inv-scope .inv-note:first-of-type{margin-top:0}
+.inv-scope .port-sel{width:100%;height:auto;border:1.5px solid var(--inv-bd);border-radius:8px;padding:9px 12px;background:var(--inv-bg2);color:var(--inv-tp);font-family:inherit;font-size:11px;font-weight:500;cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.inv-scope .port-sel:focus{border-color:#07A0C3}
+.inv-scope .port-sel-lbl{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--inv-ts);margin-bottom:7px}
+.inv-scope .tax-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.inv-scope .tax-row:last-of-type{margin-bottom:0}
+.inv-scope .tax-lbl{font-size:11px;font-weight:500;color:var(--inv-tp)}
+.inv-scope .tax-rhs{display:flex;align-items:baseline;gap:3px}
+.inv-scope .tax-in{width:48px;border:none;border-bottom:1.5px solid rgba(7,160,195,0.55);background:transparent;font-size:15px;font-weight:600;color:#07A0C3;font-family:inherit;text-align:right;padding:1px 2px;outline:none;-moz-appearance:textfield;height:auto;border-radius:0}
+.inv-scope .tax-in::-webkit-inner-spin-button,.inv-scope .tax-in::-webkit-outer-spin-button{-webkit-appearance:none}
+.inv-scope .tax-in:focus{border-bottom-color:#07A0C3}
+.inv-scope .tax-unit{font-size:11px;color:var(--inv-ts)}
+.inv-scope .tax-note{font-size:9px;color:var(--inv-ts);margin:2px 0 8px;line-height:1.4}
+.inv-scope .tax-divider{border:none;border-top:1px solid var(--inv-bd);margin:8px 0}
+.inv-scope .net-tag{display:inline-block;font-size:8px;font-weight:600;letter-spacing:.04em;background:rgba(14,138,122,0.12);color:#0E8A7A;border:1px solid rgba(14,138,122,0.25);border-radius:4px;padding:1px 5px;margin-left:5px;vertical-align:middle}
+.inv-scope .hdr-sub{font-size:11px;color:var(--inv-ts);margin-bottom:14px}
+@media (max-width:700px){.inv-scope .cols{grid-template-columns:1fr}.inv-scope .srow{grid-template-columns:repeat(3,1fr)}.inv-scope .pctrow{grid-template-columns:repeat(3,1fr)}}
+
 </style>
 </head>
 <body>
 <div class="page">
-
-  <div class="demo-banner">
-    <i class="ti ti-sparkles"></i>
-    <span><strong>Designtest v2</strong> — VI-farver, Poppins og lidt more personlighed.</span>
-  </div>
 
   <div class="app">
 
@@ -363,11 +473,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
     <div class="tools">
       <button class="tool" data-tool="afkast"><i class="ti ti-chart-line"></i> Din pension</button>
       <button class="tool active" data-tool="flyt"><i class="ti ti-transfer"></i> Flyt pension</button>
+      <button class="tool" data-tool="investering"><i class="ti ti-chart-histogram"></i> Investering</button>
       <button class="tool" data-tool="forsikring"><i class="ti ti-shield"></i> Forsikringer</button>
       <button class="tool" data-tool="helhed"><i class="ti ti-layout-grid"></i> Helhedsplan</button>
       <button class="tool" data-tool="referat"><i class="ti ti-file-text"></i> Møderesume</button>
       <button class="tool" data-tool="dokumenter"><i class="ti ti-folder"></i> Dokumenter</button>
-      <button class="tool" data-tool="pensionbroker"><i class="ti ti-briefcase"></i> PensionBroker</button>
       <button class="tool tool-profil" data-tool="profil" aria-label="Profil"><i class="ti ti-user-circle"></i></button>
     </div>
 
@@ -412,17 +522,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
       <div class="page-head">
         <h1>Flyt pension</h1>
         <span class="saved"><span class="dot"></span>Kladde gemt · for 2 min siden</span>
-      </div>
-
-      <div class="vis-toggle-bar">
-        <div class="vis-info">
-          <i class="ti ti-eye"></i>
-          <div class="vis-text">
-            <strong>Vis fanen "Flyt pension" for kunden</strong>
-            <em>Slå fra for at skjule hele fanen i kundens visning</em>
-          </div>
-        </div>
-        <label class="vis-switch">
+        <label class="vis-switch vis-inline" title="Vis fanen for kunden">
           <input type="checkbox" data-toggle-tool="flyt" checked>
           <span class="vis-state">Vist</span>
           <span class="vis-track"><span class="vis-thumb"></span></span>
@@ -647,22 +747,190 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 
       </section>
 
+
+      <section class="tool-section" data-tool="investering" hidden>
+
+      <div class="page-head">
+        <h1>Investering</h1>
+        <span class="saved"><span class="dot"></span>Portefølje-sandsynlighedsberegner</span>
+        <label class="vis-switch vis-inline" title="Vis fanen for kunden">
+          <input type="checkbox" data-toggle-tool="investering" checked>
+          <span class="vis-state">Vist</span>
+          <span class="vis-track"><span class="vis-thumb"></span></span>
+        </label>
+      </div>
+
+      <div class="inv-scope">
+        <div class="hdr-sub">Portefølje Sandsynlighedsberegner · Log-normal model</div>
+
+        <div class="cols">
+          <div class="left">
+            <div class="pnl">
+              <div class="port-sel-lbl">Vælg investeringsportefølje</div>
+              <div style="position:relative">
+                <select class="port-sel" id="portSel" onchange="onPortfolio()">
+                  <option value="custom">— Manuel justering —</option>
+                  <option value="gv" selected>Global Vækst via Danica</option>
+                  <option value="gb">Global Balance via Danica</option>
+                  <option value="ga">Global Aktieindeks</option>
+                  <option value="ti">Teknologi Aktieindeks</option>
+                </select>
+              </div>
+            </div>
+            <div class="pnl">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <div class="ptitle" style="margin-bottom:0">Scenarie</div>
+                <div class="toggle">
+                  <button class="tbtn on" id="btnH" onclick="setScenario('hist')">Historisk</button>
+                  <button class="tbtn" id="btnC" onclick="setScenario('cons')">Konservativt</button>
+                </div>
+              </div>
+            </div>
+            <div class="pnl">
+              <div class="ptitle">Fondsvægte</div>
+              <div class="fund-row">
+                <div class="fisin">DK0016023229</div>
+                <div class="fmeta">
+                  <div class="finfo"><div class="fdot" style="background:#07A0C3"></div><div class="fname">DI Teknologi Indeks</div></div>
+                  <div class="fpct" id="lbl1" style="color:#07A0C3">50%</div>
+                </div>
+                <input type="range" id="s1" min="0" max="95" step="5" value="50" oninput="onS()">
+              </div>
+              <div class="fund-row">
+                <div class="fisin">IE00BKWQ0G16</div>
+                <div class="fmeta">
+                  <div class="finfo"><div class="fdot" style="background:#1E6FAB"></div><div class="fname">SPDR EU Financials</div></div>
+                  <div class="fpct" id="lbl2" style="color:#1E6FAB">30%</div>
+                </div>
+                <input type="range" id="s2" min="0" max="95" step="5" value="30" oninput="onS()">
+              </div>
+              <div class="fund-row" style="margin-bottom:0">
+                <div class="fisin">IE00BK1PV551</div>
+                <div class="fmeta">
+                  <div class="finfo"><div class="fdot" style="background:#0E8A7A"></div><div class="fname">Xtrackers MSCI World</div></div>
+                  <div class="fpct" id="lbl3" style="color:#0E8A7A">20%</div>
+                </div>
+                <div class="autobar"><div class="autoinner" id="abar" style="width:20%;background:#0E8A7A"></div></div>
+                <div class="autonote">Resterende vægt (automatisk)</div>
+              </div>
+            </div>
+            <div class="pnl">
+              <div class="ptitle">Tidshorisont</div>
+              <div class="hrow">
+                <div><div class="hval" id="lblH">9</div><div class="hsub">år</div></div>
+                <input type="range" id="sH" min="3" max="30" step="1" value="9" oninput="onH()" style="flex:1">
+              </div>
+              <div class="rlbls"><span>3 år</span><span>30 år</span></div>
+            </div>
+            <div class="pnl">
+              <div class="ptitle">Investeringsbeløb</div>
+              <div class="amt-wrap">
+                <input type="number" class="amt-in" id="amtIn" value="1000000" min="0" step="50000" oninput="onAmt()">
+                <span class="amt-unit">kr.</span>
+              </div>
+              <div class="amt-fmt" id="amtFmt">1.000.000 kr.</div>
+            </div>
+            <div class="pnl">
+              <div class="ptitle">Skat &amp; Omkostninger</div>
+              <div class="tax-row">
+                <span class="tax-lbl">PAL skat (pension)</span>
+                <div class="tax-rhs"><input class="tax-in" id="palIn" type="number" value="15.7" min="0" max="30" step="0.1" oninput="onTax()"><span class="tax-unit">%</span></div>
+              </div>
+              <div class="tax-note">15,7% af positivt afkast betales årligt til SKAT</div>
+              <hr class="tax-divider">
+              <div class="tax-row">
+                <span class="tax-lbl">ÅOP — eksist. aftale</span>
+                <div class="tax-rhs"><input class="tax-in" id="aopIn" type="number" value="0.56" min="0" max="10" step="0.1" oninput="onTax()"><span class="tax-unit">%</span></div>
+              </div>
+              <div class="tax-note">Fratrækkes porteføljens P50 bruttoafkast før PAL</div>
+            </div>
+            <div class="pnl">
+              <div class="ptitle">Fondsnøgletal<span class="badge">10 ÅR</span></div>
+              <div class="fdgrid">
+                <div class="fdh">Fond</div><div class="fdh" style="text-align:right">μ</div><div class="fdh" style="text-align:right">σ</div>
+                <div class="fdn">DI Teknologi</div><div class="fdv" id="dmu1">24,1%</div><div class="fdv" id="dsig1">20,1%</div>
+                <div class="fdn">EU Financials</div><div class="fdv" id="dmu2">11,7%</div><div class="fdv" id="dsig2">19,9%</div>
+                <div class="fdn">MSCI World</div><div class="fdv" id="dmu3">12,2%</div><div class="fdv" id="dsig3">14,6%</div>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="srow">
+              <div class="sc"><div class="sl">Forv. afkast / år</div><div class="sn" id="oMu">–</div><div class="snote">Aritmetisk · enkeltår</div></div>
+              <div class="sc hi"><div class="sl">Volatilitet</div><div class="sn" id="oSig">–</div><div class="snote">Estimeret m. korrelation</div></div>
+              <div class="sc primary"><div class="sl">Geo. middelafkast<span class="primary-tag">P50 = MEDIAN</span></div><div class="sn" id="oGeo">–</div><div class="snote">Sammensat · basis for beregning</div></div>
+            </div>
+            <div class="probpnl">
+              <div class="probtitle">Sandsynlighed for at overskride afkastmål — justerbare grænser</div>
+              <div class="pi">
+                <div><div class="ph"><span>&gt;&nbsp;</span><input class="ti" id="t1" type="number" value="7.5" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f1" style="width:0%"></div></div><div class="pctx" id="c1"></div></div>
+                <div class="pnum" id="p1">–</div>
+              </div>
+              <div class="pi">
+                <div><div class="ph"><span>&gt;&nbsp;</span><input class="ti" id="t2" type="number" value="10" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f2" style="width:0%"></div></div><div class="pctx" id="c2"></div></div>
+                <div class="pnum" id="p2">–</div>
+              </div>
+              <div class="pi">
+                <div><div class="ph"><span>&gt;&nbsp;</span><input class="ti" id="t3" type="number" value="15" min="0.1" max="49.9" step="0.5" oninput="onThresh()"><span>&nbsp;% pr. år</span></div><div class="ptrack"><div class="pfill" id="f3" style="width:0%"></div></div><div class="pctx" id="c3"></div></div>
+                <div class="pnum" id="p3">–</div>
+              </div>
+            </div>
+            <div class="mer-pnl">
+              <div class="mer-header"><div class="mer-title">Merafkast i kr.</div><div class="mer-thresh" id="merThreshLbl"></div></div>
+              <div class="mer-grid">
+                <div class="mbox blue"><div class="mbox-lbl">P50 Median<span class="net-tag">NETTO</span></div><div class="mbox-val" id="merP50Val">–</div><div class="mbox-sub" id="merP50Sub"></div></div>
+                <div class="mer-vs">vs.</div>
+                <div class="mbox"><div class="mbox-lbl" id="merT1Lbl">mål<span class="net-tag">NETTO</span></div><div class="mbox-val" id="merT1Val">–</div><div class="mbox-sub" id="merT1Sub"></div></div>
+              </div>
+              <div class="mer-result">
+                <div><div class="mer-result-lbl">Merafkast ved medianudfald</div><div class="mer-result-sub" id="merSub"></div></div>
+                <div><div class="mer-result-val" id="merVal">–</div><div class="mer-result-pct" id="merPct"></div></div>
+              </div>
+            </div>
+            <div class="hppnl">
+              <div class="chlbl">Afkast og tidsperspektiv</div>
+              <div class="chsub" id="hpSub">Annualiseret afkastspænd for 1–9 års horisonter · Valgt horisont fremhævet</div>
+              <div class="hpwrap"><canvas id="hpc"></canvas></div>
+              <div class="hp-leg">
+                <span><span class="hp-swatch" style="background:rgba(7,160,195,0.25)"></span>P5–P95 spænd</span>
+                <span><span class="hp-swatch" style="background:rgba(7,160,195,0.55)"></span>P25–P75 (midterste 50%)</span>
+                <span><span class="hp-swatch" style="background:#07A0C3;width:3px;height:10px;border-radius:1px"></span>Median (P50)</span>
+              </div>
+            </div>
+            <div class="chpnl">
+              <div class="chlbl">Sandsynlighedsfordeling — annualiseret afkast</div>
+              <div class="chsub" id="cSub">Over 9 år</div>
+              <div class="chwrap"><canvas id="dc"></canvas></div>
+              <div class="leg">
+                <span class="li"><span class="ld" style="background:#07A0C3"></span>Fordeling</span>
+                <span class="li"><span class="ld" style="background:#e53935"></span>Mål 1</span>
+                <span class="li"><span class="ld" style="background:#f0a020"></span>Mål 2</span>
+                <span class="li"><span class="ld" style="background:#2e7d32"></span>Mål 3</span>
+              </div>
+              <div class="pctrow">
+                <div class="pb"><div class="pbl">P5 pessimistisk</div><div class="pbv" id="pp5">–</div></div>
+                <div class="pb"><div class="pbl">P25</div><div class="pbv" id="pp25">–</div></div>
+                <div class="pb mid"><div class="pbl">P50 Median</div><div class="pbv" id="pp50">–</div></div>
+                <div class="pb"><div class="pbl">P75</div><div class="pbv" id="pp75">–</div></div>
+                <div class="pb"><div class="pbl">P95 optimistisk</div><div class="pbv" id="pp95">–</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inv-note" id="noteEl"></div>
+        <div class="inv-note" style="border-left-color:#e53935;font-style:italic;">
+          ⚠︎ <strong>Vigtig information:</strong> Historisk afkast er ikke en garanti for fremtidige afkast. Alle beregninger er baseret på historiske nøgletal og statistiske modeller, og det faktiske afkast kan afvige væsentligt — positivt eller negativt. Investering indebærer risiko for tab.
+        </div>
+      </div>
+
+      </section>
+
       <section class="tool-section" data-tool="forsikring" hidden>
 
       <div class="page-head">
         <h1>Forsikringer</h1>
         <span class="saved"><span class="dot"></span>Kladde gemt</span>
-      </div>
-
-      <div class="vis-toggle-bar">
-        <div class="vis-info">
-          <i class="ti ti-eye"></i>
-          <div class="vis-text">
-            <strong>Vis fanen "Forsikringer" for kunden</strong>
-            <em>Slå fra for at skjule hele fanen i kundens visning</em>
-          </div>
-        </div>
-        <label class="vis-switch">
+        <label class="vis-switch vis-inline" title="Vis fanen for kunden">
           <input type="checkbox" data-toggle-tool="forsikring" checked>
           <span class="vis-state">Vist</span>
           <span class="vis-track"><span class="vis-thumb"></span></span>
@@ -837,17 +1105,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
       <div class="page-head">
         <h1>Helhedsplan</h1>
         <span class="saved"><span class="dot"></span>Kladde gemt</span>
-      </div>
-
-      <div class="vis-toggle-bar">
-        <div class="vis-info">
-          <i class="ti ti-eye"></i>
-          <div class="vis-text">
-            <strong>Vis fanen "Helhedsplan" for kunden</strong>
-            <em>Slå fra for at skjule hele fanen i kundens visning</em>
-          </div>
-        </div>
-        <label class="vis-switch">
+        <label class="vis-switch vis-inline" title="Vis fanen for kunden">
           <input type="checkbox" data-toggle-tool="helhed" checked>
           <span class="vis-state">Vist</span>
           <span class="vis-track"><span class="vis-thumb"></span></span>
@@ -895,7 +1153,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
         </div>
 
         <div class="section col-yellow mt-20" >
-          <p class="title">Geninvestering og overskud</p>
+          <p class="title">Geninvestering af overskud</p>
           <div class="row-2col">
             <div class="field"><label>Geninvesteres overskydende Pension og Indkomst</label><select><option>ja</option><option>nej</option></select></div>
             <div class="field"><label>Geninvester overskud som Frie midler</label><select><option>ja</option><option>nej</option></select></div>
@@ -1046,7 +1304,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
         </div>
       </div>
 
-      <div class="panel" id="ph-opsparing">
+            <div class="panel" id="ph-opsparing">
         <div class="grid-1-when-1">
           <div class="section col-blue">
             <p class="title">Pensionsopsparing — Person 1</p>
@@ -1062,11 +1320,11 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div data-depot="liv-p1" data-depot-n="1"><div class="field"><label>Livrente Saldo (1)</label><input type="text" value="500.000"></div><div class="field"><label>Startalder livrente (1)</label><input type="number" value="65"></div></div><div data-depot="liv-p1" data-depot-n="2" class="hide"><div class="field"><label>Livrente Saldo (2)</label><input type="text" value="200.000"></div><div class="field"><label>Startalder livrente (2)</label><input type="number" value="65"></div></div>
             <div class="field"><label>Note pensionsopsparing — person 1</label><textarea rows="2"></textarea></div>
           
-            <div class="actions" style="margin-top:24px;">
-              <button class="btn ph-reset" type="button">Nulstil</button>
-              <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
-            </div>
-          </div>
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
+        </div>
+      </div>
           <div class="section col-blue person-only-2">
             <p class="title">Pensionsopsparing — Person 2</p>
             <p style="margin:-6px 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">*Dette felt er kun pensionsopsparing forvaltet af Tietgen Pension.</p>
@@ -1084,18 +1342,18 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
         </div>
       </div>
 
-      <div class="panel" id="ph-indbetaling">
+            <div class="panel" id="ph-indbetaling">
         <div class="grid-1-when-1">
           <div class="section col-blue">
             <p class="title">Pensionsindbetalinger — Person 1</p>
             <p style="margin:-6px 0 14px; font-size:13px; color:var(--text-secondary); font-style:italic;">*Aldersopsparing indbetaling 2026 (årligt max. 9.900 DKK eller 64.200 DKK 7 år inden pension.)</p>
             <div class="field"><label>Aldersopsparings indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
             <div data-depot="alders-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (1)</label><input type="number" value="">
-            <div class="actions" style="margin-top:24px;">
-              <button class="btn ph-reset" type="button">Nulstil</button>
-              <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
-            </div>
-          </div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (1)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="3" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (3)</label><input type="number" value=""></div></div>
+        <div class="actions" style="margin-top:24px;">
+          <button class="btn ph-reset" type="button">Nulstil</button>
+          <button class="btn primary ph-calc" type="button">Beregn resultat <i class="ti ti-arrow-right"></i></button>
+        </div>
+      </div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (1)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (2)</label><input type="number" value=""></div></div><div data-depot="alders-p1" data-depot-n="3" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — aldersopsparing (3)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — aldersopsparing (3)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — aldersopsparing (3)</label><input type="number" value=""></div></div>
             <p class="it-note">*Ratepension indbetaling 2026 (årligt max. Firmapension 74.674 DKK &amp; Privatpension 68.700 DKK).</p>
             <div class="field"><label>Ratepension indbetaling finansieret fra Frie Midler</label><select><option selected>ja</option><option>nej</option></select></div>
             <div data-depot="rate-p1" data-depot-n="1"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (1)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (1)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (1)</label><input type="number" value=""></div></div><div data-depot="rate-p1" data-depot-n="2" class="hide"><div class="field"><label>Årlig indbetaling (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Årlig indbetaling startalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Årlig indbetaling slutalder — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 1 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 1 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 2 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 2 (alder) — ratepension (2)</label><input type="number" value=""></div><div class="field"><label>Engangsindbetaling 3 (beløb) — ratepension (2)</label><input type="text" value=""></div><div class="field"><label>Engangsindbetaling 3 (alder) — ratepension (2)</label><input type="number" value=""></div></div>
@@ -1138,7 +1396,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <div class="section col-blue">
             <p class="title">Pensionsafkast</p>
             <div class="field"><label>Bruttoafkast</label><input type="text" value="10,4%"></div>
-            <div class="field"><label>Investeringsomkostenninger</label><input type="text" value="0,39%"></div>
+            <div class="field"><label>Investeringsomkostninger</label><input type="text" value="0,39%"></div>
             <div class="field"><label>Admin omkostninger</label><input type="text" value="0,45%"></div>
             <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:var(--bg-secondary); border-radius:var(--radius-md); margin:14px 0;">
               <span style="font-size:14px; color:var(--text-secondary);">Nettoafkast (EFTER 15,3% PAL)</span>
@@ -1534,6 +1792,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   </div>
 </div>
 
+<!-- Publish modal -->
 <div class="modal-backdrop" id="modal-publish" role="dialog" aria-modal="true">
   <div class="modal">
     <div class="modal-head">
@@ -1584,6 +1843,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   </div>
 </div>
 
+<!-- Success modal -->
 <div class="modal-backdrop" id="modal-success" role="dialog" aria-modal="true">
   <div class="modal" style="max-width:500px">
     <div class="success-head">
@@ -1633,6 +1893,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   </div>
 </div>
 
+<!-- Share modal -->
 <div class="modal-backdrop" id="modal-share" role="dialog" aria-modal="true">
   <div class="modal">
     <div class="modal-head">
@@ -1680,6 +1941,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   </div>
 </div>
 
+<!-- Fetch confirmation modal -->
 <div class="modal-backdrop" id="modal-fetch" role="dialog" aria-modal="true">
   <div class="modal" style="max-width:440px">
     <div class="modal-head">
@@ -1701,6 +1963,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
   </div>
 </div>
 
+<!-- Delete confirmation modal -->
 <div class="modal-backdrop" id="modal-delete" role="dialog" aria-modal="true">
   <div class="modal" style="max-width:400px">
     <div class="modal-head">
@@ -2479,6 +2742,283 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
       if (resultStep) resultStep.click();
     });
   }
+})();
+
+// ============ Investering — Portefølje sandsynlighedsberegner ============
+(function(){
+  const F = {
+    hist: [{ mu: .2406, sig: .2012 }, { mu: .1170, sig: .1985 }, { mu: .1217, sig: .1460 }],
+    cons: [{ mu: .13, sig: .2012 }, { mu: .08, sig: .1985 }, { mu: .07, sig: .1460 }]
+  };
+  const RHO = [[1, .45, .80], [.45, 1, .70], [.80, .70, 1]];
+  let sc = 'hist', T = 9, W = [.50, .30, .20], amount = 1000000, thresholds = [.075, .10, .15];
+  let PAL = 0.157, AOP = 0.0056;
+  function normCDF(z) {
+    const t = 1/(1 + .2316419*Math.abs(z));
+    const d = .3989422*Math.exp(-.5*z*z);
+    const p = d*t*(.3193815 + t*(-.3565638 + t*(1.7814779 + t*(-1.8212560 + t*1.3302744))));
+    return z >= 0 ? 1 - p : p;
+  }
+  function normPPF(p) {
+    const a=[-3.969683028665376e1,2.209460984245205e2,-2.759285104469687e2,1.383577518672690e2,-3.066479806614716e1,2.506628277459239];
+    const b=[-5.447609879822406e1,1.615858368580409e2,-1.556989798598866e2,6.680131188771972e1,-1.328068155288572e1];
+    const c=[-7.784894002430293e-3,-3.223964580411365e-1,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783];
+    const d=[7.784695709041462e-3,3.224671290700398e-1,2.445134137142996,3.754408661907416];
+    const pl=.02425, ph=1-pl;
+    let q, r;
+    if (p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+    if (p<=ph){q=p-.5; r=q*q; return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);}
+    q=Math.sqrt(-2*Math.log(1-p));
+    return -((((( c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+  }
+  function normPDF(x, mu, s) { return Math.exp(-.5*((x-mu)/s)**2)/(s*Math.sqrt(2*Math.PI)); }
+  function fmt(v){ return (v*100).toFixed(1)+'%'; }
+  function fmtDKK(v){ return (v<0?'-':'+')+Math.round(Math.abs(v)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.'; }
+  function fmtDKKabs(v){ return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.'; }
+  function getColor(p){ return p>=.9?'#07A0C3':p>=.75?'#e6b800':'#f0a020'; }
+  function compute(){
+    const f = F[sc], w = W;
+    const mu_p = w[0]*f[0].mu + w[1]*f[1].mu + w[2]*f[2].mu;
+    let vp = 0;
+    for (let i=0;i<3;i++) for (let j=0;j<3;j++) vp += w[i]*w[j]*RHO[i][j]*f[i].sig*f[j].sig;
+    const sp = Math.sqrt(vp), mu_ln = mu_p - sp*sp/2;
+    return { mu_p, sp, mu_ln, mu_T: T*mu_ln, sig_T: sp*Math.sqrt(T) };
+  }
+  let hpChart = null, distChart = null, initialized = false;
+
+  function hpPct(p, mu_ln, sp, t) { return Math.exp(mu_ln + normPPF(p)*sp/Math.sqrt(t)) - 1; }
+  function updateHPChart(mu_ln, sp) {
+    const isDark = matchMedia('(prefers-color-scheme:dark)').matches;
+    const tc = isDark?'rgba(255,255,255,.5)':'rgba(0,0,0,.38)';
+    const gc = isDark?'rgba(255,255,255,.05)':'rgba(0,0,0,.05)';
+    const zeroC = isDark?'rgba(255,255,255,.2)':'rgba(0,0,0,.15)';
+    const labels = [], d95 = [], d75 = [], dMed = [], bgOuter = [], bgInner = [];
+    for (let t=1; t<=T; t++) {
+      labels.push(t+' år');
+      const isT = (t === T);
+      d95.push([hpPct(.05, mu_ln, sp, t), hpPct(.95, mu_ln, sp, t)]);
+      d75.push([hpPct(.25, mu_ln, sp, t), hpPct(.75, mu_ln, sp, t)]);
+      dMed.push(Math.exp(mu_ln) - 1);
+      bgOuter.push(isT?'rgba(7,160,195,0.22)':'rgba(120,140,160,0.13)');
+      bgInner.push(isT?'rgba(7,160,195,0.50)':'rgba(80,110,140,0.28)');
+    }
+    const medColors = dMed.map((_, i) => (i+1 === T)?'#07A0C3':'rgba(80,110,140,0.7)');
+    const datasets = [
+      { label: 'P5–P95', data: d95, backgroundColor: bgOuter, borderColor: 'transparent', borderWidth: 0, barPercentage: .65, categoryPercentage: .8 },
+      { label: 'P25–P75', data: d75, backgroundColor: bgInner, borderColor: 'transparent', borderWidth: 0, barPercentage: .65, categoryPercentage: .8 },
+      { label: 'Median', data: dMed, type: 'scatter', pointStyle: 'line', pointRadius: 9, pointBorderWidth: 2.5, pointBorderColor: medColors, pointBackgroundColor: 'transparent', order: -1 }
+    ];
+    if (!hpChart) {
+      hpChart = new Chart(document.getElementById('hpc'), {
+        type: 'bar',
+        data: { labels, datasets },
+        options: {
+          responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: {
+              title: ctx => ctx[0].label,
+              label: ctx => {
+                if (ctx.datasetIndex === 2) return ' Median: '+fmt(ctx.raw);
+                const [lo, hi] = ctx.raw;
+                return ctx.datasetIndex === 0 ? ' P5–P95: '+fmt(lo)+' → '+fmt(hi) : ' P25–P75: '+fmt(lo)+' → '+fmt(hi);
+              }
+            }}
+          },
+          scales: {
+            x: { ticks: { color: tc, font: { family: 'Poppins', size: 9 } }, grid: { color: gc }, border: { display: false } },
+            y: { ticks: { color: tc, font: { family: 'Poppins', size: 9 }, callback: v => (v*100).toFixed(0)+'%' }, grid: { color: gc }, border: { display: false },
+                 afterDataLimits(scale) { scale.min = Math.min(scale.min, -.05); scale.max = Math.max(scale.max, .05); } }
+          }
+        },
+        plugins: [{
+          id: 'zero',
+          afterDatasetsDraw(ch) {
+            const { ctx, scales: { x, y } } = ch;
+            const yZ = y.getPixelForValue(0);
+            ctx.save(); ctx.strokeStyle = zeroC; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+            ctx.beginPath(); ctx.moveTo(x.left, yZ); ctx.lineTo(x.right, yZ); ctx.stroke(); ctx.restore();
+          }
+        }]
+      });
+    } else {
+      hpChart.data.labels = labels;
+      hpChart.data.datasets[0].data = d95;
+      hpChart.data.datasets[0].backgroundColor = bgOuter;
+      hpChart.data.datasets[1].data = d75;
+      hpChart.data.datasets[1].backgroundColor = bgInner;
+      hpChart.data.datasets[2].data = dMed;
+      hpChart.data.datasets[2].pointBorderColor = medColors;
+      hpChart.update('none');
+    }
+  }
+  function updateDistChart(mu_T, sig_T) {
+    const xs = [], ys = [], lbls = [];
+    for (let r = -.25; r <= .70; r += .003) {
+      const lr = T * Math.log(1 + Math.max(r, -.999));
+      ys.push(+(normPDF(lr, mu_T, sig_T) * Math.abs(T / (1 + Math.max(r, -.999)))).toFixed(5));
+      xs.push(r); lbls.push((r*100).toFixed(0)+'%');
+    }
+    const isDark = matchMedia('(prefers-color-scheme:dark)').matches;
+    const tc = isDark?'rgba(255,255,255,.5)':'rgba(0,0,0,.38)';
+    const gc = isDark?'rgba(255,255,255,.05)':'rgba(0,0,0,.05)';
+    const vC = ['#e53935', '#f0a020', '#2e7d32'];
+    if (!distChart) {
+      distChart = new Chart(document.getElementById('dc'), {
+        type: 'line',
+        data: { labels: lbls, datasets: [{ data: ys, borderColor: '#07A0C3', backgroundColor: 'rgba(7,160,195,.1)', fill: true, pointRadius: 0, borderWidth: 2, tension: .4 }] },
+        options: {
+          responsive: true, maintainAspectRatio: false, animation: { duration: 200 },
+          plugins: { legend: { display: false }, tooltip: { enabled: false } },
+          scales: {
+            x: { ticks: { maxTicksLimit: 9, color: tc, font: { family: 'Poppins', size: 9 }, autoSkip: true }, grid: { color: gc }, border: { display: false } },
+            y: { display: false }
+          }
+        },
+        plugins: [{
+          id: 'vl',
+          afterDatasetsDraw(ch) {
+            const { ctx, scales: { x, y } } = ch;
+            thresholds.forEach((t, i) => {
+              const idx = xs.findIndex(r => r >= t); if (idx < 0) return;
+              const px = x.getPixelForValue(idx);
+              ctx.save(); ctx.setLineDash([4, 3]); ctx.strokeStyle = vC[i]; ctx.lineWidth = 1.5;
+              ctx.beginPath(); ctx.moveTo(px, y.top); ctx.lineTo(px, y.bottom); ctx.stroke(); ctx.restore();
+            });
+          }
+        }]
+      });
+    } else {
+      distChart.data.labels = lbls;
+      distChart.data.datasets[0].data = ys;
+      distChart.update('none');
+    }
+  }
+  function update() {
+    const { mu_p, sp, mu_ln, mu_T, sig_T } = compute();
+    document.getElementById('oMu').textContent = fmt(mu_p);
+    document.getElementById('oSig').textContent = fmt(sp);
+    document.getElementById('oGeo').textContent = fmt(mu_ln);
+    document.getElementById('cSub').textContent = 'Over '+T+' år';
+    document.getElementById('hpSub').textContent = 'Annualiseret afkastspænd for 1–'+T+' års horisonter · Valgt horisont fremhævet';
+    thresholds.forEach((t, i) => {
+      const z = (T * Math.log(1 + t) - mu_T) / sig_T;
+      const prob = 1 - normCDF(z);
+      const cum = Math.round(((1 + t)**T - 1) * 100);
+      const col = getColor(prob);
+      document.getElementById('f'+(i+1)).style.width = Math.max(1, Math.min(100, prob*100))+'%';
+      document.getElementById('f'+(i+1)).style.background = col;
+      const pEl = document.getElementById('p'+(i+1));
+      pEl.textContent = (prob*100).toFixed(1)+'%';
+      pEl.style.color = col;
+      document.getElementById('c'+(i+1)).textContent = 'Samlet afkast > '+cum+'% over '+T+' år';
+    });
+    [['pp5',.05],['pp25',.25],['pp50',.50],['pp75',.75],['pp95',.95]].forEach(([id,p]) => {
+      document.getElementById(id).textContent = fmt(Math.exp((normPPF(p)*sig_T + mu_T) / T) - 1);
+    });
+    const p50_gross = Math.exp(mu_T / T) - 1;
+    const p50_net = p50_gross * (1 - PAL) - AOP;
+    const p50Total = amount * Math.pow(1 + p50_net, T);
+    const t1 = thresholds[0];
+    const t1_net = t1 * (1 - PAL);
+    const t1Total = amount * Math.pow(1 + t1_net, T);
+    const mer = p50Total - t1Total;
+    const palPct = (PAL*100).toFixed(1);
+    const aopPct = (AOP*100).toFixed(1);
+    document.getElementById('merThreshLbl').textContent = '— P50 netto vs. eksist. aftale ('+(t1*100).toFixed(1)+'% brutto)';
+    document.getElementById('merP50Val').textContent = fmtDKKabs(p50Total);
+    document.getElementById('merP50Sub').textContent = fmt(p50_net)+' / år netto  ('+fmt(p50_gross)+' × (1−'+palPct+'% PAL)'+(AOP>0?' − '+aopPct+'% ÅOP af depot':'')+')';
+    document.getElementById('merT1Lbl').textContent = (t1*100).toFixed(1)+'% brutto';
+    document.getElementById('merT1Val').textContent = fmtDKKabs(t1Total);
+    document.getElementById('merT1Sub').textContent = fmt(t1_net)+' / år netto  ('+fmt(t1)+' × (1−'+palPct+'% PAL))';
+    document.getElementById('merVal').textContent = fmtDKK(mer);
+    document.getElementById('merSub').textContent = 'Netto portefølje P50 vs. netto eksist. aftale over '+T+' år';
+    document.getElementById('merPct').textContent = mer > 0 ? 'P50 giver '+(mer/t1Total).toFixed(1)+'x mere end aftalen' : 'Eksist. aftale overstiger median';
+    updateHPChart(mu_ln, sp);
+    updateDistChart(mu_T, sig_T);
+  }
+  const PORTFOLIOS = { gv:[50,30,20], gb:[25,25,50], ga:[0,0,100], ti:[100,0,0] };
+  function applyWeights(v1, v2, v3) {
+    document.getElementById('s1').value = v1;
+    document.getElementById('s2').value = v2;
+    document.getElementById('lbl1').textContent = v1+'%';
+    document.getElementById('lbl2').textContent = v2+'%';
+    document.getElementById('lbl3').textContent = v3+'%';
+    const ab = document.getElementById('abar');
+    ab.style.width = v3+'%';
+    ab.style.background = v3 > 0 ? '#0E8A7A' : 'var(--inv-bg)';
+    W = [v1/100, v2/100, v3/100];
+    update();
+  }
+  window.onPortfolio = function() {
+    const val = document.getElementById('portSel').value;
+    if (val === 'custom') return;
+    const [v1, v2] = PORTFOLIOS[val];
+    applyWeights(v1, v2, 100 - v1 - v2);
+  };
+  window.onS = function() {
+    document.getElementById('portSel').value = 'custom';
+    let v1 = +document.getElementById('s1').value, v2 = +document.getElementById('s2').value;
+    if (v1 + v2 > 100) { v2 = Math.max(0, 100 - v1); document.getElementById('s2').value = v2; }
+    const v3 = Math.max(0, 100 - v1 - v2);
+    W = [v1/100, v2/100, v3/100];
+    document.getElementById('lbl1').textContent = v1+'%';
+    document.getElementById('lbl2').textContent = v2+'%';
+    document.getElementById('lbl3').textContent = v3+'%';
+    const ab = document.getElementById('abar');
+    ab.style.width = v3+'%';
+    ab.style.background = v3 > 0 ? '#0E8A7A' : 'var(--inv-bg)';
+    update();
+  };
+  window.onH = function() {
+    T = +document.getElementById('sH').value;
+    document.getElementById('lblH').textContent = T;
+    update();
+  };
+  window.onAmt = function() {
+    const v = parseFloat(document.getElementById('amtIn').value) || 0;
+    amount = Math.max(0, v);
+    document.getElementById('amtFmt').textContent = Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.';
+    update();
+  };
+  window.onThresh = function() {
+    thresholds = [
+      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t1').value) || 7.5) / 100)),
+      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t2').value) || 10) / 100)),
+      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t3').value) || 15) / 100))
+    ];
+    update();
+  };
+  window.onTax = function() {
+    PAL = Math.max(0, Math.min(0.50, (parseFloat(document.getElementById('palIn').value) || 15.7) / 100));
+    AOP = Math.max(0, Math.min(0.20, (parseFloat(document.getElementById('aopIn').value) || 0.56) / 100));
+    update();
+  };
+  window.setScenario = function(s) {
+    sc = s;
+    document.getElementById('btnH').className = 'tbtn'+(s==='hist'?' on':'');
+    document.getElementById('btnC').className = 'tbtn'+(s==='cons'?' on':'');
+    const f = F[s];
+    ['dmu1','dmu2','dmu3'].forEach((id, i) => document.getElementById(id).textContent = (f[i].mu*100).toFixed(1)+'%');
+    ['dsig1','dsig2','dsig3'].forEach((id, i) => document.getElementById(id).textContent = (f[i].sig*100).toFixed(1)+'%');
+    document.getElementById('noteEl').innerHTML = s === 'hist'
+      ? '<strong>Historisk scenarie:</strong> DI Teknologi &amp; MSCI World: 10-årige nøgletal. EU Financials (SPDR IE00BKWQ0G16): 10-årige MSCI Europe Financials 20/35 Capped Index — μ=11,70%, σ=19,85% (kilde: MSCI faktaark, maj 2026). Estimerede korrelationer: ρ(Tech↔EU Fin)=0,45 · ρ(Tech↔World)=0,80 · ρ(EU Fin↔World)=0,70. Historiske afkast er ingen garanti for fremtidige resultater.'
+      : '<strong>Konservativt scenarie:</strong> Reducerede forventede afkast: DI Teknologi 13%, EU Financials 8% (ned fra historisk 11,70%), MSCI World 7%. Volatilitet er uændret fra historisk scenarie.';
+    update();
+  };
+  function initInv() {
+    if (initialized) return;
+    if (!document.getElementById('portSel')) return;
+    initialized = true;
+    window.setScenario('hist');
+    applyWeights(50, 30, 20);
+  }
+  // Init when Investering tab becomes active
+  const invTool = document.querySelector('.tool[data-tool="investering"]');
+  if (invTool) invTool.addEventListener('click', () => setTimeout(initInv, 30));
+  // If Investering is default active on load, init immediately
+  const invSection = document.querySelector('.tool-section[data-tool="investering"]');
+  if (invSection && !invSection.hasAttribute('hidden')) initInv();
 })();
 </script>
 </body>
