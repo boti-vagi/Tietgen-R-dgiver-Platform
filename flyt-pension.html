@@ -789,12 +789,8 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             <div class="pnl">
               <div class="port-sel-lbl">Vælg investeringsportefølje</div>
               <div style="position:relative">
-                <select class="port-sel" id="portSel" onchange="onPortfolio()">
+                <select class="port-sel" id="portSel">
                   <option value="custom">— Manuel justering —</option>
-                  <option value="gv" selected>Global Vækst via Danica</option>
-                  <option value="gb">Global Balance via Danica</option>
-                  <option value="ga">Global Aktieindeks</option>
-                  <option value="ti">Teknologi Aktieindeks</option>
                 </select>
               </div>
             </div>
@@ -809,31 +805,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             </div>
             <div class="pnl">
               <div class="ptitle">Fondsvægte</div>
-              <div class="fund-row">
-                <div class="fisin">DK0016023229</div>
-                <div class="fmeta">
-                  <div class="finfo"><div class="fdot" style="background:#07A0C3"></div><div class="fname">DI Teknologi Indeks</div></div>
-                  <div class="fpct" id="lbl1" style="color:#07A0C3">50%</div>
-                </div>
-                <input type="range" id="s1" min="0" max="95" step="5" value="50" oninput="onS()">
-              </div>
-              <div class="fund-row">
-                <div class="fisin">IE00BKWQ0G16</div>
-                <div class="fmeta">
-                  <div class="finfo"><div class="fdot" style="background:#1E6FAB"></div><div class="fname">SPDR EU Financials</div></div>
-                  <div class="fpct" id="lbl2" style="color:#1E6FAB">30%</div>
-                </div>
-                <input type="range" id="s2" min="0" max="95" step="5" value="30" oninput="onS()">
-              </div>
-              <div class="fund-row" style="margin-bottom:0">
-                <div class="fisin">IE00BK1PV551</div>
-                <div class="fmeta">
-                  <div class="finfo"><div class="fdot" style="background:#0E8A7A"></div><div class="fname">Xtrackers MSCI World</div></div>
-                  <div class="fpct" id="lbl3" style="color:#0E8A7A">20%</div>
-                </div>
-                <div class="autobar"><div class="autoinner" id="abar" style="width:20%;background:#0E8A7A"></div></div>
-                <div class="autonote">Resterende vægt (automatisk)</div>
-              </div>
+              <div id="fundRows"></div>
             </div>
             <div class="pnl">
               <div class="ptitle">Tidshorisont</div>
@@ -867,12 +839,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
             </div>
             <div class="pnl">
               <div class="ptitle">Fondsnøgletal<span class="badge">10 ÅR</span></div>
-              <div class="fdgrid">
-                <div class="fdh">Fond</div><div class="fdh" style="text-align:right">μ</div><div class="fdh" style="text-align:right">σ</div>
-                <div class="fdn">DI Teknologi</div><div class="fdv" id="dmu1">24,1%</div><div class="fdv" id="dsig1">20,1%</div>
-                <div class="fdn">EU Financials</div><div class="fdv" id="dmu2">11,7%</div><div class="fdv" id="dsig2">19,9%</div>
-                <div class="fdn">MSCI World</div><div class="fdv" id="dmu3">12,2%</div><div class="fdv" id="dsig3">14,6%</div>
-              </div>
+              <div class="fdgrid" id="fundStats"></div>
             </div>
           </div>
           <div class="right">
@@ -2800,13 +2767,85 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
 
 // ============ Investering — Portefølje sandsynlighedsberegner ============
 (function(){
-  const F = {
-    hist: [{ mu: .2406, sig: .2012 }, { mu: .1170, sig: .1985 }, { mu: .1217, sig: .1460 }],
-    cons: [{ mu: .13, sig: .2012 }, { mu: .08, sig: .1985 }, { mu: .07, sig: .1460 }]
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FONDSNØGLETAL — tilføj nye fonde her. Rækkefølgen bestemmer index (0-baseret).
+  // ═══════════════════════════════════════════════════════════════════════════
+  const FUNDS = [
+    {
+      id: 'tek',
+      name: 'DI Teknologi Indeks',
+      isin: 'DK0016023229',
+      color: '#07A0C3',
+      hist: { mu: 0.2406, sig: 0.2012 }, // 10-årige nøgletal
+      cons: { mu: 0.13,   sig: 0.2012 }, // konservativt scenarie
+    },
+    {
+      id: 'eufin',
+      name: 'SPDR EU Financials',
+      isin: 'IE00BKWQ0G16',
+      color: '#1E6FAB',
+      hist: { mu: 0.1170, sig: 0.1985 }, // MSCI Europe Financials 10-yr (maj 2026)
+      cons: { mu: 0.08,   sig: 0.1985 },
+    },
+    {
+      id: 'msci',
+      name: 'Xtrackers MSCI World',
+      isin: 'IE00BK1PV551',
+      color: '#0E8A7A',
+      hist: { mu: 0.1217, sig: 0.1460 }, // 10-årige nøgletal
+      cons: { mu: 0.07,   sig: 0.1460 },
+    },
+  ];
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // KORRELATIONER — brug fund-id'er som nøgle ("a|b"). Rækkefølgen er ligegyldig.
+  // Manglende par antages 0. Diagonalen (i=j) er altid 1.
+  // ═══════════════════════════════════════════════════════════════════════════
+  const CORRELATIONS = {
+    'tek|eufin':   0.45,
+    'tek|msci':    0.80,
+    'eufin|msci':  0.70,
   };
-  const RHO = [[1, .45, .80], [.45, 1, .70], [.80, .70, 1]];
-  let sc = 'hist', T = 9, W = [.50, .30, .20], amount = 1000000, thresholds = [.05, .10, .125];
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // INVESTERINGSPORTEFØLJER — weights matcher FUNDS-rækkefølgen (i procent).
+  // Tilføj nye porteføljer ved at appende et objekt. Første portefølje er default.
+  // ═══════════════════════════════════════════════════════════════════════════
+  const PORTFOLIOS = [
+    { id: 'gv', label: 'Global Vækst via Danica',    weights: [50, 30, 20] },
+    { id: 'gb', label: 'Global Balance via Danica',  weights: [25, 25, 50] },
+    { id: 'ga', label: 'Global Aktieindeks',         weights: [ 0,  0, 100] },
+    { id: 'ti', label: 'Teknologi Aktieindeks',      weights: [100, 0,  0] },
+  ];
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FORKLARINGSTEKST — vises under grafer (én pr. scenarie)
+  // ═══════════════════════════════════════════════════════════════════════════
+  const SCENARIO_NOTES = {
+    hist: '<strong>Historisk scenarie:</strong> DI Teknologi &amp; MSCI World: 10-årige nøgletal. EU Financials (SPDR IE00BKWQ0G16): 10-årige MSCI Europe Financials 20/35 Capped Index — μ=11,70%, σ=19,85% (kilde: MSCI faktaark, maj 2026). Estimerede korrelationer: ρ(Tech↔EU Fin)=0,45 · ρ(Tech↔World)=0,80 · ρ(EU Fin↔World)=0,70. Historiske afkast er ingen garanti for fremtidige resultater.',
+    cons: '<strong>Konservativt scenarie:</strong> Reducerede forventede afkast: DI Teknologi 13%, EU Financials 8% (ned fra historisk 11,70%), MSCI World 7%. Volatilitet er uændret fra historisk scenarie.',
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Runtime state
+  // ═══════════════════════════════════════════════════════════════════════════
+  let sc = 'hist', T = 9, W = [], amount = 1000000, thresholds = [.05, .10, .125];
   let PAL = 0.157, AOP = 0.0056;
+  let hpChart = null, distChart = null, initialized = false;
+
+  // Data helpers
+  const getMu  = (i) => FUNDS[i][sc].mu;
+  const getSig = (i) => FUNDS[i][sc].sig;
+  const getRho = (i, j) => {
+    if (i === j) return 1;
+    const a = FUNDS[i].id, b = FUNDS[j].id;
+    return CORRELATIONS[a+'|'+b] ?? CORRELATIONS[b+'|'+a] ?? 0;
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Statistik-hjælpere
+  // ═══════════════════════════════════════════════════════════════════════════
   function normCDF(z) {
     const t = 1/(1 + .2316419*Math.abs(z));
     const d = .3989422*Math.exp(-.5*z*z);
@@ -2825,22 +2864,76 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
     q=Math.sqrt(-2*Math.log(1-p));
     return -((((( c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
   }
-  function normPDF(x, mu, s) { return Math.exp(-.5*((x-mu)/s)**2)/(s*Math.sqrt(2*Math.PI)); }
-  function fmt(v){ return (v*100).toFixed(1)+'%'; }
-  function fmtDKK(v){ return (v<0?'-':'+')+Math.round(Math.abs(v)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.'; }
-  function fmtDKKabs(v){ return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.'; }
-  function getColor(p){ return p>=.9?'#07A0C3':p>=.75?'#e6b800':'#f0a020'; }
-  function compute(){
-    const f = F[sc], w = W;
-    const mu_p = w[0]*f[0].mu + w[1]*f[1].mu + w[2]*f[2].mu;
+  const normPDF = (x, mu, s) => Math.exp(-.5*((x-mu)/s)**2)/(s*Math.sqrt(2*Math.PI));
+  const fmt      = v => (v*100).toFixed(1)+'%';
+  const fmtDKK   = v => (v<0?'-':'+')+Math.round(Math.abs(v)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.';
+  const fmtDKKabs= v => Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.';
+  const getColor = p => p>=.9?'#07A0C3':p>=.75?'#e6b800':'#f0a020';
+
+  // Porteføljestatistik
+  function compute() {
+    const n = FUNDS.length;
+    let mu_p = 0;
+    for (let i=0;i<n;i++) mu_p += W[i]*getMu(i);
     let vp = 0;
-    for (let i=0;i<3;i++) for (let j=0;j<3;j++) vp += w[i]*w[j]*RHO[i][j]*f[i].sig*f[j].sig;
+    for (let i=0;i<n;i++) for (let j=0;j<n;j++) vp += W[i]*W[j]*getRho(i,j)*getSig(i)*getSig(j);
     const sp = Math.sqrt(vp), mu_ln = mu_p - sp*sp/2;
     return { mu_p, sp, mu_ln, mu_T: T*mu_ln, sig_T: sp*Math.sqrt(T) };
   }
-  let hpChart = null, distChart = null, initialized = false;
 
-  function hpPct(p, mu_ln, sp, t) { return Math.exp(mu_ln + normPPF(p)*sp/Math.sqrt(t)) - 1; }
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DOM builders — genererer HTML fra data-arrays
+  // ═══════════════════════════════════════════════════════════════════════════
+  function buildPortfolioSelect() {
+    const sel = document.getElementById('portSel');
+    const opts = PORTFOLIOS.map(p => '<option value="'+p.id+'">'+p.label+'</option>').join('');
+    sel.innerHTML = '<option value="custom">— Manuel justering —</option>' + opts;
+  }
+
+  function buildFundRows() {
+    const wrap = document.getElementById('fundRows');
+    const n = FUNDS.length;
+    wrap.innerHTML = FUNDS.map((f, i) => {
+      const isLast = i === n - 1;
+      const lastStyle = isLast ? ' style="margin-bottom:0"' : '';
+      const header = '<div class="fisin">'+f.isin+'</div>'
+        + '<div class="fmeta">'
+          + '<div class="finfo"><div class="fdot" style="background:'+f.color+'"></div><div class="fname">'+f.name+'</div></div>'
+          + '<div class="fpct" id="lbl'+(i+1)+'" style="color:'+f.color+'">0%</div>'
+        + '</div>';
+      const control = isLast
+        ? '<div class="autobar"><div class="autoinner" id="abar" style="width:0%;background:'+f.color+'"></div></div>'
+          + '<div class="autonote">Resterende vægt (automatisk)</div>'
+        : '<input type="range" id="s'+(i+1)+'" min="0" max="95" step="5" value="0" data-fund-idx="'+i+'">';
+      return '<div class="fund-row" data-fund-idx="'+i+'"'+lastStyle+'>'+header+control+'</div>';
+    }).join('');
+    // Wire sliders (all except last)
+    wrap.querySelectorAll('input[type=range]').forEach(sl => sl.addEventListener('input', onS));
+  }
+
+  function buildFundStats() {
+    const wrap = document.getElementById('fundStats');
+    let html = '<div class="fdh">Fond</div><div class="fdh" style="text-align:right">μ</div><div class="fdh" style="text-align:right">σ</div>';
+    FUNDS.forEach((f, i) => {
+      html += '<div class="fdn">'+f.name+'</div>'
+           + '<div class="fdv" id="dmu'+(i+1)+'"></div>'
+           + '<div class="fdv" id="dsig'+(i+1)+'"></div>';
+    });
+    wrap.innerHTML = html;
+  }
+
+  function refreshFundStats() {
+    FUNDS.forEach((f, i) => {
+      document.getElementById('dmu'+(i+1)).textContent  = (f[sc].mu*100).toFixed(1)+'%';
+      document.getElementById('dsig'+(i+1)).textContent = (f[sc].sig*100).toFixed(1)+'%';
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Charts
+  // ═══════════════════════════════════════════════════════════════════════════
+  const hpPct = (p, mu_ln, sp, t) => Math.exp(mu_ln + normPPF(p)*sp/Math.sqrt(t)) - 1;
+
   function updateHPChart(mu_ln, sp) {
     const isDark = matchMedia('(prefers-color-scheme:dark)').matches;
     const tc = isDark?'rgba(255,255,255,.5)':'rgba(0,0,0,.38)';
@@ -2906,6 +2999,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
       hpChart.update('none');
     }
   }
+
   function updateDistChart(mu_T, sig_T) {
     const xs = [], ys = [], lbls = [];
     for (let r = -.25; r <= .70; r += .003) {
@@ -2948,6 +3042,10 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
       distChart.update('none');
     }
   }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Main update loop
+  // ═══════════════════════════════════════════════════════════════════════════
   function update() {
     const { mu_p, sp, mu_ln, mu_T, sig_T } = compute();
     document.getElementById('oMu').textContent = fmt(mu_p);
@@ -2991,86 +3089,125 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
     updateHPChart(mu_ln, sp);
     updateDistChart(mu_T, sig_T);
   }
-  const PORTFOLIOS = { gv:[50,30,20], gb:[25,25,50], ga:[0,0,100], ti:[100,0,0] };
-  function applyWeights(v1, v2, v3) {
-    document.getElementById('s1').value = v1;
-    document.getElementById('s2').value = v2;
-    document.getElementById('lbl1').textContent = v1+'%';
-    document.getElementById('lbl2').textContent = v2+'%';
-    document.getElementById('lbl3').textContent = v3+'%';
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Vægt-håndtering — arbejder med vilkårligt antal fonde
+  // ═══════════════════════════════════════════════════════════════════════════
+  function paintLastBar() {
+    const n = FUNDS.length;
+    const lastPct = Math.round(W[n-1]*100);
     const ab = document.getElementById('abar');
-    ab.style.width = v3+'%';
-    ab.style.background = v3 > 0 ? '#0E8A7A' : 'var(--inv-bg)';
-    W = [v1/100, v2/100, v3/100];
+    if (ab) {
+      ab.style.width = lastPct+'%';
+      ab.style.background = lastPct > 0 ? FUNDS[n-1].color : 'var(--inv-bg)';
+    }
+  }
+  function paintLabels() {
+    FUNDS.forEach((_, i) => {
+      const el = document.getElementById('lbl'+(i+1));
+      if (el) el.textContent = Math.round(W[i]*100)+'%';
+    });
+  }
+
+  function applyWeights(weights) {
+    // weights: array af procent-tal (fx [50, 30, 20])
+    const n = FUNDS.length;
+    // Skriv til sliders (alle undtagen den sidste, der er auto)
+    for (let i=0;i<n-1;i++) {
+      const sl = document.getElementById('s'+(i+1));
+      if (sl) sl.value = weights[i];
+    }
+    W = weights.map(v => v/100);
+    paintLabels();
+    paintLastBar();
     update();
   }
-  window.onPortfolio = function() {
+
+  function onS() {
+    document.getElementById('portSel').value = 'custom';
+    const n = FUNDS.length;
+    // Læs slider-værdier for de første n-1 fonde
+    let vals = [];
+    for (let i=0;i<n-1;i++) vals.push(+document.getElementById('s'+(i+1)).value);
+    // Håndter overflow: hvis sum > 100 så cap den sidste slider ned
+    let sum = vals.reduce((a,b) => a+b, 0);
+    if (sum > 100) {
+      const excess = sum - 100;
+      vals[n-2] = Math.max(0, vals[n-2] - excess);
+      const lastSl = document.getElementById('s'+(n-1));
+      if (lastSl) lastSl.value = vals[n-2];
+      sum = vals.reduce((a,b) => a+b, 0);
+    }
+    vals.push(Math.max(0, 100 - sum)); // auto-beregnet sidste vægt
+    W = vals.map(v => v/100);
+    paintLabels();
+    paintLastBar();
+    update();
+  }
+
+  function onPortfolio() {
     const val = document.getElementById('portSel').value;
     if (val === 'custom') return;
-    const [v1, v2] = PORTFOLIOS[val];
-    applyWeights(v1, v2, 100 - v1 - v2);
-  };
-  window.onS = function() {
-    document.getElementById('portSel').value = 'custom';
-    let v1 = +document.getElementById('s1').value, v2 = +document.getElementById('s2').value;
-    if (v1 + v2 > 100) { v2 = Math.max(0, 100 - v1); document.getElementById('s2').value = v2; }
-    const v3 = Math.max(0, 100 - v1 - v2);
-    W = [v1/100, v2/100, v3/100];
-    document.getElementById('lbl1').textContent = v1+'%';
-    document.getElementById('lbl2').textContent = v2+'%';
-    document.getElementById('lbl3').textContent = v3+'%';
-    const ab = document.getElementById('abar');
-    ab.style.width = v3+'%';
-    ab.style.background = v3 > 0 ? '#0E8A7A' : 'var(--inv-bg)';
-    update();
-  };
-  window.onH = function() {
+    const p = PORTFOLIOS.find(x => x.id === val);
+    if (p) applyWeights(p.weights);
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Input handlers
+  // ═══════════════════════════════════════════════════════════════════════════
+  window.onH = () => {
     T = +document.getElementById('sH').value;
     document.getElementById('lblH').textContent = T;
     update();
   };
-  window.onAmt = function() {
+  window.onAmt = () => {
     const v = parseFloat(document.getElementById('amtIn').value) || 0;
     amount = Math.max(0, v);
     document.getElementById('amtFmt').textContent = Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')+' kr.';
     update();
   };
-  window.onThresh = function() {
+  window.onThresh = () => {
     thresholds = [
-      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t1').value) || 5) / 100)),
-      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t2').value) || 10) / 100)),
+      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t1').value) || 5)    / 100)),
+      Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t2').value) || 10)   / 100)),
       Math.max(.001, Math.min(.499, (parseFloat(document.getElementById('t3').value) || 12.5) / 100))
     ];
     update();
   };
-  window.onTax = function() {
+  window.onTax = () => {
     PAL = Math.max(0, Math.min(0.50, (parseFloat(document.getElementById('palIn').value) || 15.7) / 100));
     AOP = Math.max(0, Math.min(0.20, (parseFloat(document.getElementById('aopIn').value) || 0.56) / 100));
     update();
   };
-  window.setScenario = function(s) {
+  window.setScenario = (s) => {
     sc = s;
     document.getElementById('btnH').className = 'tbtn'+(s==='hist'?' on':'');
     document.getElementById('btnC').className = 'tbtn'+(s==='cons'?' on':'');
-    const f = F[s];
-    ['dmu1','dmu2','dmu3'].forEach((id, i) => document.getElementById(id).textContent = (f[i].mu*100).toFixed(1)+'%');
-    ['dsig1','dsig2','dsig3'].forEach((id, i) => document.getElementById(id).textContent = (f[i].sig*100).toFixed(1)+'%');
-    document.getElementById('noteEl').innerHTML = s === 'hist'
-      ? '<strong>Historisk scenarie:</strong> DI Teknologi &amp; MSCI World: 10-årige nøgletal. EU Financials (SPDR IE00BKWQ0G16): 10-årige MSCI Europe Financials 20/35 Capped Index — μ=11,70%, σ=19,85% (kilde: MSCI faktaark, maj 2026). Estimerede korrelationer: ρ(Tech↔EU Fin)=0,45 · ρ(Tech↔World)=0,80 · ρ(EU Fin↔World)=0,70. Historiske afkast er ingen garanti for fremtidige resultater.'
-      : '<strong>Konservativt scenarie:</strong> Reducerede forventede afkast: DI Teknologi 13%, EU Financials 8% (ned fra historisk 11,70%), MSCI World 7%. Volatilitet er uændret fra historisk scenarie.';
+    refreshFundStats();
+    document.getElementById('noteEl').innerHTML = SCENARIO_NOTES[s] || '';
     update();
   };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Init (kaldes når Investering-fanen åbnes)
+  // ═══════════════════════════════════════════════════════════════════════════
   function initInv() {
     if (initialized) return;
     if (!document.getElementById('portSel')) return;
     initialized = true;
+    buildPortfolioSelect();
+    buildFundRows();
+    buildFundStats();
+    document.getElementById('portSel').addEventListener('change', onPortfolio);
     window.setScenario('hist');
-    applyWeights(50, 30, 20);
+    // Default portefølje er den første i PORTFOLIOS
+    if (PORTFOLIOS.length > 0) {
+      document.getElementById('portSel').value = PORTFOLIOS[0].id;
+      applyWeights(PORTFOLIOS[0].weights);
+    }
   }
-  // Init when Investering tab becomes active
   const invTool = document.querySelector('.tool-picker-item[data-tool="investering"]');
   if (invTool) invTool.addEventListener('click', () => setTimeout(initInv, 30));
-  // If Investering is default active on load, init immediately
   const invSection = document.querySelector('.tool-section[data-tool="investering"]');
   if (invSection && !invSection.hasAttribute('hidden')) initInv();
 })();
