@@ -1353,8 +1353,10 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <div class="section col-blue">
             <p class="title">Rådighedsbehov</p>
             <div class="field"><label>Rådighedsbehov først år (NETTO)</label><input type="text" value="300.000"></div>
-            <div class="field"><label>Rådighedsbehov ændring</label><input type="text" value="80%"></div>
-            <div class="field"><label>Startalder for ændring af rådighedsbehov</label><input type="number" value="70"></div>
+            <div class="field"><label>Rådighedsbehov ændring 1</label><input type="text" value="80%"></div>
+            <div class="field"><label>Startalder for ændring af rådighedsbehov 1</label><input type="number" value="70"></div>
+            <div class="field"><label>Rådighedsbehov ændring 2</label><input type="text" placeholder="fx 60%"></div>
+            <div class="field"><label>Startalder for ændring af rådighedsbehov 2</label><input type="number" placeholder="fx 80"></div>
             <div class="field"><label>Note rådighedsbehov</label><textarea rows="2"></textarea></div>
           </div>
           <div class="section col-blue">
@@ -1382,6 +1384,7 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
           <div class="section col-brown">
             <p class="title">Frie midler — Anvendelse</p>
             <div class="field"><label>Samlet startkapital indskud</label><input type="text" value="500.000"></div>
+            <div class="field"><label>Investering administreret af Tietgen Pension</label><input type="text" placeholder="fx 250.000"></div>
             <div class="field"><label>Startkapital Aktiesparekonto (ASK — 17% lagerskat)</label><input type="text" value="174.200"></div>
             <div class="field"><label>Årlig indbetaling ASK</label><input type="text" value="0"></div>
             <div class="field"><label>Startkapital Aktiedepot portefølje</label><input type="text" value="325.800"></div>
@@ -1450,6 +1453,18 @@ pre.snippet{margin:0;padding:16px 18px;background:#0E1F28;color:#B8E5EE;border-r
               <span style="font-size:20px; font-weight:700; color:var(--accent-text);">17.868.516 kr.</span>
             </div>
           </div>
+          <details class="acc" open style="margin-top:14px;">
+            <summary>Delvist boligsalg &amp; gældsafdrag</summary>
+            <div class="acc-body">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 22px;">
+                <div class="field"><label>Delvist Boligsalg (% af samlet boligværdimasse)</label><input type="text" placeholder="fx 50%"></div>
+                <div class="field"><label>Delvist Boligsalg — din alder ved salget</label><input type="number" placeholder="fx 75"></div>
+                <div class="field"><label>Delvist Boligsalg — gæld der afdrages ved salget</label><input type="text" placeholder="fx 500.000"></div>
+                <div class="field"><label>Boliggæld afdrages</label><select><option>nej</option><option>ja</option></select></div>
+                <div class="field"><label>Boliggæld afdrages over antal år</label><input type="number" placeholder="fx 20"></div>
+              </div>
+            </div>
+          </details>
           <p style="margin:14px 0 0; font-size:13px; color:var(--text-secondary); font-style:italic;">"Tilvæksten i din friværdi beregnes med udgangspunkt i den gennemsnitlige boligprisstigning i din kommune over de seneste 30 år, eller ud fra en specifik procentsats aftalt med din rådgiver. Beregningen forudsætter, at boligen er afdragsfrit finansieret, hvilket betyder, at restgælden forbliver konstant, så udviklingen i friværdien udelukkende baseres på boligens forventede værdistigning."</p>
           <div class="field mt-14" ><label>Note bolig</label><textarea rows="2"></textarea></div>
           <p style="margin:14px 0 0; font-size:13px; color:var(--text-secondary);">Link til boligprisudvikling (30 års gennemsnit i enkelte kommuner): <a href="https://www.dr.dk/nyheder/indland/se-kortet-saa-meget-er-boligpriserne-steget-hvor-du-bor" target="_blank" rel="noopener" style="color:var(--info-strong); text-decoration:underline;">dr.dk/nyheder/indland/se-kortet-saa-meget-er-boligpriserne-steget-hvor-du-bor</a></p>
